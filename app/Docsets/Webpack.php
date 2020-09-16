@@ -19,6 +19,32 @@ class Webpack extends BaseDocset
     public const EXTERNAL_DOMAINS = [];
 
 
+    public function grab(): bool
+    {
+        $toIgnore = implode('|', [
+            'v4.webpack.js.org',
+        ]);
+
+        system(
+            "echo; wget webpack.js.org \
+                --mirror \
+                --trust-server-names \
+                --reject-regex='{$toIgnore}' \
+                --page-requisites \
+                --adjust-extension \
+                --convert-links \
+                --span-hosts \
+                --domains={$this->externalDomains()} \
+                --directory-prefix=storage/{$this->downloadedDirectory()} \
+                -e robots=off \
+                --quiet \
+                --show-progress",
+            $result
+        );
+
+        return $result === 0;
+    }
+
     public function entries(string $file): Collection
     {
         $crawler = HtmlPageCrawler::create(Storage::get($file));
