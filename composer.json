@@ -1,0 +1,57 @@
+{
+    "name": "godbout/webpack-dash-docset",
+    "description": "",
+    "keywords": [
+        "webpack",
+        "dash",
+        "docset",
+        "docsets",
+        "offline",
+        "documentation",
+        "builder",
+        "PHP",
+        "love"
+    ],
+    "homepage": "https://github.com/godbout/webpack-dash-docset",
+    "type": "project",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/godbout/webpack-dash-docset/issues",
+        "source": "https://github.com/godbout/webpack-dash-docset"
+    },
+    "authors": [
+        {
+            "name": "Guillaume Leclerc",
+            "email": "guill@sleeplessmind.com.mo"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "godbout/dash-docset-builder": "^1.0"
+    },
+    "require-dev": {
+        "codedungeon/phpunit-result-printer": "^0.29.1",
+        "phpunit/phpunit": "^9.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "scripts": {
+        "test": "phpunit --color=always",
+        "format": "php-cs-fixer fix -vvv --config=.php_cs.dist --ansi"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
