@@ -55,7 +55,8 @@ class Webpack extends BaseDocset
     {
         $entries = collect();
 
-        if (Str::contains($file, '/plugins/index.html')) {
+        if (Str::contains($file, "{$this->url()}/plugins/index.html")) {
+            var_dump($file);
             $crawler->filter('a.sidebar-item__title')->each(function (HtmlPageCrawler $node) use ($entries, $file) {
                 $entries->push([
                    'name' => $node->text(),
