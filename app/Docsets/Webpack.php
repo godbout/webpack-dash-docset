@@ -22,15 +22,11 @@ class Webpack extends BaseDocset
 
     public function grab(): bool
     {
-        $toGet = implode('|', [
-            'v4.webpack.js.org',
-        ]);
-
         system(
             "echo; wget v4.webpack.js.org \
                 --mirror \
                 --trust-server-names \
-                --accept-regex='{$toGet}' \
+                --accept-regex='v4.webpack.js.org' \
                 --page-requisites \
                 --adjust-extension \
                 --convert-links \
