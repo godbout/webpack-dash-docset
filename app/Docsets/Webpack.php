@@ -48,15 +48,24 @@ class Webpack extends BaseDocset
 
         $entries = collect();
 
-        $crawler->filter('h1')->each(function (HtmlPageCrawler $node) use ($entries, $file) {
-            $entries->push([
-                'name' => $node->text(),
-                'type' => 'Guide',
-                'path' => Str::after($file . '#' . Str::slug($node->text()), $this->innerDirectory()),
-            ]);
-        });
+        return $entries->union($this->pluginEntries($crawler, $file));
+    }
 
-        return $entries;
+    protected function pluginEntries(HtmlPageCrawler $crawler, string $file)
+    {
+        $entries = collect();
+
+        if (Str::contains($file, '/plugins/index.html')) {
+            $crawler->filter('a.sidebar-item__title')->each(function (HtmlPageCrawler $node) use ($entries, $file) {
+                $entries->push([
+                   'name' => $node->text(),
+                   'type' => 'Plugin',
+                   'path' => $this->url() . '/plugins/' . $node->attr('href')
+                ]);
+            });
+
+            return $entries;
+        }
     }
 
     public function format(string $file): string
