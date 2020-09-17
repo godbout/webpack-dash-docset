@@ -74,11 +74,25 @@ class Webpack extends BaseDocset
 
         $this->removeBreakingJavaScript($crawler);
 
+        $this->insertDashTableOfContents($crawler);
+
         return $crawler->saveHTML();
     }
 
     protected function removeBreakingJavaScript(HtmlPageCrawler $crawler)
     {
         $crawler->filter('script')->remove();
+    }
+
+    protected function insertDashTableOfContents(HtmlPageCrawler $crawler)
+    {
+        $crawler->filter('body')
+            ->before('<a name="//apple_ref/cpp/Section/Top" class="dashAnchor"></a>');
+
+        $crawler->filter('h2')->each(function (HtmlPageCrawler $node) {
+            $node->prepend(
+                '<a id="' . Str::slug($node->text()) . '" name="//apple_ref/cpp/Section/' . rawurlencode($node->text()) . '" class="dashAnchor"></a>'
+            );
+        });
     }
 }
