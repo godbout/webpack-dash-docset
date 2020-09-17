@@ -1,0 +1,948 @@
+<!DOCTYPE html><html lang="en" data-reactroot=""><head><meta charset="utf-8"/><meta name="theme-color" content="#2B3A42"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>DevServer | webpack</title><meta name="description" content="webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset."/><meta property="og:site_name" content="webpack"/><meta property="og:type" content="website"/><meta property="og:title" content="DevServer | webpack"/><meta property="og:description" name="description" content="webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset."/><meta property="og:image" content="/aad9d51e01a0dcc2caf5bee43dc8e647.svg"/><meta property="twitter:card" content="summary"/><meta property="twitter:site" content="@webpack"/><meta property="twitter:creator" content="@webpack"/><meta property="twitter:domain" content="https://webpack.js.org/"/><link rel="icon" type="image/x-icon" href="../../bc3effb418df77da9e04825c48a58a49.ico"/><link rel="stylesheet" href="../../617ab564d61d895bbe16.css"/><link rel="stylesheet" href="../../da636415eb0a705711e4.css"/><link rel="manifest" href="../../manifest.json"/><link rel="canonical" href="https://webpack.js.org/configuration/dev-server/"/><meta name="mobile-web-app-capable" content="yes"/><link rel="icon" sizes="192x192" href="../../icon_192x192.png"/><link rel="icon" sizes="512x512" href="../../icon_512x512.png"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"/><meta name="apple-mobile-web-app-title" content="webpack"/><link rel="apple-touch-icon-precomposed" href="../../icon_180x180.png"/><link rel="mask-icon" href="../../aad9d51e01a0dcc2caf5bee43dc8e647.svg" color="#465e69"/><meta name="msapplication-TileImage" content="/icon_150x150.png"/><meta name="msapplication-TileColor" content="#465e69"/></head><body><div id="root"><div class="site"><div class="site__header"><div class="notification-bar"><div class="container notification-bar__inner"><p>Sponsor webpack and get apparel from the <a href="https://webpack.threadless.com">official shop</a>! All proceeds go to our <a href="https://opencollective.com/webpack">open collective</a>!</p></div></div><header class="navigation   "><section class="navigation__inner"><button class="navigation__mobile"><svg viewBox="-62 138 25 25"><g><g><path d="M-60.2,140.2h20.9c1,0,1.8,0.8,1.8,1.8l0,0c0,1-0.8,1.8-1.8,1.8h-20.9c-1,0-1.8-0.8-1.8-1.8l0,0 C-62,141-61.2,140.2-60.2,140.2z"></path><path d="M-60.2,148.7h20.9c1,0,1.8,0.8,1.8,1.8l0,0c0,1-0.8,1.8-1.8,1.8h-20.9c-1,0-1.8-0.8-1.8-1.8l0,0 C-62,149.5-61.2,148.7-60.2,148.7z"></path><path d="M-60.2,157.2h20.9c1,0,1.8,0.8,1.8,1.8l0,0c0,1-0.8,1.8-1.8,1.8h-20.9c-1,0-1.8-0.8-1.8-1.8l0,0 C-62,158-61.2,157.2-60.2,157.2z"></path></g></g></svg></button><a class="navigation__logo" href="../../index.html"><img class="logo" src="../../e0b5805d423a4ec9473ee315250968b2.svg" alt="webpack logo"/></a><nav class="navigation__items"><a class="navigation__item navigation__item--active" href="../../concepts/index.html">Documentation</a><a class="navigation__item " href="../../contribute/index.html">Contribute</a><a class="navigation__item " href="../../vote/index.html">Vote</a><a href="https://medium.com/webpack" target="_blank" rel="noopener" class="navigation__item ">Blog</a><a href="https://github.com/webpack/webpack" target="_blank" rel="noopener" title="GitHub Repository" class="navigation__item "><i aria-hidden="true" class="icon-github"></i></a><a href="https://twitter.com/webpack" target="_blank" rel="noopener" title="webpack on Twitter" class="navigation__item "><i aria-hidden="true" class="icon-twitter"></i></a><a href="https://stackoverflow.com/questions/tagged/webpack" target="_blank" rel="noopener" title="webpack on Stack Overflow" class="navigation__item "><i aria-hidden="true" class="icon-stack-overflow"></i></a><span><nav class="dropdown navigation__languages"><button aria-haspopup="true" aria-expanded="false" aria-label="Select language"><img class="dropdown__language" alt="select language" src="../../57c717e75066b659cfe19dc2a643153c.svg"/><i aria-hidden="true" class="dropdown__arrow"></i></button><div class="dropdown__list "><ul><li><a href="https://webpack.js.org/"><span>English</span></a></li><li><a href="https://webpack.docschina.org/"><span lang="zh">中文</span></a></li></ul></div></nav></span></nav><div class="navigation-search "><input type="text" class="navigation-search__input" placeholder="Search this site..." value=""/><button class="navigation-search__icon navigation-search__clear"><svg viewBox="-137 138 25 25"><g transform="translate(0,-952.36218)"><path d="M-131.3,1094.4c-0.4,0-0.9,0.1-1.2,0.5c-0.7,0.7-0.7,1.7,0,2.4l5.6,5.6l-5.6,5.6c-0.7,0.7-0.7,1.7,0,2.4 c0.7,0.7,1.7,0.7,2.4,0l5.6-5.6l5.6,5.6c0.7,0.7,1.7,0.7,2.4,0c0.7-0.7,0.7-1.7,0-2.4l-5.6-5.6l5.6-5.6c0.7-0.7,0.7-1.7,0-2.4 c-0.7-0.7-1.7-0.7-2.4,0l-5.6,5.6l-5.6-5.6C-130.5,1094.5-130.9,1094.4-131.3,1094.4L-131.3,1094.4z"></path></g></svg></button><button class="navigation-search__icon navigation-search__search"><svg viewBox="-137 138 25 25"><g><path d="M-114.6,162.6l-7.5-7.5c-0.6-0.6-0.6-1.6,0-2.1l0,0c0.6-0.6,1.6-0.6,2.1,0l7.5,7.5c0.6,0.6,0.6,1.6,0,2.1l0,0 C-113,163.1-114,163.1-114.6,162.6z"></path><path d="M-134.1,140.9c-3.9,3.9-3.9,10.2,0,14.1s10.2,3.9,14.1,0s3.9-10.2,0-14.1S-130.2,137-134.1,140.9z M-122.1,153 c-2.7,2.7-7.1,2.7-9.8,0s-2.7-7.1,0-9.8s7.1-2.7,9.8,0C-119.4,145.9-119.4,150.2-122.1,153z"></path></g></svg></button></div></section><div class="navigation-sub"><div class="navigation-sub__inner"><a class="navigation-sub__link " title="api" content="api" href="../../api/index.html">api</a><a class="navigation-sub__link " title="concepts" content="concepts" href="../../concepts/index.html">concepts</a><a class="navigation-sub__link navigation-sub__link--active" title="configuration" content="configuration" href="../index.html">configuration</a><a class="navigation-sub__link " title="guides" content="guides" href="../../guides/index.html">guides</a><a class="navigation-sub__link " title="loaders" content="loaders" href="../../loaders/index.html">loaders</a><a class="navigation-sub__link " title="migrate" content="migrate" href="../../migrate/index.html">migrate</a><a class="navigation-sub__link " title="plugins" content="plugins" href="../../plugins/index.html">plugins</a></div></div></header></div><div class="container site__content"><div class="sponsors"><a href="https://www.ag-grid.com/?utm_source=webpack&amp;utm_medium=banner&amp;utm_campaign=sponsorship" target="_blank" rel="noopener" class="sponsors__content"><img src="../../bf176a25b4f8227fea804854c98dc5e2.png"/><img src="../../d19378a95ebe6b15d5ddea281138dcf4.svg" style="width:100px"/><div style="margin-top:1em;font-size:2em;text-align:center;color:#535353">ag-grid is proud to partner with webpack</div></a></div><nav class="sidebar site__sidebar"><div class="sidebar__inner"><div class="sidebar__shields"><a href="https://github.com/webpack/webpack/releases"><img alt="webpack shield" src="https://img.shields.io/npm/v/webpack.svg?label=webpack&amp;style=flat-square&amp;maxAge=3600"/></a></div><div class="sidebar-item sidebar-item--disabled`"><i class="sidebar-item__toggle icon-vertical-bar"></i><a class="sidebar-item__title sidebar-link__print" href="../printable/index.html" rel="nofollow" alt="Print" title="Print" target="_blank">Print Section<img src="../../96ccbfac58b65e83657a220603e00abe.svg"/></a></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../index.html">Configuration</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="Use different config file"><a href="../index.html#use-different-config-file">Use different config file</a></li><li class="sidebar-item__anchor" title="Options"><a href="../index.html#options">Options</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../configuration-languages/index.html">Configuration Languages</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="TypeScript"><a href="../configuration-languages/index.html#typescript">TypeScript</a></li><li class="sidebar-item__anchor" title="CoffeeScript"><a href="../configuration-languages/index.html#coffeescript">CoffeeScript</a></li><li class="sidebar-item__anchor" title="Babel and JSX"><a href="../configuration-languages/index.html#babel-and-jsx">Babel and JSX</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../configuration-types/index.html">Configuration Types</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="Exporting a Function"><a href="../configuration-types/index.html#exporting-a-function">Exporting a Function</a></li><li class="sidebar-item__anchor" title="Exporting a Promise"><a href="../configuration-types/index.html#exporting-a-promise">Exporting a Promise</a></li><li class="sidebar-item__anchor" title="Exporting multiple configurations"><a href="../configuration-types/index.html#exporting-multiple-configurations">Exporting multiple configurations</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../entry-context/index.html">Entry and Context</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="context"><a href="../entry-context/index.html#context">context</a></li><li class="sidebar-item__anchor" title="entry"><a href="../entry-context/index.html#entry">entry</a></li><li class="sidebar-item__anchor" title="Naming"><a href="../entry-context/index.html#naming">Naming</a></li><li class="sidebar-item__anchor" title="Dynamic entry"><a href="../entry-context/index.html#dynamic-entry">Dynamic entry</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../mode/index.html">Mode</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="Usage"><a href="../mode/index.html#usage">Usage</a></li><li class="sidebar-item__anchor" title="Mode: development"><a href="../mode/index.html#mode-development">Mode: development</a></li><li class="sidebar-item__anchor" title="Mode: production"><a href="../mode/index.html#mode-production">Mode: production</a></li><li class="sidebar-item__anchor" title="Mode: none"><a href="../mode/index.html#mode-none">Mode: none</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../output/index.html">Output</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="output.auxiliaryComment"><a href="../output/index.html#outputauxiliarycomment">output.auxiliaryComment</a></li><li class="sidebar-item__anchor" title="output.chunkFilename"><a href="../output/index.html#outputchunkfilename">output.chunkFilename</a></li><li class="sidebar-item__anchor" title="output.chunkLoadTimeout"><a href="../output/index.html#outputchunkloadtimeout">output.chunkLoadTimeout</a></li><li class="sidebar-item__anchor" title="output.crossOriginLoading"><a href="../output/index.html#outputcrossoriginloading">output.crossOriginLoading</a></li><li class="sidebar-item__anchor" title="output.jsonpScriptType"><a href="../output/index.html#outputjsonpscripttype">output.jsonpScriptType</a></li><li class="sidebar-item__anchor" title="output.devtoolFallbackModuleFilenameTemplate"><a href="../output/index.html#outputdevtoolfallbackmodulefilenametemplate">output.devtoolFallbackModuleFilenameTemplate</a></li><li class="sidebar-item__anchor" title="output.devtoolLineToLine"><a href="../output/index.html#outputdevtoollinetoline">output.devtoolLineToLine</a></li><li class="sidebar-item__anchor" title="output.devtoolModuleFilenameTemplate"><a href="../output/index.html#outputdevtoolmodulefilenametemplate">output.devtoolModuleFilenameTemplate</a></li><li class="sidebar-item__anchor" title="output.devtoolNamespace"><a href="../output/index.html#outputdevtoolnamespace">output.devtoolNamespace</a></li><li class="sidebar-item__anchor" title="output.filename"><a href="../output/index.html#outputfilename">output.filename</a></li><li class="sidebar-item__anchor" title="output.globalObject"><a href="../output/index.html#outputglobalobject">output.globalObject</a></li><li class="sidebar-item__anchor" title="output.hashDigest"><a href="../output/index.html#outputhashdigest">output.hashDigest</a></li><li class="sidebar-item__anchor" title="output.hashDigestLength"><a href="../output/index.html#outputhashdigestlength">output.hashDigestLength</a></li><li class="sidebar-item__anchor" title="output.hashFunction"><a href="../output/index.html#outputhashfunction">output.hashFunction</a></li><li class="sidebar-item__anchor" title="output.hashSalt"><a href="../output/index.html#outputhashsalt">output.hashSalt</a></li><li class="sidebar-item__anchor" title="output.hotUpdateChunkFilename"><a href="../output/index.html#outputhotupdatechunkfilename">output.hotUpdateChunkFilename</a></li><li class="sidebar-item__anchor" title="output.hotUpdateFunction"><a href="../output/index.html#outputhotupdatefunction">output.hotUpdateFunction</a></li><li class="sidebar-item__anchor" title="output.hotUpdateMainFilename"><a href="../output/index.html#outputhotupdatemainfilename">output.hotUpdateMainFilename</a></li><li class="sidebar-item__anchor" title="output.jsonpFunction"><a href="../output/index.html#outputjsonpfunction">output.jsonpFunction</a></li><li class="sidebar-item__anchor" title="output.library"><a href="../output/index.html#outputlibrary">output.library</a></li><li class="sidebar-item__anchor" title="output.libraryExport"><a href="../output/index.html#outputlibraryexport">output.libraryExport</a></li><li class="sidebar-item__anchor" title="output.libraryTarget"><a href="../output/index.html#outputlibrarytarget">output.libraryTarget</a></li><li class="sidebar-item__anchor" title="Expose a Variable"><a href="../output/index.html#expose-a-variable">Expose a Variable</a></li><li class="sidebar-item__anchor" title="Expose Via Object Assignment"><a href="../output/index.html#expose-via-object-assignment">Expose Via Object Assignment</a></li><li class="sidebar-item__anchor" title="Module Definition Systems"><a href="../output/index.html#module-definition-systems">Module Definition Systems</a></li><li class="sidebar-item__anchor" title="Other Targets"><a href="../output/index.html#other-targets">Other Targets</a></li><li class="sidebar-item__anchor" title="output.path"><a href="../output/index.html#outputpath">output.path</a></li><li class="sidebar-item__anchor" title="output.pathinfo"><a href="../output/index.html#outputpathinfo">output.pathinfo</a></li><li class="sidebar-item__anchor" title="output.publicPath"><a href="../output/index.html#outputpublicpath">output.publicPath</a></li><li class="sidebar-item__anchor" title="output.sourceMapFilename"><a href="../output/index.html#outputsourcemapfilename">output.sourceMapFilename</a></li><li class="sidebar-item__anchor" title="output.sourcePrefix"><a href="../output/index.html#outputsourceprefix">output.sourcePrefix</a></li><li class="sidebar-item__anchor" title="output.strictModuleExceptionHandling"><a href="../output/index.html#outputstrictmoduleexceptionhandling">output.strictModuleExceptionHandling</a></li><li class="sidebar-item__anchor" title="output.umdNamedDefine"><a href="../output/index.html#outputumdnameddefine">output.umdNamedDefine</a></li><li class="sidebar-item__anchor" title="output.futureEmitAssets"><a href="../output/index.html#outputfutureemitassets">output.futureEmitAssets</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../module/index.html">Module</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="module.noParse"><a href="../module/index.html#modulenoparse">module.noParse</a></li><li class="sidebar-item__anchor" title="module.rules"><a href="../module/index.html#modulerules">module.rules</a></li><li class="sidebar-item__anchor" title="Rule"><a href="../module/index.html#rule">Rule</a></li><li class="sidebar-item__anchor" title="Rule Conditions"><a href="../module/index.html#rule-conditions">Rule Conditions</a></li><li class="sidebar-item__anchor" title="Rule results"><a href="../module/index.html#rule-results">Rule results</a></li><li class="sidebar-item__anchor" title="Nested rules"><a href="../module/index.html#nested-rules">Nested rules</a></li><li class="sidebar-item__anchor" title="Rule.enforce"><a href="../module/index.html#ruleenforce">Rule.enforce</a></li><li class="sidebar-item__anchor" title="Rule.exclude"><a href="../module/index.html#ruleexclude">Rule.exclude</a></li><li class="sidebar-item__anchor" title="Rule.include"><a href="../module/index.html#ruleinclude">Rule.include</a></li><li class="sidebar-item__anchor" title="Rule.issuer"><a href="../module/index.html#ruleissuer">Rule.issuer</a></li><li class="sidebar-item__anchor" title="Rule.loader"><a href="../module/index.html#ruleloader">Rule.loader</a></li><li class="sidebar-item__anchor" title="Rule.loaders"><a href="../module/index.html#ruleloaders">Rule.loaders</a></li><li class="sidebar-item__anchor" title="Rule.oneOf"><a href="../module/index.html#ruleoneof">Rule.oneOf</a></li><li class="sidebar-item__anchor" title="Rule.options"><a href="../module/index.html#ruleoptions--rulequery">Rule.options</a></li><li class="sidebar-item__anchor" title="Rule.parser"><a href="../module/index.html#ruleparser">Rule.parser</a></li><li class="sidebar-item__anchor" title="Rule.resource"><a href="../module/index.html#ruleresource">Rule.resource</a></li><li class="sidebar-item__anchor" title="Rule.resourceQuery"><a href="../module/index.html#ruleresourcequery">Rule.resourceQuery</a></li><li class="sidebar-item__anchor" title="Rule.rules"><a href="../module/index.html#rulerules">Rule.rules</a></li><li class="sidebar-item__anchor" title="Rule.sideEffects"><a href="../module/index.html#rulesideeffects">Rule.sideEffects</a></li><li class="sidebar-item__anchor" title="Rule.test"><a href="../module/index.html#ruletest">Rule.test</a></li><li class="sidebar-item__anchor" title="Rule.type"><a href="../module/index.html#ruletype">Rule.type</a></li><li class="sidebar-item__anchor" title="Rule.use"><a href="../module/index.html#ruleuse">Rule.use</a></li><li class="sidebar-item__anchor" title="Rule.resolve"><a href="../module/index.html#ruleresolve">Rule.resolve</a></li><li class="sidebar-item__anchor" title="Condition"><a href="../module/index.html#condition">Condition</a></li><li class="sidebar-item__anchor" title="UseEntry"><a href="../module/index.html#useentry">UseEntry</a></li><li class="sidebar-item__anchor" title="Module Contexts"><a href="../module/index.html#module-contexts">Module Contexts</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../resolve/index.html">Resolve</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="resolve"><a href="../resolve/index.html#resolve">resolve</a></li><li class="sidebar-item__anchor" title="resolve.alias"><a href="../resolve/index.html#resolvealias">resolve.alias</a></li><li class="sidebar-item__anchor" title="resolve.aliasFields"><a href="../resolve/index.html#resolvealiasfields">resolve.aliasFields</a></li><li class="sidebar-item__anchor" title="resolve.cacheWithContext"><a href="../resolve/index.html#resolvecachewithcontext">resolve.cacheWithContext</a></li><li class="sidebar-item__anchor" title="resolve.descriptionFiles"><a href="../resolve/index.html#resolvedescriptionfiles">resolve.descriptionFiles</a></li><li class="sidebar-item__anchor" title="resolve.enforceExtension"><a href="../resolve/index.html#resolveenforceextension">resolve.enforceExtension</a></li><li class="sidebar-item__anchor" title="resolve.enforceModuleExtension"><a href="../resolve/index.html#resolveenforcemoduleextension">resolve.enforceModuleExtension</a></li><li class="sidebar-item__anchor" title="resolve.extensions"><a href="../resolve/index.html#resolveextensions">resolve.extensions</a></li><li class="sidebar-item__anchor" title="resolve.mainFields"><a href="../resolve/index.html#resolvemainfields">resolve.mainFields</a></li><li class="sidebar-item__anchor" title="resolve.mainFiles"><a href="../resolve/index.html#resolvemainfiles">resolve.mainFiles</a></li><li class="sidebar-item__anchor" title="resolve.modules"><a href="../resolve/index.html#resolvemodules">resolve.modules</a></li><li class="sidebar-item__anchor" title="resolve.unsafeCache"><a href="../resolve/index.html#resolveunsafecache">resolve.unsafeCache</a></li><li class="sidebar-item__anchor" title="resolve.plugins"><a href="../resolve/index.html#resolveplugins">resolve.plugins</a></li><li class="sidebar-item__anchor" title="resolve.symlinks"><a href="../resolve/index.html#resolvesymlinks">resolve.symlinks</a></li><li class="sidebar-item__anchor" title="resolve.cachePredicate"><a href="../resolve/index.html#resolvecachepredicate">resolve.cachePredicate</a></li><li class="sidebar-item__anchor" title="resolveLoader"><a href="../resolve/index.html#resolveloader">resolveLoader</a></li><li class="sidebar-item__anchor" title="resolveLoader.moduleExtensions"><a href="../resolve/index.html#resolveloadermoduleextensions">resolveLoader.moduleExtensions</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../optimization/index.html">Optimization</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="optimization.minimize"><a href="../optimization/index.html#optimizationminimize">optimization.minimize</a></li><li class="sidebar-item__anchor" title="optimization.minimizer"><a href="../optimization/index.html#optimizationminimizer">optimization.minimizer</a></li><li class="sidebar-item__anchor" title="optimization.splitChunks"><a href="../optimization/index.html#optimizationsplitchunks">optimization.splitChunks</a></li><li class="sidebar-item__anchor" title="optimization.runtimeChunk"><a href="../optimization/index.html#optimizationruntimechunk">optimization.runtimeChunk</a></li><li class="sidebar-item__anchor" title="optimization.noEmitOnErrors"><a href="../optimization/index.html#optimizationnoemitonerrors">optimization.noEmitOnErrors</a></li><li class="sidebar-item__anchor" title="optimization.namedModules"><a href="../optimization/index.html#optimizationnamedmodules">optimization.namedModules</a></li><li class="sidebar-item__anchor" title="optimization.namedChunks"><a href="../optimization/index.html#optimizationnamedchunks">optimization.namedChunks</a></li><li class="sidebar-item__anchor" title="optimization.moduleIds"><a href="../optimization/index.html#optimizationmoduleids">optimization.moduleIds</a></li><li class="sidebar-item__anchor" title="optimization.chunkIds"><a href="../optimization/index.html#optimizationchunkids">optimization.chunkIds</a></li><li class="sidebar-item__anchor" title="optimization.nodeEnv"><a href="../optimization/index.html#optimizationnodeenv">optimization.nodeEnv</a></li><li class="sidebar-item__anchor" title="optimization.mangleWasmImports"><a href="../optimization/index.html#optimizationmanglewasmimports">optimization.mangleWasmImports</a></li><li class="sidebar-item__anchor" title="optimization.removeAvailableModules"><a href="../optimization/index.html#optimizationremoveavailablemodules">optimization.removeAvailableModules</a></li><li class="sidebar-item__anchor" title="optimization.removeEmptyChunks"><a href="../optimization/index.html#optimizationremoveemptychunks">optimization.removeEmptyChunks</a></li><li class="sidebar-item__anchor" title="optimization.mergeDuplicateChunks"><a href="../optimization/index.html#optimizationmergeduplicatechunks">optimization.mergeDuplicateChunks</a></li><li class="sidebar-item__anchor" title="optimization.flagIncludedChunks"><a href="../optimization/index.html#optimizationflagincludedchunks">optimization.flagIncludedChunks</a></li><li class="sidebar-item__anchor" title="optimization.occurrenceOrder"><a href="../optimization/index.html#optimizationoccurrenceorder">optimization.occurrenceOrder</a></li><li class="sidebar-item__anchor" title="optimization.providedExports"><a href="../optimization/index.html#optimizationprovidedexports">optimization.providedExports</a></li><li class="sidebar-item__anchor" title="optimization.usedExports"><a href="../optimization/index.html#optimizationusedexports">optimization.usedExports</a></li><li class="sidebar-item__anchor" title="optimization.concatenateModules"><a href="../optimization/index.html#optimizationconcatenatemodules">optimization.concatenateModules</a></li><li class="sidebar-item__anchor" title="optimization.sideEffects"><a href="../optimization/index.html#optimizationsideeffects">optimization.sideEffects</a></li><li class="sidebar-item__anchor" title="optimization.portableRecords"><a href="../optimization/index.html#optimizationportablerecords">optimization.portableRecords</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../plugins/index.html">Plugins</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="plugins"><a href="../plugins/index.html#plugins">plugins</a></li></ul></div></div><div><div class="sidebar-item sidebar-item--open "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="index.html">DevServer</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="devServer"><a href="index.html#devserver">devServer</a></li><li class="sidebar-item__anchor" title="devServer.after"><a href="index.html#devserverafter">devServer.after</a></li><li class="sidebar-item__anchor" title="devServer.allowedHosts"><a href="index.html#devserverallowedhosts">devServer.allowedHosts</a></li><li class="sidebar-item__anchor" title="devServer.before"><a href="index.html#devserverbefore">devServer.before</a></li><li class="sidebar-item__anchor" title="devServer.bonjour"><a href="index.html#devserverbonjour">devServer.bonjour</a></li><li class="sidebar-item__anchor" title="devServer.clientLogLevel"><a href="index.html#devserverclientloglevel">devServer.clientLogLevel</a></li><li class="sidebar-item__anchor" title="devServer.color"><a href="index.html#devservercolor---cli-only">devServer.color</a></li><li class="sidebar-item__anchor" title="devServer.compress"><a href="index.html#devservercompress">devServer.compress</a></li><li class="sidebar-item__anchor" title="devServer.contentBase"><a href="index.html#devservercontentbase">devServer.contentBase</a></li><li class="sidebar-item__anchor" title="devServer.disableHostCheck"><a href="index.html#devserverdisablehostcheck">devServer.disableHostCheck</a></li><li class="sidebar-item__anchor" title="devServer.filename"><a href="index.html#devserverfilename-">devServer.filename</a></li><li class="sidebar-item__anchor" title="devServer.headers"><a href="index.html#devserverheaders-">devServer.headers</a></li><li class="sidebar-item__anchor" title="devServer.historyApiFallback"><a href="index.html#devserverhistoryapifallback">devServer.historyApiFallback</a></li><li class="sidebar-item__anchor" title="devServer.host"><a href="index.html#devserverhost">devServer.host</a></li><li class="sidebar-item__anchor" title="devServer.hot"><a href="index.html#devserverhot">devServer.hot</a></li><li class="sidebar-item__anchor" title="devServer.hotOnly"><a href="index.html#devserverhotonly">devServer.hotOnly</a></li><li class="sidebar-item__anchor" title="devServer.http2"><a href="index.html#devserverhttp2">devServer.http2</a></li><li class="sidebar-item__anchor" title="devServer.https"><a href="index.html#devserverhttps">devServer.https</a></li><li class="sidebar-item__anchor" title="devServer.index"><a href="index.html#devserverindex">devServer.index</a></li><li class="sidebar-item__anchor" title="devServer.info"><a href="index.html#devserverinfo---cli-only">devServer.info</a></li><li class="sidebar-item__anchor" title="devServer.injectClient"><a href="index.html#devserverinjectclient">devServer.injectClient</a></li><li class="sidebar-item__anchor" title="devServer.injectHot"><a href="index.html#devserverinjecthot">devServer.injectHot</a></li><li class="sidebar-item__anchor" title="devServer.inline"><a href="index.html#devserverinline">devServer.inline</a></li><li class="sidebar-item__anchor" title="devServer.lazy"><a href="index.html#devserverlazy-">devServer.lazy</a></li><li class="sidebar-item__anchor" title="devServer.liveReload"><a href="index.html#devserverlivereload">devServer.liveReload</a></li><li class="sidebar-item__anchor" title="devServer.mimeTypes"><a href="index.html#devservermimetypes-">devServer.mimeTypes</a></li><li class="sidebar-item__anchor" title="devServer.noInfo"><a href="index.html#devservernoinfo-">devServer.noInfo</a></li><li class="sidebar-item__anchor" title="devServer.onListening"><a href="index.html#devserveronlistening">devServer.onListening</a></li><li class="sidebar-item__anchor" title="devServer.open"><a href="index.html#devserveropen">devServer.open</a></li><li class="sidebar-item__anchor" title="devServer.openPage"><a href="index.html#devserveropenpage">devServer.openPage</a></li><li class="sidebar-item__anchor" title="devServer.overlay"><a href="index.html#devserveroverlay">devServer.overlay</a></li><li class="sidebar-item__anchor" title="devServer.pfx"><a href="index.html#devserverpfx">devServer.pfx</a></li><li class="sidebar-item__anchor" title="devServer.pfxPassphrase"><a href="index.html#devserverpfxpassphrase">devServer.pfxPassphrase</a></li><li class="sidebar-item__anchor" title="devServer.port"><a href="index.html#devserverport">devServer.port</a></li><li class="sidebar-item__anchor" title="devServer.proxy"><a href="index.html#devserverproxy">devServer.proxy</a></li><li class="sidebar-item__anchor" title="devServer.progress"><a href="index.html#devserverprogress---cli-only">devServer.progress</a></li><li class="sidebar-item__anchor" title="devServer.public"><a href="index.html#devserverpublic">devServer.public</a></li><li class="sidebar-item__anchor" title="devServer.publicPath"><a href="index.html#devserverpublicpath-">devServer.publicPath</a></li><li class="sidebar-item__anchor" title="devServer.quiet"><a href="index.html#devserverquiet-">devServer.quiet</a></li><li class="sidebar-item__anchor" title="devServer.serveIndex"><a href="index.html#devserverserveindex">devServer.serveIndex</a></li><li class="sidebar-item__anchor" title="devServer.setup"><a href="index.html#devserversetup">devServer.setup</a></li><li class="sidebar-item__anchor" title="devServer.socket"><a href="index.html#devserversocket">devServer.socket</a></li><li class="sidebar-item__anchor" title="devServer.sockHost"><a href="index.html#devserversockhost">devServer.sockHost</a></li><li class="sidebar-item__anchor" title="devServer.sockPath"><a href="index.html#devserversockpath">devServer.sockPath</a></li><li class="sidebar-item__anchor" title="devServer.sockPort"><a href="index.html#devserversockport">devServer.sockPort</a></li><li class="sidebar-item__anchor" title="devServer.staticOptions"><a href="index.html#devserverstaticoptions">devServer.staticOptions</a></li><li class="sidebar-item__anchor" title="devServer.stats"><a href="index.html#devserverstats-">devServer.stats</a></li><li class="sidebar-item__anchor" title="devServer.stdin"><a href="index.html#devserverstdin---cli-only">devServer.stdin</a></li><li class="sidebar-item__anchor" title="devServer.transportMode"><a href="index.html#devservertransportmode">devServer.transportMode</a></li><li class="sidebar-item__anchor" title="devServer.transportMode.client"><a href="index.html#devservertransportmodeclient">devServer.transportMode.client</a></li><li class="sidebar-item__anchor" title="devServer.transportMode.server"><a href="index.html#devservertransportmodeserver">devServer.transportMode.server</a></li><li class="sidebar-item__anchor" title="devServer.useLocalIp"><a href="index.html#devserveruselocalip">devServer.useLocalIp</a></li><li class="sidebar-item__anchor" title="devServer.watchContentBase"><a href="index.html#devserverwatchcontentbase">devServer.watchContentBase</a></li><li class="sidebar-item__anchor" title="devServer.watchOptions"><a href="index.html#devserverwatchoptions-">devServer.watchOptions</a></li><li class="sidebar-item__anchor" title="devServer.writeToDisk"><a href="index.html#devserverwritetodisk-">devServer.writeToDisk</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../devtool/index.html">Devtool</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="devtool"><a href="../devtool/index.html#devtool">devtool</a></li><li class="sidebar-item__anchor" title="Qualities"><a href="../devtool/index.html#qualities">Qualities</a></li><li class="sidebar-item__anchor" title="Development"><a href="../devtool/index.html#development">Development</a></li><li class="sidebar-item__anchor" title="Special cases"><a href="../devtool/index.html#special-cases">Special cases</a></li><li class="sidebar-item__anchor" title="Production"><a href="../devtool/index.html#production">Production</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../target/index.html">Target</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="target"><a href="../target/index.html#target">target</a></li><li class="sidebar-item__anchor" title="string"><a href="../target/index.html#string">string</a></li><li class="sidebar-item__anchor" title="function"><a href="../target/index.html#function">function</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../watch/index.html">Watch and WatchOptions</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="watch"><a href="../watch/index.html#watch">watch</a></li><li class="sidebar-item__anchor" title="watchOptions"><a href="../watch/index.html#watchoptions">watchOptions</a></li><li class="sidebar-item__anchor" title="watchOptions.aggregateTimeout"><a href="../watch/index.html#watchoptionsaggregatetimeout">watchOptions.aggregateTimeout</a></li><li class="sidebar-item__anchor" title="watchOptions.ignored"><a href="../watch/index.html#watchoptionsignored">watchOptions.ignored</a></li><li class="sidebar-item__anchor" title="watchOptions.poll"><a href="../watch/index.html#watchoptionspoll">watchOptions.poll</a></li><li class="sidebar-item__anchor" title="info-verbosity"><a href="../watch/index.html#info-verbosity">info-verbosity</a></li><li class="sidebar-item__anchor" title="Troubleshooting"><a href="../watch/index.html#troubleshooting">Troubleshooting</a></li><li class="sidebar-item__anchor" title="Changes Seen But Not Processed"><a href="../watch/index.html#changes-seen-but-not-processed">Changes Seen But Not Processed</a></li><li class="sidebar-item__anchor" title="Not Enough Watchers"><a href="../watch/index.html#not-enough-watchers">Not Enough Watchers</a></li><li class="sidebar-item__anchor" title="macOS fsevents Bug"><a href="../watch/index.html#macos-fsevents-bug">macOS fsevents Bug</a></li><li class="sidebar-item__anchor" title="Windows Paths"><a href="../watch/index.html#windows-paths">Windows Paths</a></li><li class="sidebar-item__anchor" title="Vim"><a href="../watch/index.html#vim">Vim</a></li><li class="sidebar-item__anchor" title="Saving in WebStorm"><a href="../watch/index.html#saving-in-webstorm">Saving in WebStorm</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../externals/index.html">Externals</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="externals"><a href="../externals/index.html#externals">externals</a></li><li class="sidebar-item__anchor" title="string"><a href="../externals/index.html#string">string</a></li><li class="sidebar-item__anchor" title="array"><a href="../externals/index.html#array">array</a></li><li class="sidebar-item__anchor" title="object"><a href="../externals/index.html#object">object</a></li><li class="sidebar-item__anchor" title="function"><a href="../externals/index.html#function">function</a></li><li class="sidebar-item__anchor" title="regex"><a href="../externals/index.html#regex">regex</a></li><li class="sidebar-item__anchor" title="Combining syntaxes"><a href="../externals/index.html#combining-syntaxes">Combining syntaxes</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../performance/index.html">Performance</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="performance"><a href="../performance/index.html#performance">performance</a></li><li class="sidebar-item__anchor" title="performance.hints"><a href="../performance/index.html#performancehints">performance.hints</a></li><li class="sidebar-item__anchor" title="performance.maxEntrypointSize"><a href="../performance/index.html#performancemaxentrypointsize">performance.maxEntrypointSize</a></li><li class="sidebar-item__anchor" title="performance.maxAssetSize"><a href="../performance/index.html#performancemaxassetsize">performance.maxAssetSize</a></li><li class="sidebar-item__anchor" title="performance.assetFilter"><a href="../performance/index.html#performanceassetfilter">performance.assetFilter</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../node/index.html">Node</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="node"><a href="../node/index.html#node">node</a></li><li class="sidebar-item__anchor" title="node.console"><a href="../node/index.html#nodeconsole">node.console</a></li><li class="sidebar-item__anchor" title="node.process"><a href="../node/index.html#nodeprocess">node.process</a></li><li class="sidebar-item__anchor" title="node.global"><a href="../node/index.html#nodeglobal">node.global</a></li><li class="sidebar-item__anchor" title="node.__filename"><a href="../node/index.html#node__filename">node.__filename</a></li><li class="sidebar-item__anchor" title="node.__dirname"><a href="../node/index.html#node__dirname">node.__dirname</a></li><li class="sidebar-item__anchor" title="node.Buffer"><a href="../node/index.html#nodebuffer">node.Buffer</a></li><li class="sidebar-item__anchor" title="node.setImmediate"><a href="../node/index.html#nodesetimmediate">node.setImmediate</a></li><li class="sidebar-item__anchor" title="Other node core libraries"><a href="../node/index.html#other-node-core-libraries">Other node core libraries</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../stats/index.html">Stats</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="stats"><a href="../stats/index.html#stats">stats</a></li><li class="sidebar-item__anchor" title="stats.all"><a href="../stats/index.html#statsall">stats.all</a></li><li class="sidebar-item__anchor" title="stats.assets"><a href="../stats/index.html#statsassets">stats.assets</a></li><li class="sidebar-item__anchor" title="stats.assetsSort"><a href="../stats/index.html#statsassetssort">stats.assetsSort</a></li><li class="sidebar-item__anchor" title="stats.builtAt"><a href="../stats/index.html#statsbuiltat">stats.builtAt</a></li><li class="sidebar-item__anchor" title="stats.cached"><a href="../stats/index.html#statscached">stats.cached</a></li><li class="sidebar-item__anchor" title="stats.cachedAssets"><a href="../stats/index.html#statscachedassets">stats.cachedAssets</a></li><li class="sidebar-item__anchor" title="stats.children"><a href="../stats/index.html#statschildren">stats.children</a></li><li class="sidebar-item__anchor" title="stats.chunks"><a href="../stats/index.html#statschunks">stats.chunks</a></li><li class="sidebar-item__anchor" title="stats.chunkGroups"><a href="../stats/index.html#statschunkgroups">stats.chunkGroups</a></li><li class="sidebar-item__anchor" title="stats.chunkModules"><a href="../stats/index.html#statschunkmodules">stats.chunkModules</a></li><li class="sidebar-item__anchor" title="stats.chunkOrigins"><a href="../stats/index.html#statschunkorigins">stats.chunkOrigins</a></li><li class="sidebar-item__anchor" title="stats.chunksSort"><a href="../stats/index.html#statschunkssort">stats.chunksSort</a></li><li class="sidebar-item__anchor" title="stats.context"><a href="../stats/index.html#statscontext">stats.context</a></li><li class="sidebar-item__anchor" title="stats.colors"><a href="../stats/index.html#statscolors">stats.colors</a></li><li class="sidebar-item__anchor" title="stats.depth"><a href="../stats/index.html#statsdepth">stats.depth</a></li><li class="sidebar-item__anchor" title="stats.entrypoints"><a href="../stats/index.html#statsentrypoints">stats.entrypoints</a></li><li class="sidebar-item__anchor" title="stats.env"><a href="../stats/index.html#statsenv">stats.env</a></li><li class="sidebar-item__anchor" title="stats.errors"><a href="../stats/index.html#statserrors">stats.errors</a></li><li class="sidebar-item__anchor" title="stats.errorDetails"><a href="../stats/index.html#statserrordetails">stats.errorDetails</a></li><li class="sidebar-item__anchor" title="stats.excludeAssets"><a href="../stats/index.html#statsexcludeassets">stats.excludeAssets</a></li><li class="sidebar-item__anchor" title="stats.excludeModules"><a href="../stats/index.html#statsexcludemodules">stats.excludeModules</a></li><li class="sidebar-item__anchor" title="stats.exclude"><a href="../stats/index.html#statsexclude">stats.exclude</a></li><li class="sidebar-item__anchor" title="stats.hash"><a href="../stats/index.html#statshash">stats.hash</a></li><li class="sidebar-item__anchor" title="stats.logging"><a href="../stats/index.html#statslogging">stats.logging</a></li><li class="sidebar-item__anchor" title="stats.loggingDebug"><a href="../stats/index.html#statsloggingdebug">stats.loggingDebug</a></li><li class="sidebar-item__anchor" title="stats.loggingTrace"><a href="../stats/index.html#statsloggingtrace">stats.loggingTrace</a></li><li class="sidebar-item__anchor" title="stats.maxModules"><a href="../stats/index.html#statsmaxmodules">stats.maxModules</a></li><li class="sidebar-item__anchor" title="stats.modules"><a href="../stats/index.html#statsmodules">stats.modules</a></li><li class="sidebar-item__anchor" title="stats.modulesSort"><a href="../stats/index.html#statsmodulessort">stats.modulesSort</a></li><li class="sidebar-item__anchor" title="stats.moduleTrace"><a href="../stats/index.html#statsmoduletrace">stats.moduleTrace</a></li><li class="sidebar-item__anchor" title="stats.outputPath"><a href="../stats/index.html#statsoutputpath">stats.outputPath</a></li><li class="sidebar-item__anchor" title="stats.performance"><a href="../stats/index.html#statsperformance">stats.performance</a></li><li class="sidebar-item__anchor" title="stats.providedExports"><a href="../stats/index.html#statsprovidedexports">stats.providedExports</a></li><li class="sidebar-item__anchor" title="stats.publicPath"><a href="../stats/index.html#statspublicpath">stats.publicPath</a></li><li class="sidebar-item__anchor" title="stats.reasons"><a href="../stats/index.html#statsreasons">stats.reasons</a></li><li class="sidebar-item__anchor" title="stats.source"><a href="../stats/index.html#statssource">stats.source</a></li><li class="sidebar-item__anchor" title="stats.timings"><a href="../stats/index.html#statstimings">stats.timings</a></li><li class="sidebar-item__anchor" title="stats.usedExports"><a href="../stats/index.html#statsusedexports">stats.usedExports</a></li><li class="sidebar-item__anchor" title="stats.version"><a href="../stats/index.html#statsversion">stats.version</a></li><li class="sidebar-item__anchor" title="stats.warnings"><a href="../stats/index.html#statswarnings">stats.warnings</a></li><li class="sidebar-item__anchor" title="stats.warningsFilter"><a href="../stats/index.html#statswarningsfilter">stats.warningsFilter</a></li><li class="sidebar-item__anchor" title="Sorting fields"><a href="../stats/index.html#sorting-fields">Sorting fields</a></li><li class="sidebar-item__anchor" title="Extending stats behaviours"><a href="../stats/index.html#extending-stats-behaviours">Extending stats behaviours</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../other-options/index.html">Other Options</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="amd"><a href="../other-options/index.html#amd">amd</a></li><li class="sidebar-item__anchor" title="bail"><a href="../other-options/index.html#bail">bail</a></li><li class="sidebar-item__anchor" title="cache"><a href="../other-options/index.html#cache">cache</a></li><li class="sidebar-item__anchor" title="loader"><a href="../other-options/index.html#loader">loader</a></li><li class="sidebar-item__anchor" title="parallelism"><a href="../other-options/index.html#parallelism">parallelism</a></li><li class="sidebar-item__anchor" title="profile"><a href="../other-options/index.html#profile">profile</a></li><li class="sidebar-item__anchor" title="recordsPath"><a href="../other-options/index.html#recordspath">recordsPath</a></li><li class="sidebar-item__anchor" title="recordsInputPath"><a href="../other-options/index.html#recordsinputpath">recordsInputPath</a></li><li class="sidebar-item__anchor" title="recordsOutputPath"><a href="../other-options/index.html#recordsoutputpath">recordsOutputPath</a></li><li class="sidebar-item__anchor" title="name"><a href="../other-options/index.html#name">name</a></li><li class="sidebar-item__anchor" title="infrastructureLogging"><a href="../other-options/index.html#infrastructurelogging">infrastructureLogging</a></li><li class="sidebar-item__anchor" title="infrastructureLogging.level"><a href="../other-options/index.html#infrastructurelogginglevel">infrastructureLogging.level</a></li><li class="sidebar-item__anchor" title="infrastructureLogging.debug"><a href="../other-options/index.html#infrastructureloggingdebug">infrastructureLogging.debug</a></li></ul></div></div><div class="sidebar__docs-version">You are reading webpack <!-- -->4<!-- --> documentation. Change here to:<ul><li><a rel="nofollow" href="https://webpack.js.org">webpack <!-- -->5<!-- --> documentation</a></li></ul></div></div></nav><section class="page"><div class="page-links"><a class="page-links__link" href="https://github.com/webpack/webpack.js.org/edit/master/src/content/configuration/dev-server.md">Edit Document<i class="page-links__icon icon-edit"></i></a><span class="page-links__gap">|</span><button class="page-links__link page-links__print as-link" title="Print this page">Print Document<img src="../../96ccbfac58b65e83657a220603e00abe.svg"/></button></div><div class="markdown"><h1>DevServer</h1><div><p><a href="https://github.com/webpack/webpack-dev-server">webpack-dev-server</a> can be used to quickly develop an application. See the <a href="../../guides/development/index.html">development guide</a> to get started.</p>
+<p>This page describes the options that affect the behavior of webpack-dev-server (short: dev-server).</p>
+<blockquote class="tip">
+<p>Options that are compatible with <a href="https://github.com/webpack/webpack-dev-middleware">webpack-dev-middleware</a> have 🔑 next to them.</p>
+</blockquote>
+<h2 id="devserver"><code>devServer</code><a href="index.html#devserver" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>object</code></p>
+<p>This set of options is picked up by <a href="https://github.com/webpack/webpack-dev-server">webpack-dev-server</a> and can be used to change its behavior in various ways. Here's a simple example that gzips and serves everything from our <code>dist/</code> directory in the project root:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript"><span class="token keyword">var</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    contentBase<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'dist'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    compress<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    port<span class="token punctuation">:</span> <span class="token number">9000</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>When the server is started, there will be a message prior to the list of resolved modules:</p>
+<pre><code class="hljs language-bash">http://localhost:9000/
+webpack output is served from /build/
+Content not from webpack is served from /path/to/dist/</code></pre>
+<p>that will give some background on where the server is located and what it's serving.</p>
+<p>If you're using dev-server through the Node.js API, the options in <code>devServer</code> will be ignored. Pass the options as a second parameter instead: <code>new WebpackDevServer(compiler, {...})</code>. <a href="https://github.com/webpack/webpack-dev-server/tree/master/examples/api/simple">See here</a> for an example of how to use webpack-dev-server through the Node.js API.</p>
+<blockquote class="warning">
+<p>Be aware that when <a href="../configuration-types/index.html#exporting-multiple-configurations">exporting multiple configurations</a> only the <code>devServer</code> options for the first configuration will be taken into account and used for all the configurations in the array.</p>
+</blockquote>
+<blockquote class="tip">
+<p>If you're having trouble, navigating to the <code>/webpack-dev-server</code> route will show where files are served. For example, <code>http://localhost:9000/webpack-dev-server</code>.</p>
+</blockquote>
+<blockquote class="tip">
+<p>HTML template is required to serve the bundle, usually it is an <code>index.html</code> file. Make sure that script references are added into HTML, webpack-dev-server doesn't inject them automatically.</p>
+</blockquote>
+<h2 id="devserverafter"><code>devServer.after</code><a href="index.html#devserverafter" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>function (app, server, compiler)</code></p>
+<p>Provides the ability to execute custom middleware after all other middleware
+internally within the server.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    after<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>app<span class="token punctuation">,</span> server<span class="token punctuation">,</span> compiler<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// do fancy stuff</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="devserverallowedhosts"><code>devServer.allowedHosts</code><a href="index.html#devserverallowedhosts" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>[string]</code></p>
+<p>This option allows you to whitelist services that are allowed to access the dev server.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    allowedHosts<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token string">'host.com'</span><span class="token punctuation">,</span>
+      <span class="token string">'subdomain.host.com'</span><span class="token punctuation">,</span>
+      <span class="token string">'subdomain2.host.com'</span><span class="token punctuation">,</span>
+      <span class="token string">'host2.com'</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Mimicking django's <code>ALLOWED_HOSTS</code>, a value beginning with <code>.</code> can be used as a subdomain wildcard. <code>.host.com</code> will match <code>host.com</code>, <code>www.host.com</code>, and any other subdomain of <code>host.com</code>.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// this achieves the same effect as the first example</span>
+    <span class="token comment">// with the bonus of not having to update your config</span>
+    <span class="token comment">// if new subdomains need to access the dev server</span>
+    allowedHosts<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token string">'.host.com'</span><span class="token punctuation">,</span>
+      <span class="token string">'host2.com'</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>To use this option with the CLI pass the <code>--allowed-hosts</code> option a comma-delimited string.</p>
+<pre><code class="hljs language-bash">webpack-dev-server --entry /entry/file --output-path /output/path --allowed-hosts .host.com,host2.com</code></pre>
+<h2 id="devserverbefore"><code>devServer.before</code><a href="index.html#devserverbefore" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>function (app, server, compiler)</code></p>
+<p>Provides the ability to execute custom middleware prior to all other middleware
+internally within the server. This could be used to define custom handlers, for
+example:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    before<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>app<span class="token punctuation">,</span> server<span class="token punctuation">,</span> compiler<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/some/path'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> custom<span class="token punctuation">:</span> <span class="token string">'response'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="devserverbonjour"><code>devServer.bonjour</code><a href="index.html#devserverbonjour" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = false</code></p>
+<p>This option broadcasts the server via <a href="http://www.zeroconf.org/">ZeroConf</a> networking on start</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    bonjour<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --bonjour</code></pre>
+<h2 id="devserverclientloglevel"><code>devServer.clientLogLevel</code><a href="index.html#devserverclientloglevel" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = 'info': 'silent' | 'trace' | 'debug' | 'info' | 'warn' | 'error' | 'none' | 'warning'</code></p>
+<blockquote class="warning">
+<p><code>none</code> and <code>warning</code> are going to be deprecated at the next major version.</p>
+</blockquote>
+<p>When using <em>inline mode</em>, the console in your DevTools will show you messages e.g. before reloading, before an error or when <a href="../../concepts/hot-module-replacement/index.html">Hot Module Replacement</a> is enabled.</p>
+<p><code>devServer.clientLogLevel</code> may be too verbose, you can turn logging off by setting it to  <code>'silent'</code>.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    clientLogLevel<span class="token punctuation">:</span> <span class="token string">'silent'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --client-log-level silent</code></pre>
+<h2 id="devservercolor---cli-only"><code>devServer.color</code> - CLI only<a href="index.html#devservercolor---cli-only" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean</code></p>
+<p>Enables/Disables colors on the console.</p>
+<pre><code class="hljs language-bash">webpack-dev-server --color</code></pre>
+<h2 id="devservercompress"><code>devServer.compress</code><a href="index.html#devservercompress" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean</code></p>
+<p>Enable <a href="https://betterexplained.com/articles/how-to-optimize-your-site-with-gzip-compression/">gzip compression</a> for everything served:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    compress<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --compress</code></pre>
+<h2 id="devservercontentbase"><code>devServer.contentBase</code><a href="index.html#devservercontentbase" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean: false</code> <code>string</code> <code>[string]</code> <code>number</code></p>
+<p>Tell the server where to serve content from. This is only necessary if you want to serve static files. <a href="index.html#devserverpublicpath-"><code>devServer.publicPath</code></a> will be used to determine where the bundles should be served from, and takes precedence.</p>
+<blockquote class="tip">
+<p>It is recommended to use an absolute path.</p>
+</blockquote>
+<p>By default it will use your current working directory to serve content. To disable <code>contentBase</code> set it to <code>false</code>.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    contentBase<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'public'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>It is also possible to serve from multiple directories:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    contentBase<span class="token punctuation">:</span> <span class="token punctuation">[</span>path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'public'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'assets'</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --content-base /path/to/content/dir</code></pre>
+<h2 id="devserverdisablehostcheck"><code>devServer.disableHostCheck</code><a href="index.html#devserverdisablehostcheck" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean</code></p>
+<p>When set to <code>true</code> this option bypasses host checking. <strong>THIS IS NOT RECOMMENDED</strong> as apps that do not check the host are vulnerable to DNS rebinding attacks.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    disableHostCheck<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --disable-host-check</code></pre>
+<h2 id="devserverfilename-"><code>devServer.filename</code> 🔑<a href="index.html#devserverfilename-" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code></p>
+<p>This option lets you reduce the compilations in <a href="index.html#devserverlazy-">lazy mode</a>.
+By default in <a href="index.html#devserverlazy-">lazy mode</a>, every request results in a new compilation. With <code>filename</code>, it's possible to only compile when a certain file is requested.</p>
+<p>If <a href="../output/index.html#outputfilename"><code>output.filename</code></a> is set to <code>'bundle.js'</code> and <code>devServer.filename</code> is used like this:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'bundle.js'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    lazy<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'bundle.js'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>It will now only compile the bundle when <code>/bundle.js</code> is requested.</p>
+<blockquote class="tip">
+<p><code>filename</code> has no effect when used without <a href="index.html#devserverlazy-">lazy mode</a>.</p>
+</blockquote>
+<h2 id="devserverheaders-"><code>devServer.headers</code> 🔑<a href="index.html#devserverheaders-" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>object</code></p>
+<p>Adds headers to all responses:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    headers<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token string">'X-Custom-Foo'</span><span class="token punctuation">:</span> <span class="token string">'bar'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="devserverhistoryapifallback"><code>devServer.historyApiFallback</code><a href="index.html#devserverhistoryapifallback" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = false</code> <code>object</code></p>
+<p>When using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/History">HTML5 History API</a>, the <code>index.html</code> page will likely have to be served in place of any <code>404</code> responses. Enable <code>devServer.historyApiFallback</code> by setting it to <code>true</code>:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    historyApiFallback<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>By passing an object this behavior can be controlled further using options like <code>rewrites</code>:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    historyApiFallback<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      rewrites<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span> <span class="token keyword">from</span><span class="token punctuation">:</span> <span class="token regex">/^\/$/</span><span class="token punctuation">,</span> to<span class="token punctuation">:</span> <span class="token string">'/views/landing.html'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> <span class="token keyword">from</span><span class="token punctuation">:</span> <span class="token regex">/^\/subpage/</span><span class="token punctuation">,</span> to<span class="token punctuation">:</span> <span class="token string">'/views/subpage.html'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> <span class="token keyword">from</span><span class="token punctuation">:</span> <span class="token regex">/./</span><span class="token punctuation">,</span> to<span class="token punctuation">:</span> <span class="token string">'/views/404.html'</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>When using dots in your path (common with Angular), you may need to use the <code>disableDotRule</code>:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    historyApiFallback<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      disableDotRule<span class="token punctuation">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --history-api-fallback</code></pre>
+<p>For more options and information, see the <a href="https://github.com/bripkens/connect-history-api-fallback">connect-history-api-fallback</a> documentation.</p>
+<h2 id="devserverhost"><code>devServer.host</code><a href="index.html#devserverhost" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = 'localhost'</code></p>
+<p>Specify a host to use. If you want your server to be accessible externally, specify it like this:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    host<span class="token punctuation">:</span> <span class="token string">'0.0.0.0'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --host 0.0.0.0</code></pre>
+<h2 id="devserverhot"><code>devServer.hot</code><a href="index.html#devserverhot" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean</code></p>
+<p>Enable webpack's <a href="../../concepts/hot-module-replacement/index.html">Hot Module Replacement</a> feature:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    hot<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<blockquote class="tip">
+<p>Note that <a href="../../plugins/hot-module-replacement-plugin/index.html"><code>webpack.HotModuleReplacementPlugin</code></a> is required to fully enable HMR. If <code>webpack</code> or <code>webpack-dev-server</code> are launched with the <code>--hot</code> option, this plugin will be added automatically, so you may not need to add this to your <code>webpack.config.js</code>. See the <a href="../../concepts/hot-module-replacement/index.html">HMR concepts page</a> for more information.</p>
+</blockquote>
+<h2 id="devserverhotonly"><code>devServer.hotOnly</code><a href="index.html#devserverhotonly" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean</code></p>
+<p>Enables Hot Module Replacement (see <a href="index.html#devserverhot"><code>devServer.hot</code></a>) without page refresh as fallback in case of build failures.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    hotOnly<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --hot-only</code></pre>
+<h2 id="devserverhttp2"><code>devServer.http2</code><a href="index.html#devserverhttp2" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = false</code></p>
+<p>Serve over HTTP/2 using <a href="https://www.npmjs.com/package/spdy">spdy</a>. This option is ignored for Node 10.0.0 and above, as spdy is broken for those versions. The dev server will migrate over to Node's built-in HTTP/2 once <a href="https://expressjs.com/">Express</a> supports it.</p>
+<p>If <code>devServer.http2</code> is not explicitly set to <code>false</code>, it will default to <code>true</code> when <a href="index.html#devserverhttps"><code>devServer.https</code></a> is enabled. When <code>devServer.http2</code> is enabled but the server is unable to serve over HTTP/2, the server defaults to HTTPS.</p>
+<p>HTTP/2 with a self-signed certificate:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    http2<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Provide your own certificate using the <a href="index.html#devserverhttps">https</a> option:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    http2<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    https<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      key<span class="token punctuation">:</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">'/path/to/server.key'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      cert<span class="token punctuation">:</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">'/path/to/server.crt'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      ca<span class="token punctuation">:</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">'/path/to/ca.pem'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --http2</code></pre>
+<p>To pass your own certificate via CLI, use the following options</p>
+<pre><code class="hljs language-bash">webpack-dev-server --http2 --key /path/to/server.key --cert /path/to/server.crt --cacert /path/to/ca.pem</code></pre>
+<h2 id="devserverhttps"><code>devServer.https</code><a href="index.html#devserverhttps" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean</code> <code>object</code></p>
+<p>By default dev-server will be served over HTTP. It can optionally be served over HTTP/2 with HTTPS:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    https<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>With the above setting a self-signed certificate is used, but you can provide your own:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    https<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      key<span class="token punctuation">:</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">'/path/to/server.key'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      cert<span class="token punctuation">:</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">'/path/to/server.crt'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      ca<span class="token punctuation">:</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">'/path/to/ca.pem'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>This object is passed straight to Node.js HTTPS module, so see the <a href="https://nodejs.org/api/https.html">HTTPS documentation</a> for more information.</p>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --https</code></pre>
+<p>To pass your own certificate via the CLI use the following options</p>
+<pre><code class="hljs language-bash">webpack-dev-server --https --key /path/to/server.key --cert /path/to/server.crt --cacert /path/to/ca.pem</code></pre>
+<h2 id="devserverindex"><code>devServer.index</code><a href="index.html#devserverindex" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code></p>
+<p>The filename that is considered the index file.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    index<span class="token punctuation">:</span> <span class="token string">'index.html'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="devserverinfo---cli-only"><code>devServer.info</code> - CLI only<a href="index.html#devserverinfo---cli-only" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean</code></p>
+<p>Output cli information. It is enabled by default.</p>
+<pre><code class="hljs language-bash">webpack-dev-server --info<span class="token operator">=</span>false</code></pre>
+<h2 id="devserverinjectclient"><code>devServer.injectClient</code><a href="index.html#devserverinjectclient" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = false</code> <code>function (compilerConfig) => boolean</code></p>
+<p>Tells <code>devServer</code> to inject a client. Setting <code>devServer.injectClient</code> to <code>true</code> will result in always injecting a client. It is possible to provide a function to inject conditionally:</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    injectClient<span class="token punctuation">:</span> <span class="token punctuation">(</span>compilerConfig<span class="token punctuation">)</span> <span class="token operator">=></span> compilerConfig<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">'only-include'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="devserverinjecthot"><code>devServer.injectHot</code><a href="index.html#devserverinjecthot" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = false</code> <code>function (compilerConfig) => boolean</code></p>
+<p>Tells <code>devServer</code> to inject a Hot Module Replacement. Setting <code>devServer.injectHot</code> to <code>true</code> will result in always injecting. It is possible to provide a function to inject conditionally:</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    hot<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    injectHot<span class="token punctuation">:</span> <span class="token punctuation">(</span>compilerConfig<span class="token punctuation">)</span> <span class="token operator">=></span> compilerConfig<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">'only-include'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<blockquote class="warning">
+<p>Make sure that <a href="index.html#devserverhot"><code>devServer.hot</code></a> is set to <code>true</code> because <code>devServer.injectHot</code> only works with HMR.</p>
+</blockquote>
+<h2 id="devserverinline"><code>devServer.inline</code><a href="index.html#devserverinline" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean</code></p>
+<p>Toggle between the dev-server's two different modes. By default the application will be served with <em>inline mode</em> enabled. This means that a script will be inserted in your bundle to take care of live reloading, and build messages will appear in the browser console.</p>
+<p>It is also possible to use <strong>iframe mode</strong>, which uses an <code>&#x3C;iframe></code> under a notification bar with messages about the build. To switch to <strong>iframe mode</strong>:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    inline<span class="token punctuation">:</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --inline<span class="token operator">=</span>false</code></pre>
+<blockquote class="tip">
+<p>Inline mode is recommended for <a href="../../plugins/hot-module-replacement-plugin/index.html">Hot Module Replacement</a> as it includes an HMR trigger from the websocket. Polling mode can be used as an alternative, but requires an additional entry point, <code>'webpack/hot/poll?1000'</code>.</p>
+</blockquote>
+<h2 id="devserverlazy-"><code>devServer.lazy</code> 🔑<a href="index.html#devserverlazy-" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean</code></p>
+<p>When <code>devServer.lazy</code> is enabled, the dev-server will only compile the bundle when it gets requested. This means that webpack will not watch any file changes. We call this <strong>lazy mode</strong>.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    lazy<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --lazy</code></pre>
+<blockquote class="tip">
+<p><a href="index.html#devserverwatchoptions-"><code>watchOptions</code></a> will have no effect when used with <strong>lazy mode</strong>.</p>
+</blockquote>
+<blockquote class="tip">
+<p>If you use the CLI, make sure <strong>inline mode</strong> is disabled.</p>
+</blockquote>
+<h2 id="devserverlivereload"><code>devServer.liveReload</code><a href="index.html#devserverlivereload" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = true</code></p>
+<p>By default, the dev-server will reload/refresh the page when file changes are detected. <a href="index.html#devserverhot"><code>devServer.hot</code></a> option must be disabled or <a href="index.html#devserverwatchcontentbase"><code>devServer.watchContentBase</code></a> option must be enabled in order for <code>liveReload</code> to take effect. Disable <code>devServer.liveReload</code> by setting it to <code>false</code>:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    liveReload<span class="token punctuation">:</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --no-live-reload</code></pre>
+<h2 id="devservermimetypes-"><code>devServer.mimeTypes</code> 🔑<a href="index.html#devservermimetypes-" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>object</code></p>
+<p>Allows dev-server to register custom mime types.
+The object is passed to the underlying <code>webpack-dev-middleware</code>.
+See <a href="https://github.com/webpack/webpack-dev-middleware#mimetypes">documentation</a> for usage notes.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    mimeTypes<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token string">'text/html'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'phtml'</span><span class="token punctuation">]</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="devservernoinfo-"><code>devServer.noInfo</code> 🔑<a href="index.html#devservernoinfo-" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = false</code></p>
+<p>Tells dev-server to supress messages like the webpack bundle information. Errors and warnings will still be shown.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    noInfo<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="devserveronlistening"><code>devServer.onListening</code><a href="index.html#devserveronlistening" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>function (server)</code></p>
+<p>Provides an option to execute a custom function when <code>webpack-dev-server</code> starts listening for connections on a port.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    onListening<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>server<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> port <span class="token operator">=</span> server<span class="token punctuation">.</span>listeningApp<span class="token punctuation">.</span><span class="token function">address</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>port<span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Listening on port:'</span><span class="token punctuation">,</span> port<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="devserveropen"><code>devServer.open</code><a href="index.html#devserveropen" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean: false</code> <code>string</code></p>
+<p>Tells dev-server to open the browser after server had been started. Set it to <code>true</code> to open your default browser.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    open<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Provide browser name to use instead of the default one:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    open<span class="token punctuation">:</span> <span class="token string">'Google Chrome'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --open <span class="token string">'Google Chrome'</span></code></pre>
+<blockquote class="tip">
+<p>The browser application name is platform dependent. Don't hard code it in reusable modules. For example, <code>'Chrome'</code> is <code>'Google Chrome'</code> on macOS, <code>'google-chrome'</code> on Linux and <code>'chrome'</code> on Windows.</p>
+</blockquote>
+<h2 id="devserveropenpage"><code>devServer.openPage</code><a href="index.html#devserveropenpage" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code> <code>[string]</code></p>
+<p>Specify a page to navigate to when opening the browser.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    openPage<span class="token punctuation">:</span> <span class="token string">'/different/page'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --open-page <span class="token string">"/different/page"</span></code></pre>
+<p>If you wish to specify multiple pages to open in the browser.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    openPage<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'/different/page1'</span><span class="token punctuation">,</span> <span class="token string">'/different/page2'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --open-page <span class="token string">"/different/page1,/different/page2"</span></code></pre>
+<h2 id="devserveroverlay"><code>devServer.overlay</code><a href="index.html#devserveroverlay" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = false</code> <code>object: { errors boolean = false, warnings boolean = false }</code></p>
+<p>Shows a full-screen overlay in the browser when there are compiler errors or warnings. If you want to show only compiler errors:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    overlay<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>If you want to show warnings as well as errors:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    overlay<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      warnings<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      errors<span class="token punctuation">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="devserverpfx"><code>devServer.pfx</code><a href="index.html#devserverpfx" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code></p>
+<p>When used via the CLI, a path to an SSL .pfx file. If used in options, it should be the bytestream of the .pfx file.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    pfx<span class="token punctuation">:</span> <span class="token string">'/path/to/file.pfx'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --pfx /path/to/file.pfx</code></pre>
+<h2 id="devserverpfxpassphrase"><code>devServer.pfxPassphrase</code><a href="index.html#devserverpfxpassphrase" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code></p>
+<p>The passphrase to a SSL PFX file.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    pfxPassphrase<span class="token punctuation">:</span> <span class="token string">'passphrase'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --pfx-passphrase passphrase</code></pre>
+<h2 id="devserverport"><code>devServer.port</code><a href="index.html#devserverport" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>number</code></p>
+<p>Specify a port number to listen for requests on:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    port<span class="token punctuation">:</span> <span class="token number">8080</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --port 8080</code></pre>
+<h2 id="devserverproxy"><code>devServer.proxy</code><a href="index.html#devserverproxy" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>object</code> <code>[object, function]</code></p>
+<p>Proxying some URLs can be useful when you have a separate API backend development server and you want to send API requests on the same domain.</p>
+<p>The dev-server makes use of the powerful <a href="https://github.com/chimurai/http-proxy-middleware">http-proxy-middleware</a> package. Check out its <a href="https://github.com/chimurai/http-proxy-middleware#options">documentation</a> for more advanced usages. Note that some of <code>http-proxy-middleware</code>'s features do not require a <code>target</code> key, e.g. its <code>router</code> feature, but you will still need to include a <code>target</code> key in your config here, otherwise <code>webpack-dev-server</code> won't pass it along to <code>http-proxy-middleware</code>).</p>
+<p>With a backend on <code>localhost:3000</code>, you can use this to enable proxying:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    proxy<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token string">'/api'</span><span class="token punctuation">:</span> <span class="token string">'http://localhost:3000'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>A request to <code>/api/users</code> will now proxy the request to <code>http://localhost:3000/api/users</code>.</p>
+<p>If you don't want <code>/api</code> to be passed along, we need to rewrite the path:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    proxy<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token string">'/api'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        target<span class="token punctuation">:</span> <span class="token string">'http://localhost:3000'</span><span class="token punctuation">,</span>
+        pathRewrite<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'^/api'</span> <span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>A backend server running on HTTPS with an invalid certificate will not be accepted by default. If you want to, modify your config like this:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    proxy<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token string">'/api'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        target<span class="token punctuation">:</span> <span class="token string">'https://other-server.example.com'</span><span class="token punctuation">,</span>
+        secure<span class="token punctuation">:</span> <span class="token boolean">false</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Sometimes you don't want to proxy everything. It is possible to bypass the proxy based on the return value of a function.</p>
+<p>In the function you get access to the request, response and proxy options.</p>
+<ul>
+<li>Return <code>null</code> or <code>undefined</code> to continue processing the request with proxy.</li>
+<li>Return <code>false</code> to produce a 404 error for the request.</li>
+<li>Return a path to serve from, instead of continuing to proxy the request.</li>
+</ul>
+<p>E.g. for a browser request, you want to serve a HTML page, but for an API request you want to proxy it. You could do something like this:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    proxy<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token string">'/api'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        target<span class="token punctuation">:</span> <span class="token string">'http://localhost:3000'</span><span class="token punctuation">,</span>
+        bypass<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> proxyOptions<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span>headers<span class="token punctuation">.</span>accept<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Skipping proxy for browser request.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token string">'/index.html'</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>If you want to proxy multiple, specific paths to the same target, you can use an array of one or more objects with a <code>context</code> property:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    proxy<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      context<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'/auth'</span><span class="token punctuation">,</span> <span class="token string">'/api'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      target<span class="token punctuation">:</span> <span class="token string">'http://localhost:3000'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Note that requests to root won't be proxied by default. To enable root proxying, the <code>devServer.index</code> option should be specified as a falsy value:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    index<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token comment">// specify to enable root proxying</span>
+    host<span class="token punctuation">:</span> <span class="token string">'...'</span><span class="token punctuation">,</span>
+    contentBase<span class="token punctuation">:</span> <span class="token string">'...'</span><span class="token punctuation">,</span>
+    proxy<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      context<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      target<span class="token punctuation">:</span> <span class="token string">'http://localhost:1234'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>The origin of the host header is kept when proxying by default, you can set <code>changeOrigin</code> to <code>true</code> to override this behaviour. It is useful in some cases like using <a href="https://en.wikipedia.org/wiki/Virtual_hosting#Name-based">name-based virtual hosted sites</a>.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    proxy<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token string">'/api'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        target<span class="token punctuation">:</span> <span class="token string">'http://localhost:3000'</span><span class="token punctuation">,</span>
+        changeOrigin<span class="token punctuation">:</span> <span class="token boolean">true</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="devserverprogress---cli-only"><code>devServer.progress</code> - CLI only<a href="index.html#devserverprogress---cli-only" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean</code></p>
+<p>Output running progress to console.</p>
+<pre><code class="hljs language-bash">webpack-dev-server --progress</code></pre>
+<h2 id="devserverpublic"><code>devServer.public</code><a href="index.html#devserverpublic" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code></p>
+<p>When using <em>inline mode</em> and you're proxying dev-server, the inline client script does not always know where to connect to. It will try to guess the URL of the server based on <code>window.location</code>, but if that fails you'll need to use this.</p>
+<p>For example, the dev-server is proxied by nginx, and available on <code>myapp.test</code>:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span><span class="token punctuation">:</span> <span class="token string">'myapp.test:80'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --public myapp.test:80</code></pre>
+<h2 id="devserverpublicpath-"><code>devServer.publicPath</code> 🔑<a href="index.html#devserverpublicpath-" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = '/'</code></p>
+<p>The bundled files will be available in the browser under this path.</p>
+<p>Imagine that the server is running under <code>http://localhost:8080</code> and <a href="../output/index.html#outputfilename"><code>output.filename</code></a> is set to <code>bundle.js</code>. By default the <code>devServer.publicPath</code> is <code>'/'</code>, so your bundle is available as <code>http://localhost:8080/bundle.js</code>.</p>
+<p>Change <code>devServer.publicPath</code> to put bundle under specific directory:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">'/assets/'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>The bundle will now be available as <code>http://localhost:8080/assets/bundle.js</code>.</p>
+<blockquote class="tip">
+<p>Make sure <code>devServer.publicPath</code> always starts and ends with a forward slash.</p>
+</blockquote>
+<p>It is also possible to use a full URL.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">'http://localhost:8080/assets/'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>The bundle will also be available as <code>http://localhost:8080/assets/bundle.js</code>.</p>
+<blockquote class="tip">
+<p>It is recommended that <code>devServer.publicPath</code> is the same as <a href="../output/index.html#outputpublicpath"><code>output.publicPath</code></a>.</p>
+</blockquote>
+<h2 id="devserverquiet-"><code>devServer.quiet</code> 🔑<a href="index.html#devserverquiet-" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean</code></p>
+<p>With <code>devServer.quiet</code> enabled, nothing except the initial startup information will be written to the console. This also means that errors or warnings from webpack are not visible.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    quiet<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --quiet</code></pre>
+<h2 id="devserverserveindex"><code>devServer.serveIndex</code><a href="index.html#devserverserveindex" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = true</code></p>
+<p>Tells dev-server to use <a href="https://github.com/expressjs/serve-index"><code>serveIndex</code></a> middleware when enabled.</p>
+<p><a href="https://github.com/expressjs/serve-index"><code>serveIndex</code></a> middleware generates directory listings on viewing directories that don't have an index.html file.</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    serveIndex<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="devserversetup"><code>devServer.setup</code><a href="index.html#devserversetup" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>function (app, server)</code></p>
+<blockquote class="warning">
+<p>This option is <strong>deprecated</strong> in favor of <a href="index.html#devserverbefore"><code>devServer.before</code></a> and will be removed in v3.0.0.</p>
+</blockquote>
+<p>Here you can access the Express app object and add your own custom middleware to it.
+For example, to define custom handlers for some paths:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    setup<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>app<span class="token punctuation">,</span> server<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/some/path'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> custom<span class="token punctuation">:</span> <span class="token string">'response'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="devserversocket"><code>devServer.socket</code><a href="index.html#devserversocket" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code></p>
+<p>The Unix socket to listen to (instead of a host).</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    socket<span class="token punctuation">:</span> <span class="token string">'socket'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --socket socket</code></pre>
+<h2 id="devserversockhost"><code>devServer.sockHost</code><a href="index.html#devserversockhost" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code></p>
+<p>Tells clients connected to <code>devServer</code> to use provided socket host.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    sockHost<span class="token punctuation">:</span> <span class="token string">'myhost.test'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="devserversockpath"><code>devServer.sockPath</code><a href="index.html#devserversockpath" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = '/sockjs-node'</code></p>
+<p>The path at which to connect to the reloading socket.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    sockPath<span class="token punctuation">:</span> <span class="token string">'/socket'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --sockPath /socket</code></pre>
+<h2 id="devserversockport"><code>devServer.sockPort</code><a href="index.html#devserversockport" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>number</code> <code>string</code></p>
+<p>Tells clients connected to <code>devServer</code> to use provided socket port.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    sockPort<span class="token punctuation">:</span> <span class="token number">8080</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="devserverstaticoptions"><code>devServer.staticOptions</code><a href="index.html#devserverstaticoptions" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p>It is possible to configure advanced options for serving static files from <code>contentBase</code>. See the <a href="http://expressjs.com/en/4x/api.html#express.static">Express documentation</a> for the possible options.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    staticOptions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      redirect<span class="token punctuation">:</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<blockquote class="tip">
+<p>This only works when using <a href="index.html#devservercontentbase"><code>devServer.contentBase</code></a> as a <code>string</code>.</p>
+</blockquote>
+<h2 id="devserverstats-"><code>devServer.stats</code> 🔑<a href="index.html#devserverstats-" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string: 'none' | 'errors-only' | 'minimal' | 'normal' | 'verbose'</code> <code>object</code></p>
+<p>This option lets you precisely control what bundle information gets displayed. This can be a nice middle ground if you want some bundle information, but not all of it.</p>
+<p>To show only errors in your bundle:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    stats<span class="token punctuation">:</span> <span class="token string">'errors-only'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>For more information, see the <a href="../stats/index.html"><strong>stats documentation</strong></a>.</p>
+<blockquote class="tip">
+<p>This option has no effect when used with <code>quiet</code> or <code>noInfo</code>.</p>
+</blockquote>
+<h2 id="devserverstdin---cli-only"><code>devServer.stdin</code> - CLI only<a href="index.html#devserverstdin---cli-only" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean</code></p>
+<p>This option closes the server when stdin ends.</p>
+<pre><code class="hljs language-bash">webpack-dev-server --stdin</code></pre>
+<h2 id="devservertransportmode"><code>devServer.transportMode</code><a href="index.html#devservertransportmode" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = 'sockjs': 'sockjs' | 'ws'</code> <code>object</code></p>
+<blockquote class="warning">
+<p><code>transportMode</code> is an experimental option, meaning its usage could potentially change without warning.</p>
+</blockquote>
+<blockquote class="tip">
+<p>Providing a string to <code>devServer.transportMode</code> is a shortcut to setting both <code>devServer.transportMode.client</code> and <code>devServer.transportMode.server</code> to the given string value.</p>
+</blockquote>
+<p>This option allows us either to choose the current <code>devServer</code> transport mode for client/server individually or to provide custom client/server implementation. This allows to specify how browser or other client communicates with the <code>devServer</code>.</p>
+<p>The current default mode is <a href="https://www.npmjs.com/package/sockjs"><code>'sockjs'</code></a>. This mode uses <a href="https://github.com/sockjs/sockjs-node">SockJS-node</a> as a server, and <a href="https://www.npmjs.com/package/sockjs-client">SockJS-client</a> on the client.</p>
+<p><code>'ws'</code> mode will become the default mode in the next major <code>devServer</code> version. This mode uses <a href="https://www.npmjs.com/package/ws">ws</a> as a server, and native WebSockets on the client.</p>
+<p>Use <code>'ws'</code> mode:</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    transportMode<span class="token punctuation">:</span> <span class="token string">'ws'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<blockquote class="tip">
+<p>When providing a custom client and server implementation make sure that they are compatible with one another to communicate successfully.</p>
+</blockquote>
+<h3 id="devservertransportmodeclient"><code>devServer.transportMode.client</code><a href="index.html#devservertransportmodeclient" aria-hidden="true"><span class="icon icon-link"></span></a></h3>
+<p><code>string</code> <code>path</code></p>
+<p>To create a custom client implementation, create a class that extends <a href="https://github.com/webpack/webpack-dev-server/blob/master/client-src/clients/BaseClient.js"><code>BaseClient</code></a>.</p>
+<p>Using path to <code>CustomClient.js</code>, a custom WebSocket client implementation, along with the compatible <code>'ws'</code> server:</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    transportMode<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      client<span class="token punctuation">:</span> require<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'./CustomClient'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      server<span class="token punctuation">:</span> <span class="token string">'ws'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h3 id="devservertransportmodeserver"><code>devServer.transportMode.server</code><a href="index.html#devservertransportmodeserver" aria-hidden="true"><span class="icon icon-link"></span></a></h3>
+<p><code>string</code> <code>path</code> <code>function</code></p>
+<p>To create a custom server implementation, create a class that extends <a href="https://github.com/webpack/webpack-dev-server/blob/master/lib/servers/BaseServer.js"><code>BaseServer</code></a>.</p>
+<p>Using path to <code>CustomServer.js</code>, a custom WebSocket server implementation, along with the compatible <code>'ws'</code> client:</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    transportMode<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      client<span class="token punctuation">:</span> <span class="token string">'ws'</span><span class="token punctuation">,</span>
+      server<span class="token punctuation">:</span> require<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'./CustomServer'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Using class exported by <code>CustomServer.js</code>, a custom WebSocket server implementation, along with the compatible <code>'ws'</code> client:</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    transportMode<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      client<span class="token punctuation">:</span> <span class="token string">'ws'</span><span class="token punctuation">,</span>
+      server<span class="token punctuation">:</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./CustomServer'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Using custom, compatible WebSocket client and server implementations:</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    transportMode<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      client<span class="token punctuation">:</span> require<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'./CustomClient'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      server<span class="token punctuation">:</span> require<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'./CustomServer'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="devserveruselocalip"><code>devServer.useLocalIp</code><a href="index.html#devserveruselocalip" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean</code></p>
+<p>This option lets the browser open with your local IP.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    useLocalIp<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --useLocalIp</code></pre>
+<h2 id="devserverwatchcontentbase"><code>devServer.watchContentBase</code><a href="index.html#devserverwatchcontentbase" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean</code></p>
+<p>Tell dev-server to watch the files served by the <a href="index.html#devservercontentbase"><code>devServer.contentBase</code></a> option. It is disabled by default. When enabled, file changes will trigger a full page reload.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    watchContentBase<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Usage via the CLI</p>
+<pre><code class="hljs language-bash">webpack-dev-server --watch-content-base</code></pre>
+<h2 id="devserverwatchoptions-"><code>devServer.watchOptions</code> 🔑<a href="index.html#devserverwatchoptions-" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>object</code></p>
+<p>Control options related to watching the files.</p>
+<p>webpack uses the file system to get notified of file changes. In some cases this does not work. For example, when using Network File System (NFS). <a href="https://www.vagrantup.com/">Vagrant</a> also has a lot of problems with this. In these cases, use polling:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    watchOptions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      poll<span class="token punctuation">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>If this is too heavy on the file system, you can change this to an integer to set the interval in milliseconds.</p>
+<p>See <a href="../watch/index.html">WatchOptions</a> for more options.</p>
+<h2 id="devserverwritetodisk-"><code>devServer.writeToDisk</code> 🔑<a href="index.html#devserverwritetodisk-" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = false</code> <code>function (filePath)</code></p>
+<p>Tells <code>devServer</code> to write generated assets to the disk. The output is written to the <a href="../output/index.html#outputpath">output.path</a> directory.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    writeToDisk<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Providing a <code>Function</code> to <code>devServer.writeToDisk</code> can be used for filtering. The function follows the same premise as <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter"><code>Array#filter</code></a> in which a boolean return value tells if the file should be written to disk.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    writeToDisk<span class="token punctuation">:</span> <span class="token punctuation">(</span>filePath<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token operator">/</span>superman\<span class="token punctuation">.</span>css$<span class="token operator">/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>filePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+</div><div class="contributors__section"><hr/><h3>Contributors</h3><div class="contributors"><div class="contributors__list"><a class="contributor" href="https://github.com/sokra"><img alt="sokra" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->sokra</span></a><a class="contributor" href="https://github.com/skipjack"><img alt="skipjack" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->skipjack</span></a><a class="contributor" href="https://github.com/spacek33z"><img alt="spacek33z" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->spacek33z</span></a><a class="contributor" href="https://github.com/charlespwd"><img alt="charlespwd" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->charlespwd</span></a><a class="contributor" href="https://github.com/orteth01"><img alt="orteth01" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->orteth01</span></a><a class="contributor" href="https://github.com/byzyk"><img alt="byzyk" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->byzyk</span></a><a class="contributor" href="https://github.com/EugeneHlushko"><img alt="EugeneHlushko" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->EugeneHlushko</span></a><a class="contributor" href="https://github.com/Yiidiir"><img alt="Yiidiir" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->Yiidiir</span></a><a class="contributor" href="https://github.com/Loonride"><img alt="Loonride" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->Loonride</span></a><a class="contributor" href="https://github.com/dmohns"><img alt="dmohns" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->dmohns</span></a><a class="contributor" href="https://github.com/EslamHiko"><img alt="EslamHiko" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->EslamHiko</span></a><a class="contributor" href="https://github.com/digitaljohn"><img alt="digitaljohn" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->digitaljohn</span></a></div></div></div></div></section><div class="gitter"><div class="gitter__button"><i class="gitter__icon icon-gitter"></i></div></div></div><footer class="footer"><div class="container footer__inner"><section class="footer__left"><a class="footer__link" href="../../guides/getting-started/index.html">Get Started</a><a class="footer__link" href="../../organization/index.html">Organization</a><a class="footer__link" href="../../starter-kits/index.html">Starter Kits</a><a class="footer__link" href="../../comparison/index.html">Comparison</a></section><section class="footer__middle"><a class="footer__icon" href="../../index.html"><img src="../../d19378a95ebe6b15d5ddea281138dcf4.svg" alt="webpack icon"/></a></section><section class="footer__right"><a href="https://webpack.threadless.com/" target="_blank" rel="noopener" class="footer__link">Swag Store</a><a class="footer__link" href="../../glossary/index.html">Glossary</a><a class="footer__link" href="../../branding/index.html">Branding</a><a href="https://gitter.im/webpack/webpack" target="_blank" rel="noopener" class="footer__link">Gitter</a><a href="https://github.com/webpack/webpack/releases" target="_blank" rel="noopener" class="footer__link">Changelog</a><a class="footer__link footer__license" href="../../license/index.html"><img alt="Creative Commons License" src="../../7052446b5e67df4434f4031afd2f1497.svg"/><img alt="Creative Commons License" src="../../7ebb1b3901ce119694f65e04f6347ef5.svg"/></a></section></div></footer></div></div><script src="../../vendor.bundle.js"></script><script src="../../index.bundle.js"></script></body></html>
