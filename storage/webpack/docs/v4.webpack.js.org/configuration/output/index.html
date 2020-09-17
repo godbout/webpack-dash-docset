@@ -1,0 +1,739 @@
+<!DOCTYPE html><html lang="en" data-reactroot=""><head><meta charset="utf-8"/><meta name="theme-color" content="#2B3A42"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Output | webpack</title><meta name="description" content="webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset."/><meta property="og:site_name" content="webpack"/><meta property="og:type" content="website"/><meta property="og:title" content="Output | webpack"/><meta property="og:description" name="description" content="webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset."/><meta property="og:image" content="/aad9d51e01a0dcc2caf5bee43dc8e647.svg"/><meta property="twitter:card" content="summary"/><meta property="twitter:site" content="@webpack"/><meta property="twitter:creator" content="@webpack"/><meta property="twitter:domain" content="https://webpack.js.org/"/><link rel="icon" type="image/x-icon" href="../../bc3effb418df77da9e04825c48a58a49.ico"/><link rel="stylesheet" href="../../617ab564d61d895bbe16.css"/><link rel="stylesheet" href="../../da636415eb0a705711e4.css"/><link rel="manifest" href="../../manifest.json"/><link rel="canonical" href="https://webpack.js.org/configuration/output/"/><meta name="mobile-web-app-capable" content="yes"/><link rel="icon" sizes="192x192" href="../../icon_192x192.png"/><link rel="icon" sizes="512x512" href="../../icon_512x512.png"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"/><meta name="apple-mobile-web-app-title" content="webpack"/><link rel="apple-touch-icon-precomposed" href="../../icon_180x180.png"/><link rel="mask-icon" href="../../aad9d51e01a0dcc2caf5bee43dc8e647.svg" color="#465e69"/><meta name="msapplication-TileImage" content="/icon_150x150.png"/><meta name="msapplication-TileColor" content="#465e69"/></head><body><div id="root"><div class="site"><div class="site__header"><div class="notification-bar"><div class="container notification-bar__inner"><p>Sponsor webpack and get apparel from the <a href="https://webpack.threadless.com">official shop</a>! All proceeds go to our <a href="https://opencollective.com/webpack">open collective</a>!</p></div></div><header class="navigation   "><section class="navigation__inner"><button class="navigation__mobile"><svg viewBox="-62 138 25 25"><g><g><path d="M-60.2,140.2h20.9c1,0,1.8,0.8,1.8,1.8l0,0c0,1-0.8,1.8-1.8,1.8h-20.9c-1,0-1.8-0.8-1.8-1.8l0,0 C-62,141-61.2,140.2-60.2,140.2z"></path><path d="M-60.2,148.7h20.9c1,0,1.8,0.8,1.8,1.8l0,0c0,1-0.8,1.8-1.8,1.8h-20.9c-1,0-1.8-0.8-1.8-1.8l0,0 C-62,149.5-61.2,148.7-60.2,148.7z"></path><path d="M-60.2,157.2h20.9c1,0,1.8,0.8,1.8,1.8l0,0c0,1-0.8,1.8-1.8,1.8h-20.9c-1,0-1.8-0.8-1.8-1.8l0,0 C-62,158-61.2,157.2-60.2,157.2z"></path></g></g></svg></button><a class="navigation__logo" href="../../index.html"><img class="logo" src="../../e0b5805d423a4ec9473ee315250968b2.svg" alt="webpack logo"/></a><nav class="navigation__items"><a class="navigation__item navigation__item--active" href="../../concepts/index.html">Documentation</a><a class="navigation__item " href="../../contribute/index.html">Contribute</a><a class="navigation__item " href="../../vote/index.html">Vote</a><a href="https://medium.com/webpack" target="_blank" rel="noopener" class="navigation__item ">Blog</a><a href="https://github.com/webpack/webpack" target="_blank" rel="noopener" title="GitHub Repository" class="navigation__item "><i aria-hidden="true" class="icon-github"></i></a><a href="https://twitter.com/webpack" target="_blank" rel="noopener" title="webpack on Twitter" class="navigation__item "><i aria-hidden="true" class="icon-twitter"></i></a><a href="https://stackoverflow.com/questions/tagged/webpack" target="_blank" rel="noopener" title="webpack on Stack Overflow" class="navigation__item "><i aria-hidden="true" class="icon-stack-overflow"></i></a><span><nav class="dropdown navigation__languages"><button aria-haspopup="true" aria-expanded="false" aria-label="Select language"><img class="dropdown__language" alt="select language" src="../../57c717e75066b659cfe19dc2a643153c.svg"/><i aria-hidden="true" class="dropdown__arrow"></i></button><div class="dropdown__list "><ul><li><a href="https://webpack.js.org/"><span>English</span></a></li><li><a href="https://webpack.docschina.org/"><span lang="zh">中文</span></a></li></ul></div></nav></span></nav><div class="navigation-search "><input type="text" class="navigation-search__input" placeholder="Search this site..." value=""/><button class="navigation-search__icon navigation-search__clear"><svg viewBox="-137 138 25 25"><g transform="translate(0,-952.36218)"><path d="M-131.3,1094.4c-0.4,0-0.9,0.1-1.2,0.5c-0.7,0.7-0.7,1.7,0,2.4l5.6,5.6l-5.6,5.6c-0.7,0.7-0.7,1.7,0,2.4 c0.7,0.7,1.7,0.7,2.4,0l5.6-5.6l5.6,5.6c0.7,0.7,1.7,0.7,2.4,0c0.7-0.7,0.7-1.7,0-2.4l-5.6-5.6l5.6-5.6c0.7-0.7,0.7-1.7,0-2.4 c-0.7-0.7-1.7-0.7-2.4,0l-5.6,5.6l-5.6-5.6C-130.5,1094.5-130.9,1094.4-131.3,1094.4L-131.3,1094.4z"></path></g></svg></button><button class="navigation-search__icon navigation-search__search"><svg viewBox="-137 138 25 25"><g><path d="M-114.6,162.6l-7.5-7.5c-0.6-0.6-0.6-1.6,0-2.1l0,0c0.6-0.6,1.6-0.6,2.1,0l7.5,7.5c0.6,0.6,0.6,1.6,0,2.1l0,0 C-113,163.1-114,163.1-114.6,162.6z"></path><path d="M-134.1,140.9c-3.9,3.9-3.9,10.2,0,14.1s10.2,3.9,14.1,0s3.9-10.2,0-14.1S-130.2,137-134.1,140.9z M-122.1,153 c-2.7,2.7-7.1,2.7-9.8,0s-2.7-7.1,0-9.8s7.1-2.7,9.8,0C-119.4,145.9-119.4,150.2-122.1,153z"></path></g></svg></button></div></section><div class="navigation-sub"><div class="navigation-sub__inner"><a class="navigation-sub__link " title="api" content="api" href="../../api/index.html">api</a><a class="navigation-sub__link " title="concepts" content="concepts" href="../../concepts/index.html">concepts</a><a class="navigation-sub__link navigation-sub__link--active" title="configuration" content="configuration" href="../index.html">configuration</a><a class="navigation-sub__link " title="guides" content="guides" href="../../guides/index.html">guides</a><a class="navigation-sub__link " title="loaders" content="loaders" href="../../loaders/index.html">loaders</a><a class="navigation-sub__link " title="migrate" content="migrate" href="../../migrate/index.html">migrate</a><a class="navigation-sub__link " title="plugins" content="plugins" href="../../plugins/index.html">plugins</a></div></div></header></div><div class="container site__content"><div class="sponsors"><a href="https://www.ag-grid.com/?utm_source=webpack&amp;utm_medium=banner&amp;utm_campaign=sponsorship" target="_blank" rel="noopener" class="sponsors__content"><img src="../../bf176a25b4f8227fea804854c98dc5e2.png"/><img src="../../d19378a95ebe6b15d5ddea281138dcf4.svg" style="width:100px"/><div style="margin-top:1em;font-size:2em;text-align:center;color:#535353">ag-grid is proud to partner with webpack</div></a></div><nav class="sidebar site__sidebar"><div class="sidebar__inner"><div class="sidebar__shields"><a href="https://github.com/webpack/webpack/releases"><img alt="webpack shield" src="https://img.shields.io/npm/v/webpack.svg?label=webpack&amp;style=flat-square&amp;maxAge=3600"/></a></div><div class="sidebar-item sidebar-item--disabled`"><i class="sidebar-item__toggle icon-vertical-bar"></i><a class="sidebar-item__title sidebar-link__print" href="../printable/index.html" rel="nofollow" alt="Print" title="Print" target="_blank">Print Section<img src="../../96ccbfac58b65e83657a220603e00abe.svg"/></a></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../index.html">Configuration</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="Use different config file"><a href="../index.html#use-different-config-file">Use different config file</a></li><li class="sidebar-item__anchor" title="Options"><a href="../index.html#options">Options</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../configuration-languages/index.html">Configuration Languages</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="TypeScript"><a href="../configuration-languages/index.html#typescript">TypeScript</a></li><li class="sidebar-item__anchor" title="CoffeeScript"><a href="../configuration-languages/index.html#coffeescript">CoffeeScript</a></li><li class="sidebar-item__anchor" title="Babel and JSX"><a href="../configuration-languages/index.html#babel-and-jsx">Babel and JSX</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../configuration-types/index.html">Configuration Types</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="Exporting a Function"><a href="../configuration-types/index.html#exporting-a-function">Exporting a Function</a></li><li class="sidebar-item__anchor" title="Exporting a Promise"><a href="../configuration-types/index.html#exporting-a-promise">Exporting a Promise</a></li><li class="sidebar-item__anchor" title="Exporting multiple configurations"><a href="../configuration-types/index.html#exporting-multiple-configurations">Exporting multiple configurations</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../entry-context/index.html">Entry and Context</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="context"><a href="../entry-context/index.html#context">context</a></li><li class="sidebar-item__anchor" title="entry"><a href="../entry-context/index.html#entry">entry</a></li><li class="sidebar-item__anchor" title="Naming"><a href="../entry-context/index.html#naming">Naming</a></li><li class="sidebar-item__anchor" title="Dynamic entry"><a href="../entry-context/index.html#dynamic-entry">Dynamic entry</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../mode/index.html">Mode</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="Usage"><a href="../mode/index.html#usage">Usage</a></li><li class="sidebar-item__anchor" title="Mode: development"><a href="../mode/index.html#mode-development">Mode: development</a></li><li class="sidebar-item__anchor" title="Mode: production"><a href="../mode/index.html#mode-production">Mode: production</a></li><li class="sidebar-item__anchor" title="Mode: none"><a href="../mode/index.html#mode-none">Mode: none</a></li></ul></div></div><div><div class="sidebar-item sidebar-item--open "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="index.html">Output</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="output.auxiliaryComment"><a href="index.html#outputauxiliarycomment">output.auxiliaryComment</a></li><li class="sidebar-item__anchor" title="output.chunkFilename"><a href="index.html#outputchunkfilename">output.chunkFilename</a></li><li class="sidebar-item__anchor" title="output.chunkLoadTimeout"><a href="index.html#outputchunkloadtimeout">output.chunkLoadTimeout</a></li><li class="sidebar-item__anchor" title="output.crossOriginLoading"><a href="index.html#outputcrossoriginloading">output.crossOriginLoading</a></li><li class="sidebar-item__anchor" title="output.jsonpScriptType"><a href="index.html#outputjsonpscripttype">output.jsonpScriptType</a></li><li class="sidebar-item__anchor" title="output.devtoolFallbackModuleFilenameTemplate"><a href="index.html#outputdevtoolfallbackmodulefilenametemplate">output.devtoolFallbackModuleFilenameTemplate</a></li><li class="sidebar-item__anchor" title="output.devtoolLineToLine"><a href="index.html#outputdevtoollinetoline">output.devtoolLineToLine</a></li><li class="sidebar-item__anchor" title="output.devtoolModuleFilenameTemplate"><a href="index.html#outputdevtoolmodulefilenametemplate">output.devtoolModuleFilenameTemplate</a></li><li class="sidebar-item__anchor" title="output.devtoolNamespace"><a href="index.html#outputdevtoolnamespace">output.devtoolNamespace</a></li><li class="sidebar-item__anchor" title="output.filename"><a href="index.html#outputfilename">output.filename</a></li><li class="sidebar-item__anchor" title="output.globalObject"><a href="index.html#outputglobalobject">output.globalObject</a></li><li class="sidebar-item__anchor" title="output.hashDigest"><a href="index.html#outputhashdigest">output.hashDigest</a></li><li class="sidebar-item__anchor" title="output.hashDigestLength"><a href="index.html#outputhashdigestlength">output.hashDigestLength</a></li><li class="sidebar-item__anchor" title="output.hashFunction"><a href="index.html#outputhashfunction">output.hashFunction</a></li><li class="sidebar-item__anchor" title="output.hashSalt"><a href="index.html#outputhashsalt">output.hashSalt</a></li><li class="sidebar-item__anchor" title="output.hotUpdateChunkFilename"><a href="index.html#outputhotupdatechunkfilename">output.hotUpdateChunkFilename</a></li><li class="sidebar-item__anchor" title="output.hotUpdateFunction"><a href="index.html#outputhotupdatefunction">output.hotUpdateFunction</a></li><li class="sidebar-item__anchor" title="output.hotUpdateMainFilename"><a href="index.html#outputhotupdatemainfilename">output.hotUpdateMainFilename</a></li><li class="sidebar-item__anchor" title="output.jsonpFunction"><a href="index.html#outputjsonpfunction">output.jsonpFunction</a></li><li class="sidebar-item__anchor" title="output.library"><a href="index.html#outputlibrary">output.library</a></li><li class="sidebar-item__anchor" title="output.libraryExport"><a href="index.html#outputlibraryexport">output.libraryExport</a></li><li class="sidebar-item__anchor" title="output.libraryTarget"><a href="index.html#outputlibrarytarget">output.libraryTarget</a></li><li class="sidebar-item__anchor" title="Expose a Variable"><a href="index.html#expose-a-variable">Expose a Variable</a></li><li class="sidebar-item__anchor" title="Expose Via Object Assignment"><a href="index.html#expose-via-object-assignment">Expose Via Object Assignment</a></li><li class="sidebar-item__anchor" title="Module Definition Systems"><a href="index.html#module-definition-systems">Module Definition Systems</a></li><li class="sidebar-item__anchor" title="Other Targets"><a href="index.html#other-targets">Other Targets</a></li><li class="sidebar-item__anchor" title="output.path"><a href="index.html#outputpath">output.path</a></li><li class="sidebar-item__anchor" title="output.pathinfo"><a href="index.html#outputpathinfo">output.pathinfo</a></li><li class="sidebar-item__anchor" title="output.publicPath"><a href="index.html#outputpublicpath">output.publicPath</a></li><li class="sidebar-item__anchor" title="output.sourceMapFilename"><a href="index.html#outputsourcemapfilename">output.sourceMapFilename</a></li><li class="sidebar-item__anchor" title="output.sourcePrefix"><a href="index.html#outputsourceprefix">output.sourcePrefix</a></li><li class="sidebar-item__anchor" title="output.strictModuleExceptionHandling"><a href="index.html#outputstrictmoduleexceptionhandling">output.strictModuleExceptionHandling</a></li><li class="sidebar-item__anchor" title="output.umdNamedDefine"><a href="index.html#outputumdnameddefine">output.umdNamedDefine</a></li><li class="sidebar-item__anchor" title="output.futureEmitAssets"><a href="index.html#outputfutureemitassets">output.futureEmitAssets</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../module/index.html">Module</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="module.noParse"><a href="../module/index.html#modulenoparse">module.noParse</a></li><li class="sidebar-item__anchor" title="module.rules"><a href="../module/index.html#modulerules">module.rules</a></li><li class="sidebar-item__anchor" title="Rule"><a href="../module/index.html#rule">Rule</a></li><li class="sidebar-item__anchor" title="Rule Conditions"><a href="../module/index.html#rule-conditions">Rule Conditions</a></li><li class="sidebar-item__anchor" title="Rule results"><a href="../module/index.html#rule-results">Rule results</a></li><li class="sidebar-item__anchor" title="Nested rules"><a href="../module/index.html#nested-rules">Nested rules</a></li><li class="sidebar-item__anchor" title="Rule.enforce"><a href="../module/index.html#ruleenforce">Rule.enforce</a></li><li class="sidebar-item__anchor" title="Rule.exclude"><a href="../module/index.html#ruleexclude">Rule.exclude</a></li><li class="sidebar-item__anchor" title="Rule.include"><a href="../module/index.html#ruleinclude">Rule.include</a></li><li class="sidebar-item__anchor" title="Rule.issuer"><a href="../module/index.html#ruleissuer">Rule.issuer</a></li><li class="sidebar-item__anchor" title="Rule.loader"><a href="../module/index.html#ruleloader">Rule.loader</a></li><li class="sidebar-item__anchor" title="Rule.loaders"><a href="../module/index.html#ruleloaders">Rule.loaders</a></li><li class="sidebar-item__anchor" title="Rule.oneOf"><a href="../module/index.html#ruleoneof">Rule.oneOf</a></li><li class="sidebar-item__anchor" title="Rule.options"><a href="../module/index.html#ruleoptions--rulequery">Rule.options</a></li><li class="sidebar-item__anchor" title="Rule.parser"><a href="../module/index.html#ruleparser">Rule.parser</a></li><li class="sidebar-item__anchor" title="Rule.resource"><a href="../module/index.html#ruleresource">Rule.resource</a></li><li class="sidebar-item__anchor" title="Rule.resourceQuery"><a href="../module/index.html#ruleresourcequery">Rule.resourceQuery</a></li><li class="sidebar-item__anchor" title="Rule.rules"><a href="../module/index.html#rulerules">Rule.rules</a></li><li class="sidebar-item__anchor" title="Rule.sideEffects"><a href="../module/index.html#rulesideeffects">Rule.sideEffects</a></li><li class="sidebar-item__anchor" title="Rule.test"><a href="../module/index.html#ruletest">Rule.test</a></li><li class="sidebar-item__anchor" title="Rule.type"><a href="../module/index.html#ruletype">Rule.type</a></li><li class="sidebar-item__anchor" title="Rule.use"><a href="../module/index.html#ruleuse">Rule.use</a></li><li class="sidebar-item__anchor" title="Rule.resolve"><a href="../module/index.html#ruleresolve">Rule.resolve</a></li><li class="sidebar-item__anchor" title="Condition"><a href="../module/index.html#condition">Condition</a></li><li class="sidebar-item__anchor" title="UseEntry"><a href="../module/index.html#useentry">UseEntry</a></li><li class="sidebar-item__anchor" title="Module Contexts"><a href="../module/index.html#module-contexts">Module Contexts</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../resolve/index.html">Resolve</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="resolve"><a href="../resolve/index.html#resolve">resolve</a></li><li class="sidebar-item__anchor" title="resolve.alias"><a href="../resolve/index.html#resolvealias">resolve.alias</a></li><li class="sidebar-item__anchor" title="resolve.aliasFields"><a href="../resolve/index.html#resolvealiasfields">resolve.aliasFields</a></li><li class="sidebar-item__anchor" title="resolve.cacheWithContext"><a href="../resolve/index.html#resolvecachewithcontext">resolve.cacheWithContext</a></li><li class="sidebar-item__anchor" title="resolve.descriptionFiles"><a href="../resolve/index.html#resolvedescriptionfiles">resolve.descriptionFiles</a></li><li class="sidebar-item__anchor" title="resolve.enforceExtension"><a href="../resolve/index.html#resolveenforceextension">resolve.enforceExtension</a></li><li class="sidebar-item__anchor" title="resolve.enforceModuleExtension"><a href="../resolve/index.html#resolveenforcemoduleextension">resolve.enforceModuleExtension</a></li><li class="sidebar-item__anchor" title="resolve.extensions"><a href="../resolve/index.html#resolveextensions">resolve.extensions</a></li><li class="sidebar-item__anchor" title="resolve.mainFields"><a href="../resolve/index.html#resolvemainfields">resolve.mainFields</a></li><li class="sidebar-item__anchor" title="resolve.mainFiles"><a href="../resolve/index.html#resolvemainfiles">resolve.mainFiles</a></li><li class="sidebar-item__anchor" title="resolve.modules"><a href="../resolve/index.html#resolvemodules">resolve.modules</a></li><li class="sidebar-item__anchor" title="resolve.unsafeCache"><a href="../resolve/index.html#resolveunsafecache">resolve.unsafeCache</a></li><li class="sidebar-item__anchor" title="resolve.plugins"><a href="../resolve/index.html#resolveplugins">resolve.plugins</a></li><li class="sidebar-item__anchor" title="resolve.symlinks"><a href="../resolve/index.html#resolvesymlinks">resolve.symlinks</a></li><li class="sidebar-item__anchor" title="resolve.cachePredicate"><a href="../resolve/index.html#resolvecachepredicate">resolve.cachePredicate</a></li><li class="sidebar-item__anchor" title="resolveLoader"><a href="../resolve/index.html#resolveloader">resolveLoader</a></li><li class="sidebar-item__anchor" title="resolveLoader.moduleExtensions"><a href="../resolve/index.html#resolveloadermoduleextensions">resolveLoader.moduleExtensions</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../optimization/index.html">Optimization</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="optimization.minimize"><a href="../optimization/index.html#optimizationminimize">optimization.minimize</a></li><li class="sidebar-item__anchor" title="optimization.minimizer"><a href="../optimization/index.html#optimizationminimizer">optimization.minimizer</a></li><li class="sidebar-item__anchor" title="optimization.splitChunks"><a href="../optimization/index.html#optimizationsplitchunks">optimization.splitChunks</a></li><li class="sidebar-item__anchor" title="optimization.runtimeChunk"><a href="../optimization/index.html#optimizationruntimechunk">optimization.runtimeChunk</a></li><li class="sidebar-item__anchor" title="optimization.noEmitOnErrors"><a href="../optimization/index.html#optimizationnoemitonerrors">optimization.noEmitOnErrors</a></li><li class="sidebar-item__anchor" title="optimization.namedModules"><a href="../optimization/index.html#optimizationnamedmodules">optimization.namedModules</a></li><li class="sidebar-item__anchor" title="optimization.namedChunks"><a href="../optimization/index.html#optimizationnamedchunks">optimization.namedChunks</a></li><li class="sidebar-item__anchor" title="optimization.moduleIds"><a href="../optimization/index.html#optimizationmoduleids">optimization.moduleIds</a></li><li class="sidebar-item__anchor" title="optimization.chunkIds"><a href="../optimization/index.html#optimizationchunkids">optimization.chunkIds</a></li><li class="sidebar-item__anchor" title="optimization.nodeEnv"><a href="../optimization/index.html#optimizationnodeenv">optimization.nodeEnv</a></li><li class="sidebar-item__anchor" title="optimization.mangleWasmImports"><a href="../optimization/index.html#optimizationmanglewasmimports">optimization.mangleWasmImports</a></li><li class="sidebar-item__anchor" title="optimization.removeAvailableModules"><a href="../optimization/index.html#optimizationremoveavailablemodules">optimization.removeAvailableModules</a></li><li class="sidebar-item__anchor" title="optimization.removeEmptyChunks"><a href="../optimization/index.html#optimizationremoveemptychunks">optimization.removeEmptyChunks</a></li><li class="sidebar-item__anchor" title="optimization.mergeDuplicateChunks"><a href="../optimization/index.html#optimizationmergeduplicatechunks">optimization.mergeDuplicateChunks</a></li><li class="sidebar-item__anchor" title="optimization.flagIncludedChunks"><a href="../optimization/index.html#optimizationflagincludedchunks">optimization.flagIncludedChunks</a></li><li class="sidebar-item__anchor" title="optimization.occurrenceOrder"><a href="../optimization/index.html#optimizationoccurrenceorder">optimization.occurrenceOrder</a></li><li class="sidebar-item__anchor" title="optimization.providedExports"><a href="../optimization/index.html#optimizationprovidedexports">optimization.providedExports</a></li><li class="sidebar-item__anchor" title="optimization.usedExports"><a href="../optimization/index.html#optimizationusedexports">optimization.usedExports</a></li><li class="sidebar-item__anchor" title="optimization.concatenateModules"><a href="../optimization/index.html#optimizationconcatenatemodules">optimization.concatenateModules</a></li><li class="sidebar-item__anchor" title="optimization.sideEffects"><a href="../optimization/index.html#optimizationsideeffects">optimization.sideEffects</a></li><li class="sidebar-item__anchor" title="optimization.portableRecords"><a href="../optimization/index.html#optimizationportablerecords">optimization.portableRecords</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../plugins/index.html">Plugins</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="plugins"><a href="../plugins/index.html#plugins">plugins</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../dev-server/index.html">DevServer</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="devServer"><a href="../dev-server/index.html#devserver">devServer</a></li><li class="sidebar-item__anchor" title="devServer.after"><a href="../dev-server/index.html#devserverafter">devServer.after</a></li><li class="sidebar-item__anchor" title="devServer.allowedHosts"><a href="../dev-server/index.html#devserverallowedhosts">devServer.allowedHosts</a></li><li class="sidebar-item__anchor" title="devServer.before"><a href="../dev-server/index.html#devserverbefore">devServer.before</a></li><li class="sidebar-item__anchor" title="devServer.bonjour"><a href="../dev-server/index.html#devserverbonjour">devServer.bonjour</a></li><li class="sidebar-item__anchor" title="devServer.clientLogLevel"><a href="../dev-server/index.html#devserverclientloglevel">devServer.clientLogLevel</a></li><li class="sidebar-item__anchor" title="devServer.color"><a href="../dev-server/index.html#devservercolor---cli-only">devServer.color</a></li><li class="sidebar-item__anchor" title="devServer.compress"><a href="../dev-server/index.html#devservercompress">devServer.compress</a></li><li class="sidebar-item__anchor" title="devServer.contentBase"><a href="../dev-server/index.html#devservercontentbase">devServer.contentBase</a></li><li class="sidebar-item__anchor" title="devServer.disableHostCheck"><a href="../dev-server/index.html#devserverdisablehostcheck">devServer.disableHostCheck</a></li><li class="sidebar-item__anchor" title="devServer.filename"><a href="../dev-server/index.html#devserverfilename-">devServer.filename</a></li><li class="sidebar-item__anchor" title="devServer.headers"><a href="../dev-server/index.html#devserverheaders-">devServer.headers</a></li><li class="sidebar-item__anchor" title="devServer.historyApiFallback"><a href="../dev-server/index.html#devserverhistoryapifallback">devServer.historyApiFallback</a></li><li class="sidebar-item__anchor" title="devServer.host"><a href="../dev-server/index.html#devserverhost">devServer.host</a></li><li class="sidebar-item__anchor" title="devServer.hot"><a href="../dev-server/index.html#devserverhot">devServer.hot</a></li><li class="sidebar-item__anchor" title="devServer.hotOnly"><a href="../dev-server/index.html#devserverhotonly">devServer.hotOnly</a></li><li class="sidebar-item__anchor" title="devServer.http2"><a href="../dev-server/index.html#devserverhttp2">devServer.http2</a></li><li class="sidebar-item__anchor" title="devServer.https"><a href="../dev-server/index.html#devserverhttps">devServer.https</a></li><li class="sidebar-item__anchor" title="devServer.index"><a href="../dev-server/index.html#devserverindex">devServer.index</a></li><li class="sidebar-item__anchor" title="devServer.info"><a href="../dev-server/index.html#devserverinfo---cli-only">devServer.info</a></li><li class="sidebar-item__anchor" title="devServer.injectClient"><a href="../dev-server/index.html#devserverinjectclient">devServer.injectClient</a></li><li class="sidebar-item__anchor" title="devServer.injectHot"><a href="../dev-server/index.html#devserverinjecthot">devServer.injectHot</a></li><li class="sidebar-item__anchor" title="devServer.inline"><a href="../dev-server/index.html#devserverinline">devServer.inline</a></li><li class="sidebar-item__anchor" title="devServer.lazy"><a href="../dev-server/index.html#devserverlazy-">devServer.lazy</a></li><li class="sidebar-item__anchor" title="devServer.liveReload"><a href="../dev-server/index.html#devserverlivereload">devServer.liveReload</a></li><li class="sidebar-item__anchor" title="devServer.mimeTypes"><a href="../dev-server/index.html#devservermimetypes-">devServer.mimeTypes</a></li><li class="sidebar-item__anchor" title="devServer.noInfo"><a href="../dev-server/index.html#devservernoinfo-">devServer.noInfo</a></li><li class="sidebar-item__anchor" title="devServer.onListening"><a href="../dev-server/index.html#devserveronlistening">devServer.onListening</a></li><li class="sidebar-item__anchor" title="devServer.open"><a href="../dev-server/index.html#devserveropen">devServer.open</a></li><li class="sidebar-item__anchor" title="devServer.openPage"><a href="../dev-server/index.html#devserveropenpage">devServer.openPage</a></li><li class="sidebar-item__anchor" title="devServer.overlay"><a href="../dev-server/index.html#devserveroverlay">devServer.overlay</a></li><li class="sidebar-item__anchor" title="devServer.pfx"><a href="../dev-server/index.html#devserverpfx">devServer.pfx</a></li><li class="sidebar-item__anchor" title="devServer.pfxPassphrase"><a href="../dev-server/index.html#devserverpfxpassphrase">devServer.pfxPassphrase</a></li><li class="sidebar-item__anchor" title="devServer.port"><a href="../dev-server/index.html#devserverport">devServer.port</a></li><li class="sidebar-item__anchor" title="devServer.proxy"><a href="../dev-server/index.html#devserverproxy">devServer.proxy</a></li><li class="sidebar-item__anchor" title="devServer.progress"><a href="../dev-server/index.html#devserverprogress---cli-only">devServer.progress</a></li><li class="sidebar-item__anchor" title="devServer.public"><a href="../dev-server/index.html#devserverpublic">devServer.public</a></li><li class="sidebar-item__anchor" title="devServer.publicPath"><a href="../dev-server/index.html#devserverpublicpath-">devServer.publicPath</a></li><li class="sidebar-item__anchor" title="devServer.quiet"><a href="../dev-server/index.html#devserverquiet-">devServer.quiet</a></li><li class="sidebar-item__anchor" title="devServer.serveIndex"><a href="../dev-server/index.html#devserverserveindex">devServer.serveIndex</a></li><li class="sidebar-item__anchor" title="devServer.setup"><a href="../dev-server/index.html#devserversetup">devServer.setup</a></li><li class="sidebar-item__anchor" title="devServer.socket"><a href="../dev-server/index.html#devserversocket">devServer.socket</a></li><li class="sidebar-item__anchor" title="devServer.sockHost"><a href="../dev-server/index.html#devserversockhost">devServer.sockHost</a></li><li class="sidebar-item__anchor" title="devServer.sockPath"><a href="../dev-server/index.html#devserversockpath">devServer.sockPath</a></li><li class="sidebar-item__anchor" title="devServer.sockPort"><a href="../dev-server/index.html#devserversockport">devServer.sockPort</a></li><li class="sidebar-item__anchor" title="devServer.staticOptions"><a href="../dev-server/index.html#devserverstaticoptions">devServer.staticOptions</a></li><li class="sidebar-item__anchor" title="devServer.stats"><a href="../dev-server/index.html#devserverstats-">devServer.stats</a></li><li class="sidebar-item__anchor" title="devServer.stdin"><a href="../dev-server/index.html#devserverstdin---cli-only">devServer.stdin</a></li><li class="sidebar-item__anchor" title="devServer.transportMode"><a href="../dev-server/index.html#devservertransportmode">devServer.transportMode</a></li><li class="sidebar-item__anchor" title="devServer.transportMode.client"><a href="../dev-server/index.html#devservertransportmodeclient">devServer.transportMode.client</a></li><li class="sidebar-item__anchor" title="devServer.transportMode.server"><a href="../dev-server/index.html#devservertransportmodeserver">devServer.transportMode.server</a></li><li class="sidebar-item__anchor" title="devServer.useLocalIp"><a href="../dev-server/index.html#devserveruselocalip">devServer.useLocalIp</a></li><li class="sidebar-item__anchor" title="devServer.watchContentBase"><a href="../dev-server/index.html#devserverwatchcontentbase">devServer.watchContentBase</a></li><li class="sidebar-item__anchor" title="devServer.watchOptions"><a href="../dev-server/index.html#devserverwatchoptions-">devServer.watchOptions</a></li><li class="sidebar-item__anchor" title="devServer.writeToDisk"><a href="../dev-server/index.html#devserverwritetodisk-">devServer.writeToDisk</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../devtool/index.html">Devtool</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="devtool"><a href="../devtool/index.html#devtool">devtool</a></li><li class="sidebar-item__anchor" title="Qualities"><a href="../devtool/index.html#qualities">Qualities</a></li><li class="sidebar-item__anchor" title="Development"><a href="../devtool/index.html#development">Development</a></li><li class="sidebar-item__anchor" title="Special cases"><a href="../devtool/index.html#special-cases">Special cases</a></li><li class="sidebar-item__anchor" title="Production"><a href="../devtool/index.html#production">Production</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../target/index.html">Target</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="target"><a href="../target/index.html#target">target</a></li><li class="sidebar-item__anchor" title="string"><a href="../target/index.html#string">string</a></li><li class="sidebar-item__anchor" title="function"><a href="../target/index.html#function">function</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../watch/index.html">Watch and WatchOptions</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="watch"><a href="../watch/index.html#watch">watch</a></li><li class="sidebar-item__anchor" title="watchOptions"><a href="../watch/index.html#watchoptions">watchOptions</a></li><li class="sidebar-item__anchor" title="watchOptions.aggregateTimeout"><a href="../watch/index.html#watchoptionsaggregatetimeout">watchOptions.aggregateTimeout</a></li><li class="sidebar-item__anchor" title="watchOptions.ignored"><a href="../watch/index.html#watchoptionsignored">watchOptions.ignored</a></li><li class="sidebar-item__anchor" title="watchOptions.poll"><a href="../watch/index.html#watchoptionspoll">watchOptions.poll</a></li><li class="sidebar-item__anchor" title="info-verbosity"><a href="../watch/index.html#info-verbosity">info-verbosity</a></li><li class="sidebar-item__anchor" title="Troubleshooting"><a href="../watch/index.html#troubleshooting">Troubleshooting</a></li><li class="sidebar-item__anchor" title="Changes Seen But Not Processed"><a href="../watch/index.html#changes-seen-but-not-processed">Changes Seen But Not Processed</a></li><li class="sidebar-item__anchor" title="Not Enough Watchers"><a href="../watch/index.html#not-enough-watchers">Not Enough Watchers</a></li><li class="sidebar-item__anchor" title="macOS fsevents Bug"><a href="../watch/index.html#macos-fsevents-bug">macOS fsevents Bug</a></li><li class="sidebar-item__anchor" title="Windows Paths"><a href="../watch/index.html#windows-paths">Windows Paths</a></li><li class="sidebar-item__anchor" title="Vim"><a href="../watch/index.html#vim">Vim</a></li><li class="sidebar-item__anchor" title="Saving in WebStorm"><a href="../watch/index.html#saving-in-webstorm">Saving in WebStorm</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../externals/index.html">Externals</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="externals"><a href="../externals/index.html#externals">externals</a></li><li class="sidebar-item__anchor" title="string"><a href="../externals/index.html#string">string</a></li><li class="sidebar-item__anchor" title="array"><a href="../externals/index.html#array">array</a></li><li class="sidebar-item__anchor" title="object"><a href="../externals/index.html#object">object</a></li><li class="sidebar-item__anchor" title="function"><a href="../externals/index.html#function">function</a></li><li class="sidebar-item__anchor" title="regex"><a href="../externals/index.html#regex">regex</a></li><li class="sidebar-item__anchor" title="Combining syntaxes"><a href="../externals/index.html#combining-syntaxes">Combining syntaxes</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../performance/index.html">Performance</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="performance"><a href="../performance/index.html#performance">performance</a></li><li class="sidebar-item__anchor" title="performance.hints"><a href="../performance/index.html#performancehints">performance.hints</a></li><li class="sidebar-item__anchor" title="performance.maxEntrypointSize"><a href="../performance/index.html#performancemaxentrypointsize">performance.maxEntrypointSize</a></li><li class="sidebar-item__anchor" title="performance.maxAssetSize"><a href="../performance/index.html#performancemaxassetsize">performance.maxAssetSize</a></li><li class="sidebar-item__anchor" title="performance.assetFilter"><a href="../performance/index.html#performanceassetfilter">performance.assetFilter</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../node/index.html">Node</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="node"><a href="../node/index.html#node">node</a></li><li class="sidebar-item__anchor" title="node.console"><a href="../node/index.html#nodeconsole">node.console</a></li><li class="sidebar-item__anchor" title="node.process"><a href="../node/index.html#nodeprocess">node.process</a></li><li class="sidebar-item__anchor" title="node.global"><a href="../node/index.html#nodeglobal">node.global</a></li><li class="sidebar-item__anchor" title="node.__filename"><a href="../node/index.html#node__filename">node.__filename</a></li><li class="sidebar-item__anchor" title="node.__dirname"><a href="../node/index.html#node__dirname">node.__dirname</a></li><li class="sidebar-item__anchor" title="node.Buffer"><a href="../node/index.html#nodebuffer">node.Buffer</a></li><li class="sidebar-item__anchor" title="node.setImmediate"><a href="../node/index.html#nodesetimmediate">node.setImmediate</a></li><li class="sidebar-item__anchor" title="Other node core libraries"><a href="../node/index.html#other-node-core-libraries">Other node core libraries</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../stats/index.html">Stats</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="stats"><a href="../stats/index.html#stats">stats</a></li><li class="sidebar-item__anchor" title="stats.all"><a href="../stats/index.html#statsall">stats.all</a></li><li class="sidebar-item__anchor" title="stats.assets"><a href="../stats/index.html#statsassets">stats.assets</a></li><li class="sidebar-item__anchor" title="stats.assetsSort"><a href="../stats/index.html#statsassetssort">stats.assetsSort</a></li><li class="sidebar-item__anchor" title="stats.builtAt"><a href="../stats/index.html#statsbuiltat">stats.builtAt</a></li><li class="sidebar-item__anchor" title="stats.cached"><a href="../stats/index.html#statscached">stats.cached</a></li><li class="sidebar-item__anchor" title="stats.cachedAssets"><a href="../stats/index.html#statscachedassets">stats.cachedAssets</a></li><li class="sidebar-item__anchor" title="stats.children"><a href="../stats/index.html#statschildren">stats.children</a></li><li class="sidebar-item__anchor" title="stats.chunks"><a href="../stats/index.html#statschunks">stats.chunks</a></li><li class="sidebar-item__anchor" title="stats.chunkGroups"><a href="../stats/index.html#statschunkgroups">stats.chunkGroups</a></li><li class="sidebar-item__anchor" title="stats.chunkModules"><a href="../stats/index.html#statschunkmodules">stats.chunkModules</a></li><li class="sidebar-item__anchor" title="stats.chunkOrigins"><a href="../stats/index.html#statschunkorigins">stats.chunkOrigins</a></li><li class="sidebar-item__anchor" title="stats.chunksSort"><a href="../stats/index.html#statschunkssort">stats.chunksSort</a></li><li class="sidebar-item__anchor" title="stats.context"><a href="../stats/index.html#statscontext">stats.context</a></li><li class="sidebar-item__anchor" title="stats.colors"><a href="../stats/index.html#statscolors">stats.colors</a></li><li class="sidebar-item__anchor" title="stats.depth"><a href="../stats/index.html#statsdepth">stats.depth</a></li><li class="sidebar-item__anchor" title="stats.entrypoints"><a href="../stats/index.html#statsentrypoints">stats.entrypoints</a></li><li class="sidebar-item__anchor" title="stats.env"><a href="../stats/index.html#statsenv">stats.env</a></li><li class="sidebar-item__anchor" title="stats.errors"><a href="../stats/index.html#statserrors">stats.errors</a></li><li class="sidebar-item__anchor" title="stats.errorDetails"><a href="../stats/index.html#statserrordetails">stats.errorDetails</a></li><li class="sidebar-item__anchor" title="stats.excludeAssets"><a href="../stats/index.html#statsexcludeassets">stats.excludeAssets</a></li><li class="sidebar-item__anchor" title="stats.excludeModules"><a href="../stats/index.html#statsexcludemodules">stats.excludeModules</a></li><li class="sidebar-item__anchor" title="stats.exclude"><a href="../stats/index.html#statsexclude">stats.exclude</a></li><li class="sidebar-item__anchor" title="stats.hash"><a href="../stats/index.html#statshash">stats.hash</a></li><li class="sidebar-item__anchor" title="stats.logging"><a href="../stats/index.html#statslogging">stats.logging</a></li><li class="sidebar-item__anchor" title="stats.loggingDebug"><a href="../stats/index.html#statsloggingdebug">stats.loggingDebug</a></li><li class="sidebar-item__anchor" title="stats.loggingTrace"><a href="../stats/index.html#statsloggingtrace">stats.loggingTrace</a></li><li class="sidebar-item__anchor" title="stats.maxModules"><a href="../stats/index.html#statsmaxmodules">stats.maxModules</a></li><li class="sidebar-item__anchor" title="stats.modules"><a href="../stats/index.html#statsmodules">stats.modules</a></li><li class="sidebar-item__anchor" title="stats.modulesSort"><a href="../stats/index.html#statsmodulessort">stats.modulesSort</a></li><li class="sidebar-item__anchor" title="stats.moduleTrace"><a href="../stats/index.html#statsmoduletrace">stats.moduleTrace</a></li><li class="sidebar-item__anchor" title="stats.outputPath"><a href="../stats/index.html#statsoutputpath">stats.outputPath</a></li><li class="sidebar-item__anchor" title="stats.performance"><a href="../stats/index.html#statsperformance">stats.performance</a></li><li class="sidebar-item__anchor" title="stats.providedExports"><a href="../stats/index.html#statsprovidedexports">stats.providedExports</a></li><li class="sidebar-item__anchor" title="stats.publicPath"><a href="../stats/index.html#statspublicpath">stats.publicPath</a></li><li class="sidebar-item__anchor" title="stats.reasons"><a href="../stats/index.html#statsreasons">stats.reasons</a></li><li class="sidebar-item__anchor" title="stats.source"><a href="../stats/index.html#statssource">stats.source</a></li><li class="sidebar-item__anchor" title="stats.timings"><a href="../stats/index.html#statstimings">stats.timings</a></li><li class="sidebar-item__anchor" title="stats.usedExports"><a href="../stats/index.html#statsusedexports">stats.usedExports</a></li><li class="sidebar-item__anchor" title="stats.version"><a href="../stats/index.html#statsversion">stats.version</a></li><li class="sidebar-item__anchor" title="stats.warnings"><a href="../stats/index.html#statswarnings">stats.warnings</a></li><li class="sidebar-item__anchor" title="stats.warningsFilter"><a href="../stats/index.html#statswarningsfilter">stats.warningsFilter</a></li><li class="sidebar-item__anchor" title="Sorting fields"><a href="../stats/index.html#sorting-fields">Sorting fields</a></li><li class="sidebar-item__anchor" title="Extending stats behaviours"><a href="../stats/index.html#extending-stats-behaviours">Extending stats behaviours</a></li></ul></div></div><div><div class="sidebar-item  "><i class="sidebar-item__toggle icon-chevron-right"></i><a class="sidebar-item__title" href="../other-options/index.html">Other Options</a><ul class="sidebar-item__anchors"><li class="sidebar-item__anchor" title="amd"><a href="../other-options/index.html#amd">amd</a></li><li class="sidebar-item__anchor" title="bail"><a href="../other-options/index.html#bail">bail</a></li><li class="sidebar-item__anchor" title="cache"><a href="../other-options/index.html#cache">cache</a></li><li class="sidebar-item__anchor" title="loader"><a href="../other-options/index.html#loader">loader</a></li><li class="sidebar-item__anchor" title="parallelism"><a href="../other-options/index.html#parallelism">parallelism</a></li><li class="sidebar-item__anchor" title="profile"><a href="../other-options/index.html#profile">profile</a></li><li class="sidebar-item__anchor" title="recordsPath"><a href="../other-options/index.html#recordspath">recordsPath</a></li><li class="sidebar-item__anchor" title="recordsInputPath"><a href="../other-options/index.html#recordsinputpath">recordsInputPath</a></li><li class="sidebar-item__anchor" title="recordsOutputPath"><a href="../other-options/index.html#recordsoutputpath">recordsOutputPath</a></li><li class="sidebar-item__anchor" title="name"><a href="../other-options/index.html#name">name</a></li><li class="sidebar-item__anchor" title="infrastructureLogging"><a href="../other-options/index.html#infrastructurelogging">infrastructureLogging</a></li><li class="sidebar-item__anchor" title="infrastructureLogging.level"><a href="../other-options/index.html#infrastructurelogginglevel">infrastructureLogging.level</a></li><li class="sidebar-item__anchor" title="infrastructureLogging.debug"><a href="../other-options/index.html#infrastructureloggingdebug">infrastructureLogging.debug</a></li></ul></div></div><div class="sidebar__docs-version">You are reading webpack <!-- -->4<!-- --> documentation. Change here to:<ul><li><a rel="nofollow" href="https://webpack.js.org">webpack <!-- -->5<!-- --> documentation</a></li></ul></div></div></nav><section class="page"><div class="page-links"><a class="page-links__link" href="https://github.com/webpack/webpack.js.org/edit/master/src/content/configuration/output.md">Edit Document<i class="page-links__icon icon-edit"></i></a><span class="page-links__gap">|</span><button class="page-links__link page-links__print as-link" title="Print this page">Print Document<img src="../../96ccbfac58b65e83657a220603e00abe.svg"/></button></div><div class="markdown"><h1>Output</h1><div><p>The top-level <code>output</code> key contains set of options instructing webpack on how and where it should output your bundles, assets and anything else you bundle or load with webpack.</p>
+<h2 id="outputauxiliarycomment"><code>output.auxiliaryComment</code><a href="index.html#outputauxiliarycomment" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code> <code>object</code></p>
+<p>When used in tandem with <a href="index.html#outputlibrary"><code>output.library</code></a> and <a href="index.html#outputlibrarytarget"><code>output.libraryTarget</code></a>, this option allows users to insert comments within the export wrapper. To insert the same comment for each <code>libraryTarget</code> type, set <code>auxiliaryComment</code> to a string:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    library<span class="token punctuation">:</span> <span class="token string">'someLibName'</span><span class="token punctuation">,</span>
+    libraryTarget<span class="token punctuation">:</span> <span class="token string">'umd'</span><span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'someLibName.js'</span><span class="token punctuation">,</span>
+    auxiliaryComment<span class="token punctuation">:</span> <span class="token string">'Test Comment'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>which will yield the following:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript"><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">webpackUniversalModuleDefinition</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> factory<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Test Comment</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> exports <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">&#x26;&#x26;</span> <span class="token keyword">typeof</span> module <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span>
+    module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'lodash'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// Test Comment</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> define <span class="token operator">===</span> <span class="token string">'function'</span> <span class="token operator">&#x26;&#x26;</span> define<span class="token punctuation">.</span>amd<span class="token punctuation">)</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'lodash'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> factory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// Test Comment</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> exports <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span>
+    exports<span class="token punctuation">[</span><span class="token string">'someLibName'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'lodash'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// Test Comment</span>
+  <span class="token keyword">else</span>
+    root<span class="token punctuation">[</span><span class="token string">'someLibName'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span>root<span class="token punctuation">[</span><span class="token string">'_'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>__WEBPACK_EXTERNAL_MODULE_1__<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>For fine-grained control over each <code>libraryTarget</code> comment, pass an object:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">//...</span>
+    auxiliaryComment<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      root<span class="token punctuation">:</span> <span class="token string">'Root Comment'</span><span class="token punctuation">,</span>
+      commonjs<span class="token punctuation">:</span> <span class="token string">'CommonJS Comment'</span><span class="token punctuation">,</span>
+      commonjs2<span class="token punctuation">:</span> <span class="token string">'CommonJS2 Comment'</span><span class="token punctuation">,</span>
+      amd<span class="token punctuation">:</span> <span class="token string">'AMD Comment'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputchunkfilename"><code>output.chunkFilename</code><a href="index.html#outputchunkfilename" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = '[id].js'</code></p>
+<p>This option determines the name of non-entry chunk files. See <a href="index.html#outputfilename"><code>output.filename</code></a> option for details on the possible values.</p>
+<p>Note that these filenames need to be generated at runtime to send the requests for chunks. Because of this, placeholders like <code>[name]</code> and <code>[chunkhash]</code> need to add a mapping from chunk id to placeholder value to the output bundle with the webpack runtime. This increases the size and may invalidate the bundle when placeholder value for any chunk changes.</p>
+<p>By default <code>[id].js</code> is used or a value inferred from <a href="index.html#outputfilename"><code>output.filename</code></a> (<code>[name]</code> is replaced with <code>[id]</code> or <code>[id].</code> is prepended).</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">//...</span>
+    chunkFilename<span class="token punctuation">:</span> <span class="token string">'[id].js'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputchunkloadtimeout"><code>output.chunkLoadTimeout</code><a href="index.html#outputchunkloadtimeout" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>number = 120000</code></p>
+<p>Number of milliseconds before chunk request expires. This option is supported since webpack 2.6.0.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">//...</span>
+    chunkLoadTimeout<span class="token punctuation">:</span> <span class="token number">30000</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputcrossoriginloading"><code>output.crossOriginLoading</code><a href="index.html#outputcrossoriginloading" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = false</code> <code>string: 'anonymous' | 'use-credentials'</code></p>
+<p>Tells webpack to enable <a href="https://developer.mozilla.org/en/docs/Web/HTML/Element/script#attr-crossorigin">cross-origin</a> loading of chunks. Only takes effect when <a href="../target/index.html"><code>target</code></a> is set to <code>'web'</code>, which uses JSONP for loading on-demand chunks, by adding script tags.</p>
+<ul>
+<li><code>'anonymous'</code> - Enable cross-origin loading <strong>without credentials</strong></li>
+<li><code>'use-credentials'</code> - Enable cross-origin loading <strong>with credentials</strong></li>
+</ul>
+<h2 id="outputjsonpscripttype"><code>output.jsonpScriptType</code><a href="index.html#outputjsonpscripttype" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = 'text/javascript': 'module' | 'text/javascript'</code></p>
+<p>Allows customization of <code>type</code> attribute of <code>script</code> tags that webpack injects into the DOM to download async chunks.</p>
+<ul>
+<li><code>'text/javascript'</code>: Default <code>type</code> in HTML5 and required for some browsers in HTML4.</li>
+<li><code>'module'</code>: Causes the code to be treated as a JavaScript module.</li>
+</ul>
+<h2 id="outputdevtoolfallbackmodulefilenametemplate"><code>output.devtoolFallbackModuleFilenameTemplate</code><a href="index.html#outputdevtoolfallbackmodulefilenametemplate" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code> <code>function (info)</code></p>
+<p>A fallback used when the template string or function above yields duplicates.</p>
+<p>See <a href="index.html#outputdevtoolmodulefilenametemplate"><code>output.devtoolModuleFilenameTemplate</code></a>.</p>
+<h2 id="outputdevtoollinetoline"><code>output.devtoolLineToLine</code><a href="index.html#outputdevtoollinetoline" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = false</code> <code>object: { test string | RegExp, include string | RegExp, exclude string | RegExp}</code></p>
+<blockquote>
+<p>Avoid using this option as it is <strong>deprecated</strong> and will soon be removed.</p>
+</blockquote>
+<p>Enables line to line mapping for all or some modules. This produces a simple source map where each line of the generated source is mapped to the same line of the original source. This is a performance optimization and should only be used if all input lines match generated lines.</p>
+<p>Pass a boolean to enable or disable this feature for all modules (defaults to <code>false</code>). Use <code>object</code> for granular control, e.g. to enable this feature for all javascript files within a certain directory:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    devtoolLineToLine<span class="token punctuation">:</span> <span class="token punctuation">{</span> test<span class="token punctuation">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span> include<span class="token punctuation">:</span> <span class="token string">'src/utilities'</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputdevtoolmodulefilenametemplate"><code>output.devtoolModuleFilenameTemplate</code><a href="index.html#outputdevtoolmodulefilenametemplate" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = 'webpack://[namespace]/[resource-path]?[loaders]'</code> <code>function (info) => string</code></p>
+<p>This option is only used when <a href="../devtool/index.html"><code>devtool</code></a> uses an options which requires module names.</p>
+<p>Customize the names used in each source map's <code>sources</code> array. This can be done by passing a template string or function. For example, when using <code>devtool: 'eval'</code>.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    devtoolModuleFilenameTemplate<span class="token punctuation">:</span> <span class="token string">'webpack://[namespace]/[resource-path]?[loaders]'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>The following substitutions are available in template strings (via webpack's internal <a href="https://github.com/webpack/webpack/blob/master/lib/ModuleFilenameHelpers.js"><code>ModuleFilenameHelpers</code></a>):</p>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[absolute-resource-path]<p class="description mobile">The absolute filename</p></p></div></td>
+<td class="description desktop">The absolute filename</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[all-loaders]<p class="description mobile">Automatic and explicit loaders and params up to the name of the first loader</p></p></div></td>
+<td class="description desktop">Automatic and explicit loaders and params up to the name of the first loader</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[hash]<p class="description mobile">The hash of the module identifier</p></p></div></td>
+<td class="description desktop">The hash of the module identifier</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[id]<p class="description mobile">The module identifier</p></p></div></td>
+<td class="description desktop">The module identifier</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[loaders]<p class="description mobile">Explicit loaders and params up to the name of the first loader</p></p></div></td>
+<td class="description desktop">Explicit loaders and params up to the name of the first loader</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[resource]<p class="description mobile">The path used to resolve the file and any query params used on the first loader</p></p></div></td>
+<td class="description desktop">The path used to resolve the file and any query params used on the first loader</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[resource-path]<p class="description mobile">The path used to resolve the file without any query params</p></p></div></td>
+<td class="description desktop">The path used to resolve the file without any query params</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[namespace]<p class="description mobile">The modules namespace. This is usually the library name when building as a library, empty otherwise</p></p></div></td>
+<td class="description desktop">The modules namespace. This is usually the library name when building as a library, empty otherwise</td>
+</tr>
+</tbody>
+</table>
+<p>When using a function, the same options are available camel-cased via the <code>info</code> parameter:</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    devtoolModuleFilenameTemplate<span class="token punctuation">:</span> info <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`webpack:///</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>info<span class="token punctuation">.</span>resourcePath<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">?</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>info<span class="token punctuation">.</span>loaders<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>If multiple modules would result in the same name, <a href="index.html#outputdevtoolfallbackmodulefilenametemplate"><code>output.devtoolFallbackModuleFilenameTemplate</code></a> is used instead for these modules.</p>
+<h2 id="outputdevtoolnamespace"><code>output.devtoolNamespace</code><a href="index.html#outputdevtoolnamespace" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code></p>
+<p>This option determines the modules namespace used with the <a href="index.html#outputdevtoolmodulefilenametemplate"><code>output.devtoolModuleFilenameTemplate</code></a>. When not specified, it will default to the value of: <a href="index.html#outputlibrary"><code>output.library</code></a>. It's used to prevent source file path collisions in sourcemaps when loading multiple libraries built with webpack.</p>
+<p>For example, if you have 2 libraries, with namespaces <code>library1</code> and <code>library2</code>, which both have a file <code>./src/index.js</code> (with potentially different contents), they will expose these files as <code>webpack://library1/./src/index.js</code> and <code>webpack://library2/./src/index.js</code>.</p>
+<h2 id="outputfilename"><code>output.filename</code><a href="index.html#outputfilename" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code> <code>function (chunkData) => string</code></p>
+<p>This option determines the name of each output bundle. The bundle is written to the directory specified by the <a href="index.html#outputpath"><code>output.path</code></a> option.</p>
+<p>For a single <a href="../entry-context/index.html#entry"><code>entry</code></a> point, this can be a static name.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'bundle.js'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>However, when creating multiple bundles via more than one entry point, code splitting, or various plugins, you should use one of the following substitutions to give each bundle a unique name...</p>
+<p>Using entry name:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'[name].bundle.js'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Using internal chunk id:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'[id].bundle.js'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Using the unique hash generated for every build:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'[name].[hash].bundle.js'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Using hashes based on each chunks' content:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'[chunkhash].bundle.js'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Using hashes generated for extracted content:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'[contenthash].bundle.css'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Using function to return the filename:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    filename<span class="token punctuation">:</span> <span class="token punctuation">(</span>chunkData<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> chunkData<span class="token punctuation">.</span>chunk<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">'main'</span> <span class="token operator">?</span> <span class="token string">'[name].js'</span><span class="token punctuation">:</span> <span class="token string">'[name]/[name].js'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Make sure to read the <a href="../../guides/caching/index.html">Caching guide</a> for details. There are more steps involved than just setting this option.</p>
+<p>Note this option is called filename but you are still allowed to use something like <code>'js/[name]/bundle.js'</code> to create a folder structure.</p>
+<p>Note this option does not affect output files for on-demand-loaded chunks. For these files the <a href="index.html#outputchunkfilename"><code>output.chunkFilename</code></a> option is used. Files created by loaders also aren't affected. In this case you would have to try the specific loader's available options.</p>
+<p>The following substitutions are available in template strings (via webpack's internal <a href="https://github.com/webpack/webpack/blob/master/lib/TemplatedPathPlugin.js"><code>TemplatedPathPlugin</code></a>):</p>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[hash]<p class="description mobile">The hash of the module identifier</p></p></div></td>
+<td class="description desktop">The hash of the module identifier</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[contenthash]<p class="description mobile">the hash of the content of a file, which is different for each asset</p></p></div></td>
+<td class="description desktop">the hash of the content of a file, which is different for each asset</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[chunkhash]<p class="description mobile">The hash of the chunk content</p></p></div></td>
+<td class="description desktop">The hash of the chunk content</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[name]<p class="description mobile">The module name</p></p></div></td>
+<td class="description desktop">The module name</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[id]<p class="description mobile">The module identifier</p></p></div></td>
+<td class="description desktop">The module identifier</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[query]<p class="description mobile">The module query, i.e., the string following <code>?</code> in the filename</p></p></div></td>
+<td class="description desktop">The module query, i.e., the string following 
+<code>?</code>
+ in the filename</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[function]<p class="description mobile">The function, which can return filename [string]</p></p></div></td>
+<td class="description desktop">The function, which can return filename 
+[
+string
+]</td>
+</tr>
+</tbody>
+</table>
+<p>The lengths of <code>[hash]</code> and <code>[chunkhash]</code> can be specified using <code>[hash:16]</code> (defaults to 20). Alternatively, specify <a href="index.html#outputhashdigestlength"><code>output.hashDigestLength</code></a> to configure the length globally.</p>
+<p>It is possible to filter out placeholder replacement when you want to use one of the placeholders in the actual file name. For example, to output a file <code>[name].js</code>, you have to escape the <code>[name]</code> placeholder by adding backslashes between the brackets. So that <code>[\name\]</code> generates <code>[name]</code> instead of getting replaced with the <code>name</code> of the asset.</p>
+<p>Example: <code>[\id\]</code> generates <code>[id]</code> instead of getting replaced with the <code>id</code>.</p>
+<p>If using a function for this option, the function will be passed an object containing the substitutions in the table above.</p>
+<blockquote class="tip">
+<p>When using the <a href="../../plugins/extract-text-webpack-plugin/index.html"><code>ExtractTextWebpackPlugin</code></a>, use <code>[contenthash]</code> to obtain a hash of the extracted file (neither <code>[hash]</code> nor <code>[chunkhash]</code> work).</p>
+</blockquote>
+<h2 id="outputglobalobject"><code>output.globalObject</code><a href="index.html#outputglobalobject" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = 'window'</code></p>
+<p>When targeting a library, especially the <code>libraryTarget</code> is <code>'umd'</code>, this option indicates what global object will be used to mount the library. To make UMD build available on both browsers and Node.js, set <code>output.globalObject</code> option to <code>'this'</code>.</p>
+<p>For example:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    library<span class="token punctuation">:</span> <span class="token string">'myLib'</span><span class="token punctuation">,</span>
+    libraryTarget<span class="token punctuation">:</span> <span class="token string">'umd'</span><span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'myLib.js'</span><span class="token punctuation">,</span>
+    globalObject<span class="token punctuation">:</span> <span class="token string">'this'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputhashdigest"><code>output.hashDigest</code><a href="index.html#outputhashdigest" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = 'hex'</code></p>
+<p>The encoding to use when generating the hash. All encodings from Node.JS' <a href="https://nodejs.org/api/crypto.html#crypto_hash_digest_encoding"><code>hash.digest</code></a> are supported. Using <code>'base64'</code> for filenames might be problematic since it has the character <code>/</code> in its alphabet. Likewise <code>'latin1'</code> could contain any character.</p>
+<h2 id="outputhashdigestlength"><code>output.hashDigestLength</code><a href="index.html#outputhashdigestlength" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>number = 20</code></p>
+<p>The prefix length of the hash digest to use.</p>
+<h2 id="outputhashfunction"><code>output.hashFunction</code><a href="index.html#outputhashfunction" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = 'md4'</code> <code>function</code></p>
+<p>The hashing algorithm to use. All functions from Node.JS' <a href="https://nodejs.org/api/crypto.html#crypto_crypto_createhash_algorithm_options"><code>crypto.createHash</code></a> are supported. Since <code>4.0.0-alpha2</code>, the <code>hashFunction</code> can now be a constructor to a custom hash function. You can provide a non-crypto hash function for performance reasons.</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    hashFunction<span class="token punctuation">:</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'metrohash'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>MetroHash64
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Make sure that the hashing function will have <code>update</code> and <code>digest</code> methods available.</p>
+<h2 id="outputhashsalt"><code>output.hashSalt</code><a href="index.html#outputhashsalt" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p>An optional salt to update the hash via Node.JS' <a href="https://nodejs.org/api/crypto.html#crypto_hash_update_data_inputencoding"><code>hash.update</code></a>.</p>
+<h2 id="outputhotupdatechunkfilename"><code>output.hotUpdateChunkFilename</code><a href="index.html#outputhotupdatechunkfilename" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = '[id].[hash].hot-update.js'</code> <code>function (chunkData) => string</code></p>
+<p>Customize the filenames of hot update chunks. See <a href="index.html#outputfilename"><code>output.filename</code></a> option for details on the possible values.</p>
+<p>The only placeholders allowed here are <code>[id]</code> and <code>[hash]</code>, the default being:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    hotUpdateChunkFilename<span class="token punctuation">:</span> <span class="token punctuation">(</span>chunkData<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>chunkData<span class="token punctuation">.</span>chunk<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">'main'</span> <span class="token operator">?</span> <span class="token string">''</span> <span class="token punctuation">:</span> <span class="token string">'[name]/'</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">[id].[hash].hot-update.js`</span></span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<blockquote class="tip">
+<p>Typically you don't need to change <code>output.hotUpdateChunkFilename</code>.</p>
+</blockquote>
+<h2 id="outputhotupdatefunction"><code>output.hotUpdateFunction</code><a href="index.html#outputhotupdatefunction" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code></p>
+<p>Only used when <a href="../target/index.html"><code>target</code></a> is set to <code>'web'</code>, which uses JSONP for loading hot updates.</p>
+<p>A JSONP function used to asynchronously load hot-update chunks.</p>
+<p>For details see <a href="index.html#outputjsonpfunction"><code>output.jsonpFunction</code></a>.</p>
+<h2 id="outputhotupdatemainfilename"><code>output.hotUpdateMainFilename</code><a href="index.html#outputhotupdatemainfilename" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = '[hash].hot-update.json'</code> <code>function</code></p>
+<p>Customize the main hot update filename. <code>[hash]</code> is the only available placeholder.</p>
+<blockquote class="tip">
+<p>Typically you don't need to change <code>output.hotUpdateMainFilename</code>.</p>
+</blockquote>
+<h2 id="outputjsonpfunction"><code>output.jsonpFunction</code><a href="index.html#outputjsonpfunction" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = 'webpackJsonp'</code></p>
+<p>Only used when <a href="../target/index.html"><code>target</code></a> is set to <code>'web'</code>, which uses JSONP for loading on-demand chunks.</p>
+<p>A JSONP function name used to asynchronously load chunks or join multiple initial chunks (SplitChunksPlugin, AggressiveSplittingPlugin).</p>
+<p>If using the <a href="index.html#outputlibrary"><code>output.library</code></a> option, the library name is automatically concatenated with <code>output.jsonpFunction</code>'s value.</p>
+<blockquote class="warning">
+<p>If multiple webpack runtimes (from different compilations) are used on the same webpage, there is a risk of conflicts of on-demand chunks in the global namespace.</p>
+</blockquote>
+<p>By default, on-demand chunk's output starts with:</p>
+<p><strong>example-on-demand-chunk.js</strong></p>
+<pre><code class="hljs language-javascript"><span class="token punctuation">(</span>window<span class="token punctuation">.</span>webpackJsonp <span class="token operator">=</span> window<span class="token punctuation">.</span>webpackJsonp <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token comment">/* ... */</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Change <code>output.jsonpFunction</code> for safe usage of multiple webpack runtimes on the same webpage:</p>
+<p><strong>webpack.config.flight-widget.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    jsonpFunction<span class="token punctuation">:</span> <span class="token string">'wpJsonpFlightsWidget'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>On-demand chunks content would now change to:</p>
+<p><strong>example-on-demand-chunk.js</strong></p>
+<pre><code class="hljs language-javascript"><span class="token punctuation">(</span>window<span class="token punctuation">.</span>wpJsonpFlightsWidget <span class="token operator">=</span> window<span class="token punctuation">.</span>wpJsonpFlightsWidget <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token comment">/* ... */</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputlibrary"><code>output.library</code><a href="index.html#outputlibrary" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code> <code>object</code></p>
+<blockquote class="tip">
+<p>Can be given an <code>object</code> since webpack 3.1.0. Effective for <code>libraryTarget: 'umd'</code>.</p>
+</blockquote>
+<p>How the value of the <code>output.library</code> is used depends on the value of the <a href="index.html#outputlibrarytarget"><code>output.libraryTarget</code></a> option; please refer to that section for the complete details. Note that the default option for <code>output.libraryTarget</code> is <code>var</code>, so if the following configuration option is used:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    library<span class="token punctuation">:</span> <span class="token string">'MyLibrary'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>The variable <code>MyLibrary</code> will be bound with the return value of your entry file, if the resulting output is included as a script tag in an HTML page.</p>
+<blockquote class="warning">
+<p>Note that if an <code>array</code> is provided as an <code>entry</code> point, only the last module in the array will be exposed. If an <code>object</code> is provided, it can be exposed using an <code>array</code> syntax (see <a href="https://github.com/webpack/webpack/tree/master/examples/multi-part-library">this example</a> for details).</p>
+</blockquote>
+<blockquote class="tip">
+<p>Read the <a href="../../guides/author-libraries/index.html">authoring libraries guide</a> guide for more information on <code>output.library</code> as well as <code>output.libraryTarget</code>.</p>
+</blockquote>
+<h2 id="outputlibraryexport"><code>output.libraryExport</code><a href="index.html#outputlibraryexport" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string</code> <code>[string]</code></p>
+<p>Configure which module or modules will be exposed via the <code>libraryTarget</code>. It is <code>undefined</code> by default, same behaviour will be applied if you set <code>libraryTarget</code> to an empty string e.g. <code>''</code> it will export the whole (namespace) object. The examples below demonstrate the effect of this config when using <code>libraryTarget: 'var'</code>.</p>
+<p>The following configurations are supported:</p>
+<p><code>libraryExport: 'default'</code> - The <strong>default export of your entry point</strong> will be assigned to the library target:</p>
+<pre><code class="hljs language-javascript"><span class="token comment">// if your entry has a default export of `MyDefaultModule`</span>
+<span class="token keyword">var</span> MyDefaultModule <span class="token operator">=</span> _entry_return_<span class="token punctuation">.</span><span class="token keyword">default</span><span class="token punctuation">;</span></code></pre>
+<p><code>libraryExport: 'MyModule'</code> - The <strong>specified module</strong> will be assigned to the library target:</p>
+<pre><code class="hljs language-javascript"><span class="token keyword">var</span> MyModule <span class="token operator">=</span> _entry_return_<span class="token punctuation">.</span>MyModule<span class="token punctuation">;</span></code></pre>
+<p><code>libraryExport: ['MyModule', 'MySubModule']</code> - The array is interpreted as a <strong>path to a module</strong> to be assigned to the library target:</p>
+<pre><code class="hljs language-javascript"><span class="token keyword">var</span> MySubModule <span class="token operator">=</span> _entry_return_<span class="token punctuation">.</span>MyModule<span class="token punctuation">.</span>MySubModule<span class="token punctuation">;</span></code></pre>
+<p>With the <code>libraryExport</code> configurations specified above, the resulting libraries could be utilized as such:</p>
+<pre><code class="hljs language-javascript">MyDefaultModule<span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+MyModule<span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+MySubModule<span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputlibrarytarget"><code>output.libraryTarget</code><a href="index.html#outputlibrarytarget" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = 'var'</code></p>
+<p>Configure how the library will be exposed. Any one of the following options can be used. Please note that this option works in conjunction with the value assigned to <a href="index.html#outputlibrary"><code>output.library</code></a>. For the following examples, it is assumed that this value is configured as <code>MyLibrary</code>.</p>
+<blockquote class="tip">
+<p>Note that <code>_entry_return_</code> in the example code below is the value returned by the entry point. In the bundle itself, it is the output of the function that is generated by webpack from the entry point.</p>
+</blockquote>
+<h3 id="expose-a-variable">Expose a Variable<a href="index.html#expose-a-variable" aria-hidden="true"><span class="icon icon-link"></span></a></h3>
+<p>These options assign the return value of the entry point (e.g. whatever the entry point exported) to the name provided by <code>output.library</code> at whatever scope the bundle was included at.</p>
+<p><code>libraryTarget: 'var'</code> - (default) When your library is loaded, the <strong>return value of your entry point</strong> will be assigned to a variable:</p>
+<pre><code class="hljs language-javascript"><span class="token keyword">var</span> MyLibrary <span class="token operator">=</span> _entry_return_<span class="token punctuation">;</span>
+
+<span class="token comment">// In a separate script...</span>
+MyLibrary<span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<blockquote class="warning">
+<p>When using this option, an empty <code>output.library</code> will result in no assignment.</p>
+</blockquote>
+<p><code>libraryTarget: 'assign'</code> - This will generate an implied global which has the potential to reassign an existing value (use with caution).</p>
+<pre><code class="hljs language-javascript">MyLibrary <span class="token operator">=</span> _entry_return_<span class="token punctuation">;</span></code></pre>
+<p>Be aware that if <code>MyLibrary</code> isn't defined earlier your library will be set in global scope.</p>
+<blockquote class="warning">
+<p>When using this option, an empty <code>output.library</code> will result in a broken output bundle.</p>
+</blockquote>
+<h3 id="expose-via-object-assignment">Expose Via Object Assignment<a href="index.html#expose-via-object-assignment" aria-hidden="true"><span class="icon icon-link"></span></a></h3>
+<p>These options assign the return value of the entry point (e.g. whatever the entry point exported) to a specific object under the name defined by <code>output.library</code>.</p>
+<p>If <code>output.library</code> is not assigned a non-empty string, the default behavior is that all properties returned by the entry point will be assigned to the object as defined for the particular <code>output.libraryTarget</code>, via the following code fragment:</p>
+<pre><code class="hljs language-javascript"><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">,</span> a<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token keyword">in</span> a<span class="token punctuation">)</span> <span class="token punctuation">{</span> e<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">(</span>output<span class="token punctuation">.</span>libraryTarget<span class="token punctuation">,</span> _entry_return_<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<blockquote class="warning">
+<p>Note that not setting a <code>output.library</code> will cause all properties returned by the entry point to be assigned to the given object; there are no checks against existing property names.</p>
+</blockquote>
+<p><code>libraryTarget: "this"</code> - The <strong>return value of your entry point</strong> will be assigned to this under the property named by <code>output.library</code>. The meaning of <code>this</code> is up to you:</p>
+<pre><code class="hljs language-javascript"><span class="token keyword">this</span><span class="token punctuation">[</span><span class="token string">'MyLibrary'</span><span class="token punctuation">]</span> <span class="token operator">=</span> _entry_return_<span class="token punctuation">;</span>
+
+<span class="token comment">// In a separate script...</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>MyLibrary<span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+MyLibrary<span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// if this is window</span></code></pre>
+<p><code>libraryTarget: 'window'</code> - The <strong>return value of your entry point</strong> will be assigned to the <code>window</code> object using the <code>output.library</code> value.</p>
+<pre><code class="hljs language-javascript">window<span class="token punctuation">[</span><span class="token string">'MyLibrary'</span><span class="token punctuation">]</span> <span class="token operator">=</span> _entry_return_<span class="token punctuation">;</span>
+
+window<span class="token punctuation">.</span>MyLibrary<span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><code>libraryTarget: 'global'</code> - The <strong>return value of your entry point</strong> will be assigned to the <code>global</code> object using the <code>output.library</code> value.</p>
+<pre><code class="hljs language-javascript">global<span class="token punctuation">[</span><span class="token string">'MyLibrary'</span><span class="token punctuation">]</span> <span class="token operator">=</span> _entry_return_<span class="token punctuation">;</span>
+
+global<span class="token punctuation">.</span>MyLibrary<span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><code>libraryTarget: 'commonjs'</code> - The <strong>return value of your entry point</strong> will be assigned to the <code>exports</code> object using the <code>output.library</code> value. As the name implies, this is used in CommonJS environments.</p>
+<pre><code class="hljs language-javascript">exports<span class="token punctuation">[</span><span class="token string">'MyLibrary'</span><span class="token punctuation">]</span> <span class="token operator">=</span> _entry_return_<span class="token punctuation">;</span>
+
+<span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'MyLibrary'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="module-definition-systems">Module Definition Systems<a href="index.html#module-definition-systems" aria-hidden="true"><span class="icon icon-link"></span></a></h3>
+<p>These options will result in a bundle that comes with a more complete header to ensure compatibility with various module systems. The <code>output.library</code> option will take on a different meaning under the following <code>output.libraryTarget</code> options.</p>
+<p><code>libraryTarget: 'commonjs2'</code> - The <strong>return value of your entry point</strong> will be assigned to the <code>module.exports</code>. As the name implies, this is used in CommonJS environments:</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> _entry_return_<span class="token punctuation">;</span>
+
+<span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'MyLibrary'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Note that <code>output.library</code> is omitted, thus it is not required for this particular <code>output.libraryTarget</code>.</p>
+<blockquote class="tip">
+<p>Wondering the difference between CommonJS and CommonJS2 is? While they are similar, there are some subtle differences between them that are not usually relevant in the context of webpack. (For further details, please <a href="https://github.com/webpack/webpack/issues/1114">read this issue</a>.)</p>
+</blockquote>
+<p><code>libraryTarget: 'amd'</code> - This will expose your library as an AMD module.</p>
+<p>AMD modules require that the entry chunk (e.g. the first script loaded by the <code>&#x3C;script></code> tag) be defined with specific properties, such as <code>define</code> and <code>require</code> which is typically provided by RequireJS or any compatible loaders (such as almond). Otherwise, loading the resulting AMD bundle directly will result in an error like <code>define is not defined</code>.</p>
+<p>So, with the following configuration...</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    library<span class="token punctuation">:</span> <span class="token string">'MyLibrary'</span><span class="token punctuation">,</span>
+    libraryTarget<span class="token punctuation">:</span> <span class="token string">'amd'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>The generated output will be defined with the name "MyLibrary", i.e.</p>
+<pre><code class="hljs language-javascript"><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'MyLibrary'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> _entry_return_<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The bundle can be included as part of a script tag, and the bundle can be invoked like so:</p>
+<pre><code class="hljs language-javascript"><span class="token function">require</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'MyLibrary'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>MyLibrary<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Do something with the library...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>If <code>output.library</code> is undefined, the following is generated instead.</p>
+<pre><code class="hljs language-javascript"><span class="token function">define</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> _entry_return_<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>This bundle will not work as expected, or not work at all (in the case of the almond loader) if loaded directly with a <code>&#x3C;script></code> tag. It will only work through a RequireJS compatible asynchronous module loader through the actual path to that file, so in this case, the <code>output.path</code> and <code>output.filename</code> may become important for this particular setup if these are exposed directly on the server.</p>
+<p><code>libraryTarget: 'amd-require'</code> - This packages your output with an immediately-executed AMD <code>require(dependencies, factory)</code> wrapper.</p>
+<p>The <code>'amd-require'</code> target allows for the use of AMD dependencies without needing a separate later invocation. As with the <code>'amd'</code> target, this depends on the appropriate <a href="https://github.com/amdjs/amdjs-api/blob/master/require.md"><code>require</code> function</a> being available in the environment in which the webpack output is loaded.</p>
+<p>With this target, the library name is ignored.</p>
+<p><code>libraryTarget: 'umd'</code> - This exposes your library under all the module definitions, allowing it to work with CommonJS, AMD and as global variable. Take a look at the <a href="https://github.com/umdjs/umd">UMD Repository</a> to learn more.</p>
+<p>In this case, you need the <code>library</code> property to name your module:</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    library<span class="token punctuation">:</span> <span class="token string">'MyLibrary'</span><span class="token punctuation">,</span>
+    libraryTarget<span class="token punctuation">:</span> <span class="token string">'umd'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>And finally the output is:</p>
+<pre><code class="hljs language-javascript"><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">webpackUniversalModuleDefinition</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> factory<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> exports <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">&#x26;&#x26;</span> <span class="token keyword">typeof</span> module <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span>
+    module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> define <span class="token operator">===</span> <span class="token string">'function'</span> <span class="token operator">&#x26;&#x26;</span> define<span class="token punctuation">.</span>amd<span class="token punctuation">)</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> factory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> exports <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span>
+    exports<span class="token punctuation">[</span><span class="token string">'MyLibrary'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">else</span>
+    root<span class="token punctuation">[</span><span class="token string">'MyLibrary'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> self <span class="token operator">!==</span> <span class="token string">'undefined'</span> <span class="token operator">?</span> self <span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> _entry_return_<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Note that omitting <code>library</code> will result in the assignment of all properties returned by the entry point be assigned directly to the root object, as documented under the <a href="index.html#expose-via-object-assignment">object assignment section</a>. Example:</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    libraryTarget<span class="token punctuation">:</span> <span class="token string">'umd'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>The output will be:</p>
+<pre><code class="hljs language-javascript"><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">webpackUniversalModuleDefinition</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> factory<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> exports <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">&#x26;&#x26;</span> <span class="token keyword">typeof</span> module <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span>
+    module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> define <span class="token operator">===</span> <span class="token string">'function'</span> <span class="token operator">&#x26;&#x26;</span> define<span class="token punctuation">.</span>amd<span class="token punctuation">)</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> factory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token keyword">in</span> a<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> exports <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">?</span> exports <span class="token punctuation">:</span> root<span class="token punctuation">)</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> self <span class="token operator">!==</span> <span class="token string">'undefined'</span> <span class="token operator">?</span> self <span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> _entry_return_<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Since webpack 3.1.0, you may specify an object for <code>library</code> for differing names per targets:</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    library<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      root<span class="token punctuation">:</span> <span class="token string">'MyLibrary'</span><span class="token punctuation">,</span>
+      amd<span class="token punctuation">:</span> <span class="token string">'my-library'</span><span class="token punctuation">,</span>
+      commonjs<span class="token punctuation">:</span> <span class="token string">'my-common-library'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    libraryTarget<span class="token punctuation">:</span> <span class="token string">'umd'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p><code>libraryTarget: 'system'</code> - This will expose your library as a <a href="https://github.com/systemjs/systemjs/blob/master/docs/system-register.md"><code>System.register</code></a>
+module. This feature was first released in <a href="https://github.com/webpack/webpack/releases/tag/v4.30.0">webpack 4.30.0</a>.</p>
+<p>System modules require that a global variable <code>System</code> is present in the browser when the webpack bundle is executed. Compiling to <code>System.register</code> format allows you to <code>System.import('/bundle.js')</code> without additional configuration and have your webpack bundle loaded into the System module registry.</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    libraryTarget<span class="token punctuation">:</span> <span class="token string">'system'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Output:</p>
+<pre><code class="hljs language-javascript">System<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>_export<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    setters<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    execute<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// ...</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>By adding <code>output.library</code> to configuration in addition to having <code>output.libraryTarget</code> set to <code>system</code>, the output bundle will have the library name as an argument to <code>System.register</code>:</p>
+<pre><code class="hljs language-javascript">System<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span><span class="token string">'my-library'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>_export<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    setters<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    execute<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// ...</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Module proof library.</p>
+<h3 id="other-targets">Other Targets<a href="index.html#other-targets" aria-hidden="true"><span class="icon icon-link"></span></a></h3>
+<p><code>libraryTarget: 'jsonp'</code> - This will wrap the return value of your entry point into a jsonp wrapper.</p>
+<pre><code class="hljs language-javascript"><span class="token function">MyLibrary</span><span class="token punctuation">(</span>_entry_return_<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The dependencies for your library will be defined by the <a href="../externals/index.html"><code>externals</code></a> config.</p>
+<h2 id="outputpath"><code>output.path</code><a href="index.html#outputpath" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string: path.join(process.cwd(), 'dist')</code></p>
+<p>The output directory as an <strong>absolute</strong> path.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'dist/assets'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>Note that <code>[hash]</code> in this parameter will be replaced with an hash of the compilation. See the <a href="../../guides/caching/index.html">Caching guide</a> for details.</p>
+<h2 id="outputpathinfo"><code>output.pathinfo</code><a href="index.html#outputpathinfo" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean</code></p>
+<p>Tells webpack to include comments in bundles with information about the contained modules. This option defaults to <code>true</code> in <code>development</code> and <code>false</code> in <code>production</code> <a href="../mode/index.html">mode</a> respectively.</p>
+<blockquote class="warning">
+<p>While the data this comments can provide is very useful during development when reading the generated code, it <strong>should not</strong> be used in production.</p>
+</blockquote>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    pathinfo<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<blockquote class="tip">
+<p>It also adds some info about tree shaking to the generated bundle.</p>
+</blockquote>
+<h2 id="outputpublicpath"><code>output.publicPath</code><a href="index.html#outputpublicpath" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = ''</code> <code>function</code></p>
+<p>This is an important option when using on-demand-loading or loading external resources like images, files, etc. If an incorrect value is specified you'll receive 404 errors while loading these resources.</p>
+<p>This option specifies the <strong>public URL</strong> of the output directory when referenced in a browser. A relative URL is resolved relative to the HTML page (or <code>&#x3C;base></code> tag). Server-relative URLs, protocol-relative URLs or absolute URLs are also possible and sometimes required, i. e. when hosting assets on a CDN.</p>
+<p>The value of the option is prefixed to every URL created by the runtime or loaders. Because of this <strong>the value of this option ends with <code>/</code></strong> in most cases.</p>
+<p>Simple rule: The URL of your <a href="index.html#outputpath"><code>output.path</code></a> from the view of the HTML page.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'public/assets'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">'https://cdn.example.com/assets/'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>For this configuration:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">'/assets/'</span><span class="token punctuation">,</span>
+    chunkFilename<span class="token punctuation">:</span> <span class="token string">'[id].chunk.js'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>A request to a chunk will look like <code>/assets/4.chunk.js</code>.</p>
+<p>A loader outputting HTML might emit something like this:</p>
+<pre><code class="hljs language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/assets/spinner.gif<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></code></pre>
+<p>or when loading an image in CSS:</p>
+<pre><code class="hljs language-css"><span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url">url(/assets/spinner.gif)</span><span class="token punctuation">;</span></code></pre>
+<p>The webpack-dev-server also takes a hint from <code>publicPath</code>, using it to determine where to serve the output files from.</p>
+<p>Note that <code>[hash]</code> in this parameter will be replaced with an hash of the compilation. See the <a href="../../guides/caching/index.html">Caching guide</a> for details.</p>
+<p>Examples:</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// One of the below</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">'https://cdn.example.com/assets/'</span><span class="token punctuation">,</span> <span class="token comment">// CDN (always HTTPS)</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">'//cdn.example.com/assets/'</span><span class="token punctuation">,</span> <span class="token comment">// CDN (same protocol)</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">'/assets/'</span><span class="token punctuation">,</span> <span class="token comment">// server-relative</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">'assets/'</span><span class="token punctuation">,</span> <span class="token comment">// relative to HTML page</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">'../assets/'</span><span class="token punctuation">,</span> <span class="token comment">// relative to HTML page</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token comment">// relative to HTML page (same directory)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>In cases where the <code>publicPath</code> of output files can't be known at compile time, it can be left blank and set dynamically at runtime in the entry file using the <a href="https://stackoverflow.com/questions/12934929/what-are-free-variables">free variable</a> <code>__webpack_public_path__</code>.</p>
+<pre><code class="hljs language-javascript">__webpack_public_path__ <span class="token operator">=</span> myRuntimePublicPath<span class="token punctuation">;</span>
+
+<span class="token comment">// rest of your application entry</span></code></pre>
+<p>See <a href="https://github.com/webpack/webpack/issues/2776#issuecomment-233208623">this discussion</a> for more information on <code>__webpack_public_path__</code>.</p>
+<h2 id="outputsourcemapfilename"><code>output.sourceMapFilename</code><a href="index.html#outputsourcemapfilename" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = '[file].map[query]'</code></p>
+<p>Configure how source maps are named. Only takes effect when <a href="../devtool/index.html"><code>devtool</code></a> is set to <code>'source-map'</code>, which writes an output file.</p>
+<p>The <code>[name]</code>, <code>[id]</code>, <code>[hash]</code> and <code>[chunkhash]</code> substitutions from <a href="index.html#outputfilename"><code>output.filename</code></a> can be used. In addition to those, you can use substitutions listed below. The <code>[file]</code> placeholder is replaced with the filename of the original file. We recommend <strong>only using the <code>[file]</code> placeholder</strong>, as the other placeholders won't work when generating SourceMaps for non-chunk files.</p>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[file]<p class="description mobile">The module filename</p></p></div></td>
+<td class="description desktop">The module filename</td>
+</tr>
+<tr>
+<td><div class="title"><p>Template</p><p>Description</p></div>
+<div class="content"><p>[filebase]<p class="description mobile">The module <a href="https://nodejs.org/api/path.html#path_path_basename_path_ext">basename</a></p></p></div></td>
+<td class="description desktop">The module 
+<a href="https://nodejs.org/api/path.html#path_path_basename_path_ext">basename</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="outputsourceprefix"><code>output.sourcePrefix</code><a href="index.html#outputsourceprefix" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>string = ''</code></p>
+<p>Change the prefix for each line in the output bundles.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    sourcePrefix<span class="token punctuation">:</span> <span class="token string">'\t'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<blockquote class="tip">
+<p>Using some kind of indentation makes bundles look prettier, but will cause issues with multi-line strings.</p>
+</blockquote>
+<blockquote class="tip">
+<p>Typically you don't need to change <code>output.sourcePrefix</code>.</p>
+</blockquote>
+<h2 id="outputstrictmoduleexceptionhandling"><code>output.strictModuleExceptionHandling</code><a href="index.html#outputstrictmoduleexceptionhandling" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = false</code></p>
+<p>Tell webpack to remove a module from the module instance cache (<code>require.cache</code>) if it throws an exception when it is <code>require</code>d.</p>
+<p>It defaults to <code>false</code> for performance reasons.</p>
+<p>When set to <code>false</code>, the module is not removed from cache, which results in the exception getting thrown only on the first <code>require</code> call (making it incompatible with node.js).</p>
+<p>For instance, consider <code>module.js</code>:</p>
+<pre><code class="hljs language-javascript"><span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'error'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>With <code>strictModuleExceptionHandling</code> set to <code>false</code>, only the first <code>require</code> throws an exception:</p>
+<pre><code class="hljs language-javascript"><span class="token comment">// with strictModuleExceptionHandling = false</span>
+<span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'module'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x3C;- throws</span>
+<span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'module'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x3C;- doesn't throw</span></code></pre>
+<p>Instead, with <code>strictModuleExceptionHandling</code> set to <code>true</code>, all <code>require</code>s of this module throw an exception:</p>
+<pre><code class="hljs language-javascript"><span class="token comment">// with strictModuleExceptionHandling = true</span>
+<span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'module'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x3C;- throws</span>
+<span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'module'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x3C;- also throws</span></code></pre>
+<h2 id="outputumdnameddefine"><code>output.umdNamedDefine</code><a href="index.html#outputumdnameddefine" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean</code></p>
+<p>When using <code>libraryTarget: "umd"</code>, setting <code>output.umdNamedDefine</code> to <code>true</code> will name the AMD module of the UMD build. Otherwise an anonymous <code>define</code> is used.</p>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    umdNamedDefine<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h2 id="outputfutureemitassets"><code>output.futureEmitAssets</code><a href="index.html#outputfutureemitassets" aria-hidden="true"><span class="icon icon-link"></span></a></h2>
+<p><code>boolean = false</code></p>
+<p>Tells webpack to use the future version of asset emitting logic, which allows freeing memory of assets after emitting. It could break plugins which assume that assets are still readable after they were emitted.</p>
+<blockquote class="warning">
+<p><code>output.futureEmitAssets</code> option will be removed in webpack v5.0.0 and this behaviour will become the new default.</p>
+</blockquote>
+<pre><code class="hljs language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    futureEmitAssets<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+</div><div class="contributors__section"><hr/><h3>Contributors</h3><div class="contributors"><div class="contributors__list"><a class="contributor" href="https://github.com/sokra"><img alt="sokra" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->sokra</span></a><a class="contributor" href="https://github.com/skipjack"><img alt="skipjack" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->skipjack</span></a><a class="contributor" href="https://github.com/tomasAlabes"><img alt="tomasAlabes" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->tomasAlabes</span></a><a class="contributor" href="https://github.com/mattce"><img alt="mattce" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->mattce</span></a><a class="contributor" href="https://github.com/irth"><img alt="irth" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->irth</span></a><a class="contributor" href="https://github.com/fvgs"><img alt="fvgs" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->fvgs</span></a><a class="contributor" href="https://github.com/dhurlburtusa"><img alt="dhurlburtusa" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->dhurlburtusa</span></a><a class="contributor" href="https://github.com/MagicDuck"><img alt="MagicDuck" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->MagicDuck</span></a><a class="contributor" href="https://github.com/fadysamirsadek"><img alt="fadysamirsadek" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->fadysamirsadek</span></a><a class="contributor" href="https://github.com/byzyk"><img alt="byzyk" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->byzyk</span></a><a class="contributor" href="https://github.com/madhavarshney"><img alt="madhavarshney" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->madhavarshney</span></a><a class="contributor" href="https://github.com/harshwardhansingh"><img alt="harshwardhansingh" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->harshwardhansingh</span></a><a class="contributor" href="https://github.com/eemeli"><img alt="eemeli" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->eemeli</span></a><a class="contributor" href="https://github.com/EugeneHlushko"><img alt="EugeneHlushko" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->EugeneHlushko</span></a><a class="contributor" href="https://github.com/g-plane"><img alt="g-plane" src="../../cb0093496837d3dc43dfae5a9104d663.png"/><span class="contributor__name"> <!-- -->g-plane</span></a></div></div></div></div></section><div class="gitter"><div class="gitter__button"><i class="gitter__icon icon-gitter"></i></div></div></div><footer class="footer"><div class="container footer__inner"><section class="footer__left"><a class="footer__link" href="../../guides/getting-started/index.html">Get Started</a><a class="footer__link" href="../../organization/index.html">Organization</a><a class="footer__link" href="../../starter-kits/index.html">Starter Kits</a><a class="footer__link" href="../../comparison/index.html">Comparison</a></section><section class="footer__middle"><a class="footer__icon" href="../../index.html"><img src="../../d19378a95ebe6b15d5ddea281138dcf4.svg" alt="webpack icon"/></a></section><section class="footer__right"><a href="https://webpack.threadless.com/" target="_blank" rel="noopener" class="footer__link">Swag Store</a><a class="footer__link" href="../../glossary/index.html">Glossary</a><a class="footer__link" href="../../branding/index.html">Branding</a><a href="https://gitter.im/webpack/webpack" target="_blank" rel="noopener" class="footer__link">Gitter</a><a href="https://github.com/webpack/webpack/releases" target="_blank" rel="noopener" class="footer__link">Changelog</a><a class="footer__link footer__license" href="../../license/index.html"><img alt="Creative Commons License" src="../../7052446b5e67df4434f4031afd2f1497.svg"/><img alt="Creative Commons License" src="../../7ebb1b3901ce119694f65e04f6347ef5.svg"/></a></section></div></footer></div></div><script src="../../vendor.bundle.js"></script><script src="../../index.bundle.js"></script></body></html>
