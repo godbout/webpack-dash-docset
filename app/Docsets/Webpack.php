@@ -48,10 +48,46 @@ class Webpack extends BaseDocset
 
         $entries = collect();
 
+        $entries = $entries->union($this->guideEntries($crawler, $file));
+        $entries = $entries->union($this->optionEntries($crawler, $file));
         $entries = $entries->union($this->moduleEntries($crawler, $file));
         $entries = $entries->union($this->pluginEntries($crawler, $file));
 
         return $entries;
+    }
+
+    protected function guideEntries(HtmlPageCrawler $crawler, string $file)
+    {
+        $entries = collect();
+
+        if (Str::contains($file, "{$this->url()}/configuration/index.html")) {
+            $crawler->filter('a[class=sidebar-item__title]')->each(function (HtmlPageCrawler $node) use ($entries) {
+                $entries->push([
+                   'name' => $node->text(),
+                   'type' => 'Guide',
+                   'path' => $this->url() . '/configuration/' . $node->attr('href')
+                ]);
+            });
+
+            return $entries;
+        }
+    }
+
+    protected function optionEntries(HtmlPageCrawler $crawler, string $file)
+    {
+        $entries = collect();
+
+        if (Str::contains($file, "{$this->url()}/configuration")) {
+            $crawler->filter('h2 > code, h3 > code')->each(function (HtmlPageCrawler $node) use ($entries, $file) {
+                $entries->push([
+                   'name' => $node->text(),
+                   'type' => 'Option',
+                   'path' =>  Str::after($file . '#' . Str::slug($node->text()), $this->innerDirectory())
+                ]);
+            });
+
+            return $entries;
+        }
     }
 
     protected function moduleEntries(HtmlPageCrawler $crawler, string $file)
@@ -94,7 +130,7 @@ class Webpack extends BaseDocset
 
         $this->removeBreakingJavaScript($crawler);
 
-        $this->insertDashTableOfContents($crawler);
+        $this->insertDashTableOfContents($crawler, $file);
 
         return $crawler->saveHTML();
     }
@@ -104,15 +140,29 @@ class Webpack extends BaseDocset
         $crawler->filter('script')->remove();
     }
 
-    protected function insertDashTableOfContents(HtmlPageCrawler $crawler)
+    protected function insertDashTableOfContents(HtmlPageCrawler $crawler, $file)
     {
         $crawler->filter('body')
             ->before('<a name="//apple_ref/cpp/Section/Top" class="dashAnchor"></a>');
 
-        $crawler->filter('h2, h3')->each(function (HtmlPageCrawler $node) {
-            $node->prepend(
-                '<a id="' . Str::slug($node->text()) . '" name="//apple_ref/cpp/Section/' . rawurlencode($node->text()) . '" class="dashAnchor"></a>'
-            );
-        });
+        if (Str::contains($file, $this->url() . '/configuration')) {
+            $crawler->filter('h2 > code, h3 > code')->each(function (HtmlPageCrawler $node) {
+                $node->prepend(
+                    '<a id="' . Str::slug($node->text()) . '" name="//apple_ref/cpp/Option/' . rawurlencode($node->text()) . '" class="dashAnchor"></a>'
+                );
+            });
+
+            $crawler->filter('h2 > a:first-child, h3 > a:first-child')->each(function (HtmlPageCrawler $node) {
+                $node->prepend(
+                    '<a id="' . Str::slug($node->parents()->first()->text()) . '" name="//apple_ref/cpp/Section/' . rawurlencode($node->parents()->first()->text()) . '" class="dashAnchor"></a>'
+                );
+            });
+        } else {
+            $crawler->filter('h2, h3')->each(function (HtmlPageCrawler $node) {
+                $node->prepend(
+                    '<a id="' . Str::slug($node->text()) . '" name="//apple_ref/cpp/Section/' . rawurlencode($node->text()) . '" class="dashAnchor"></a>'
+                );
+            });
+        }
     }
 }
