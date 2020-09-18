@@ -59,7 +59,7 @@ class Webpack extends BaseDocset
         $entries = collect();
 
         if (Str::contains($file, "{$this->url()}/loaders/index.html")) {
-            $crawler->filter('a.sidebar-item__title')->each(function (HtmlPageCrawler $node) use ($entries) {
+            $crawler->filter('a[class=sidebar-item__title]')->each(function (HtmlPageCrawler $node) use ($entries) {
                 $entries->push([
                    'name' => $node->text(),
                    'type' => 'Module',
@@ -76,7 +76,7 @@ class Webpack extends BaseDocset
         $entries = collect();
 
         if (Str::contains($file, "{$this->url()}/plugins/index.html")) {
-            $crawler->filter('a.sidebar-item__title')->each(function (HtmlPageCrawler $node) use ($entries) {
+            $crawler->filter('a[class=sidebar-item__title]')->each(function (HtmlPageCrawler $node) use ($entries) {
                 $entries->push([
                    'name' => $node->text(),
                    'type' => 'Plugin',
