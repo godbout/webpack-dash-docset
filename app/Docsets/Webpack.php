@@ -60,6 +60,18 @@ class Webpack extends BaseDocset
     {
         $entries = collect();
 
+        if (Str::contains($file, "{$this->url()}/guides/index.html")) {
+            $crawler->filter('a[class=sidebar-item__title]')->each(function (HtmlPageCrawler $node) use ($entries) {
+                $entries->push([
+                   'name' => $node->text(),
+                   'type' => 'Guide',
+                   'path' => $this->url() . '/guides/' . $node->attr('href')
+                ]);
+            });
+
+            return $entries;
+        }
+
         if (Str::contains($file, "{$this->url()}/configuration/index.html")) {
             $crawler->filter('a[class=sidebar-item__title]')->each(function (HtmlPageCrawler $node) use ($entries) {
                 $entries->push([
