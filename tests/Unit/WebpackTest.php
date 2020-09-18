@@ -20,7 +20,6 @@ class WebpackTest extends TestCase
     /** @test */
     public function it_can_generate_a_table_of_contents()
     {
-        // Plugin entries
         $toc = $this->docset->entries(
             $this->docset->downloadedDirectory() . '/' . $this->docset->url() . '/plugins/index.html'
         );
