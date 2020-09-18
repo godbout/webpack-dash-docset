@@ -48,7 +48,27 @@ class Webpack extends BaseDocset
 
         $entries = collect();
 
-        return $entries->union($this->pluginEntries($crawler, $file));
+        $entries = $entries->union($this->moduleEntries($crawler, $file));
+        $entries = $entries->union($this->pluginEntries($crawler, $file));
+
+        return $entries;
+    }
+
+    protected function moduleEntries(HtmlPageCrawler $crawler, string $file)
+    {
+        $entries = collect();
+
+        if (Str::contains($file, "{$this->url()}/loaders/index.html")) {
+            $crawler->filter('a.sidebar-item__title')->each(function (HtmlPageCrawler $node) use ($entries) {
+                $entries->push([
+                   'name' => $node->text(),
+                   'type' => 'Module',
+                   'path' => $this->url() . '/loaders/' . $node->attr('href')
+                ]);
+            });
+
+            return $entries;
+        }
     }
 
     protected function pluginEntries(HtmlPageCrawler $crawler, string $file)
@@ -56,8 +76,7 @@ class Webpack extends BaseDocset
         $entries = collect();
 
         if (Str::contains($file, "{$this->url()}/plugins/index.html")) {
-            var_dump($file);
-            $crawler->filter('a.sidebar-item__title')->each(function (HtmlPageCrawler $node) use ($entries, $file) {
+            $crawler->filter('a.sidebar-item__title')->each(function (HtmlPageCrawler $node) use ($entries) {
                 $entries->push([
                    'name' => $node->text(),
                    'type' => 'Plugin',
@@ -90,7 +109,7 @@ class Webpack extends BaseDocset
         $crawler->filter('body')
             ->before('<a name="//apple_ref/cpp/Section/Top" class="dashAnchor"></a>');
 
-        $crawler->filter('h2')->each(function (HtmlPageCrawler $node) {
+        $crawler->filter('h2, h3')->each(function (HtmlPageCrawler $node) {
             $node->prepend(
                 '<a id="' . Str::slug($node->text()) . '" name="//apple_ref/cpp/Section/' . rawurlencode($node->text()) . '" class="dashAnchor"></a>'
             );
