@@ -49,7 +49,7 @@ class Webpack extends BaseDocset
         $entries = collect();
 
         $entries = $entries->union($this->guideEntries($crawler, $file));
-        $entries = $entries->union($this->functionEntries($crawler, $file));
+        $entries = $entries->union($this->interfaceEntries($crawler, $file));
         $entries = $entries->union($this->optionEntries($crawler, $file));
         $entries = $entries->union($this->moduleEntries($crawler, $file));
         $entries = $entries->union($this->pluginEntries($crawler, $file));
@@ -140,15 +140,15 @@ class Webpack extends BaseDocset
         }
     }
 
-    protected function functionEntries(HtmlPageCrawler $crawler, string $file)
+    protected function interfaceEntries(HtmlPageCrawler $crawler, string $file)
     {
         $entries = collect();
 
         if (Str::contains($file, "{$this->url()}/api")) {
-            $crawler->filter('h2 > code, h3 > code')->each(function (HtmlPageCrawler $node) use ($entries, $file) {
+            $crawler->filter('h2 > code, h3')->each(function (HtmlPageCrawler $node) use ($entries, $file) {
                 $entries->push([
                    'name' => $node->text(),
-                   'type' => 'Function',
+                   'type' => 'Interface',
                    'path' => Str::after($file . '#' . Str::slug($node->text()), $this->innerDirectory())
                 ]);
             });
@@ -289,9 +289,9 @@ class Webpack extends BaseDocset
         }
 
         if (Str::contains($file, $this->url() . '/api')) {
-            $crawler->filter('h2 > code, h3 > code')->each(function (HtmlPageCrawler $node) {
+            $crawler->filter('h2 > code, h3')->each(function (HtmlPageCrawler $node) {
                 $node->prepend(
-                    '<a id="' . Str::slug($node->text()) . '" name="//apple_ref/cpp/Function/' . rawurlencode($node->text()) . '" class="dashAnchor"></a>'
+                    '<a id="' . Str::slug($node->text()) . '" name="//apple_ref/cpp/Interface/' . rawurlencode($node->text()) . '" class="dashAnchor"></a>'
                 );
             });
 

@@ -70,7 +70,7 @@ class EntriesTest extends TestCase
     }
 
     /** @test */
-    public function the_dash_docset_has_some_entries_of_type_Function()
+    public function the_dash_docset_has_some_entries_of_type_Interface()
     {
         Config::set(
             'database.connections.sqlite.database',
@@ -79,7 +79,7 @@ class EntriesTest extends TestCase
 
         $this->assertNotEquals(
             0,
-            DB::table('searchIndex')->where('type', 'Function')->count()
+            DB::table('searchIndex')->where('type', 'Interface')->count()
         );
     }
 
