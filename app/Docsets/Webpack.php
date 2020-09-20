@@ -210,11 +210,48 @@ class Webpack extends BaseDocset
     {
         $crawler = HtmlPageCrawler::create(Storage::get($file));
 
+        $this->removeWholeSiteHeader($crawler);
+        $this->removeContentTopMargin($crawler);
+        $this->removeLeftSidebar($crawler);
+        $this->removeEditAndPrintDocumentLinks($crawler);
+        $this->removeFooter($crawler);
+        $this->removeGitterButton($crawler);
+
         $this->removeBreakingJavaScript($crawler);
 
         $this->insertDashTableOfContents($crawler, $file);
 
         return $crawler->saveHTML();
+    }
+
+    protected function removeWholeSiteHeader(HtmlPageCrawler $crawler)
+    {
+        $crawler->filter('.site__header')->remove();
+    }
+
+    protected function removeContentTopMargin(HtmlPageCrawler $crawler)
+    {
+        $crawler->filter('.site__content')->setStyle('margin-top', '0');
+    }
+
+    protected function removeLeftSidebar(HtmlPageCrawler $crawler)
+    {
+        $crawler->filter('nav.site__sidebar')->remove();
+    }
+
+    protected function removeEditAndPrintDocumentLinks(HtmlPageCrawler $crawler)
+    {
+        $crawler->filter('.page-links')->remove();
+    }
+
+    protected function removeFooter(HtmlPageCrawler $crawler)
+    {
+        $crawler->filter('footer.footer')->remove();
+    }
+
+    protected function removeGitterButton(HtmlPageCrawler $crawler)
+    {
+        $crawler->filter('.gitter')->remove();
     }
 
     protected function removeBreakingJavaScript(HtmlPageCrawler $crawler)
