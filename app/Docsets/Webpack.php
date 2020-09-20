@@ -49,6 +49,7 @@ class Webpack extends BaseDocset
         $entries = collect();
 
         $entries = $entries->union($this->guideEntries($crawler, $file));
+        $entries = $entries->union($this->functionEntries($crawler, $file));
         $entries = $entries->union($this->optionEntries($crawler, $file));
         $entries = $entries->union($this->moduleEntries($crawler, $file));
         $entries = $entries->union($this->pluginEntries($crawler, $file));
@@ -138,6 +139,23 @@ class Webpack extends BaseDocset
         }
     }
 
+    protected function functionEntries(HtmlPageCrawler $crawler, string $file)
+    {
+        $entries = collect();
+
+        if (Str::contains($file, "{$this->url()}/api")) {
+            $crawler->filter('h2 > code, h3 > code')->each(function (HtmlPageCrawler $node) use ($entries, $file) {
+                $entries->push([
+                   'name' => $node->text(),
+                   'type' => 'Function',
+                   'path' =>  Str::after($file . '#' . Str::slug($node->text()), $this->innerDirectory())
+                ]);
+            });
+
+            return $entries;
+        }
+    }
+
     protected function moduleEntries(HtmlPageCrawler $crawler, string $file)
     {
         $entries = collect();
@@ -197,6 +215,22 @@ class Webpack extends BaseDocset
             $crawler->filter('h2 > code, h3 > code')->each(function (HtmlPageCrawler $node) {
                 $node->prepend(
                     '<a id="' . Str::slug($node->text()) . '" name="//apple_ref/cpp/Option/' . rawurlencode($node->text()) . '" class="dashAnchor"></a>'
+                );
+            });
+
+            $crawler->filter('h2 > a:first-child, h3 > a:first-child')->each(function (HtmlPageCrawler $node) {
+                $node->prepend(
+                    '<a id="' . Str::slug($node->parents()->first()->text()) . '" name="//apple_ref/cpp/Section/' . rawurlencode($node->parents()->first()->text()) . '" class="dashAnchor"></a>'
+                );
+            });
+
+            return;
+        }
+
+        if (Str::contains($file, $this->url() . '/api')) {
+            $crawler->filter('h2 > code, h3 > code')->each(function (HtmlPageCrawler $node) {
+                $node->prepend(
+                    '<a id="' . Str::slug($node->text()) . '" name="//apple_ref/cpp/Function/' . rawurlencode($node->text()) . '" class="dashAnchor"></a>'
                 );
             });
 
