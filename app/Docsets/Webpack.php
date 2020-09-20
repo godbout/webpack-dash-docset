@@ -295,7 +295,7 @@ class Webpack extends BaseDocset
                 );
             });
 
-            $crawler->filter('h2 > a:first-child, h3 > a:first-child')->each(function (HtmlPageCrawler $node) {
+            $crawler->filter('h2 > a:first-child')->each(function (HtmlPageCrawler $node) {
                 $node->prepend(
                     '<a id="' . Str::slug($node->parents()->first()->text()) . '" name="//apple_ref/cpp/Section/' . rawurlencode($node->parents()->first()->text()) . '" class="dashAnchor"></a>'
                 );
