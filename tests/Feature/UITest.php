@@ -5,8 +5,6 @@ namespace Tests\Feature;
 use App\Docsets\Webpack;
 use Godbout\DashDocsetBuilder\Services\DocsetBuilder;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 use Wa72\HtmlPageDom\HtmlPageCrawler;
@@ -47,7 +45,7 @@ class UITest extends TestCase
         );
     }
 
-   /** @test */
+    /** @test */
     public function the_content_top_margin_is_set_to_zero_in_the_dash_docset_files()
     {
         $crawler = HtmlPageCrawler::create(

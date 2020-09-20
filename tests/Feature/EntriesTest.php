@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
-use Wa72\HtmlPageDom\HtmlPageCrawler;
 
 class EntriesTest extends TestCase
 {

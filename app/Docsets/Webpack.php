@@ -132,7 +132,7 @@ class Webpack extends BaseDocset
                 $entries->push([
                    'name' => $node->text(),
                    'type' => 'Option',
-                   'path' =>  Str::after($file . '#' . Str::slug($node->text()), $this->innerDirectory())
+                   'path' => Str::after($file . '#' . Str::slug($node->text()), $this->innerDirectory())
                 ]);
             });
 
@@ -149,7 +149,7 @@ class Webpack extends BaseDocset
                 $entries->push([
                    'name' => $node->text(),
                    'type' => 'Function',
-                   'path' =>  Str::after($file . '#' . Str::slug($node->text()), $this->innerDirectory())
+                   'path' => Str::after($file . '#' . Str::slug($node->text()), $this->innerDirectory())
                 ]);
             });
 
@@ -199,7 +199,7 @@ class Webpack extends BaseDocset
             $entries->push([
                'name' => $node->parents()->first()->text(),
                'type' => 'Section',
-               'path' =>  Str::after($file . '#' . Str::slug($node->parents()->first()->text()), $this->innerDirectory())
+               'path' => Str::after($file . '#' . Str::slug($node->parents()->first()->text()), $this->innerDirectory())
             ]);
         });
 
