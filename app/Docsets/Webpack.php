@@ -219,6 +219,7 @@ class Webpack extends BaseDocset
 
         $this->removeBreakingJavaScript($crawler);
 
+        $this->insertOnlineRedirection($crawler, $file);
         $this->insertDashTableOfContents($crawler, $file);
 
         return $crawler->saveHTML();
@@ -257,6 +258,13 @@ class Webpack extends BaseDocset
     protected function removeBreakingJavaScript(HtmlPageCrawler $crawler)
     {
         $crawler->filter('script')->remove();
+    }
+
+    protected function insertOnlineRedirection(HtmlPageCrawler $crawler, string $file)
+    {
+        $onlineUrl = Str::substr(Str::after($file, $this->innerDirectory()), 1, -10);
+
+        $crawler->filter('html')->prepend("<!-- Online page at $onlineUrl -->");
     }
 
     protected function insertDashTableOfContents(HtmlPageCrawler $crawler, $file)
