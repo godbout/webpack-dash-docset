@@ -53,6 +53,7 @@ class Webpack extends BaseDocset
         $entries = $entries->union($this->optionEntries($crawler, $file));
         $entries = $entries->union($this->moduleEntries($crawler, $file));
         $entries = $entries->union($this->pluginEntries($crawler, $file));
+        $entries = $entries->union($this->sectionEntries($crawler, $file));
 
         return $entries;
     }
@@ -188,6 +189,21 @@ class Webpack extends BaseDocset
 
             return $entries;
         }
+    }
+
+    protected function sectionEntries(HtmlPageCrawler $crawler, string $file)
+    {
+        $entries = collect();
+
+        $crawler->filter('h2 > a:first-child, h3 > a:first-child')->each(function (HtmlPageCrawler $node) use ($entries, $file) {
+            $entries->push([
+               'name' => $node->parents()->first()->text(),
+               'type' => 'Section',
+               'path' =>  Str::after($file . '#' . Str::slug($node->parents()->first()->text()), $this->innerDirectory())
+            ]);
+        });
+
+        return $entries;
     }
 
     public function format(string $file): string
