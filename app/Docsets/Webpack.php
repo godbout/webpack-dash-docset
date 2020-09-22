@@ -12,7 +12,7 @@ class Webpack extends BaseDocset
 {
     public const CODE = 'webpack';
     public const NAME = 'webpack';
-    public const URL = 'v4.webpack.js.org';
+    public const URL = 'webpack.js.org';
     public const INDEX = 'concepts/index.html';
     public const PLAYGROUND = '';
     public const ICON_16 = '../../icons/icon.png';
@@ -23,10 +23,10 @@ class Webpack extends BaseDocset
     public function grab(): bool
     {
         system(
-            "echo; wget v4.webpack.js.org \
+            "echo; wget webpack.js.org \
                 --mirror \
                 --trust-server-names \
-                --accept-regex='v4.webpack.js.org' \
+                --reject-regex='v4.webpack.js.org' \
                 --page-requisites \
                 --adjust-extension \
                 --convert-links \
