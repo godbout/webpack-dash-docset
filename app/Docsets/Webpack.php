@@ -195,13 +195,18 @@ class Webpack extends BaseDocset
     {
         $entries = collect();
 
-        $crawler->filter('h2 > a:first-child, h3 > a:first-child')->each(function (HtmlPageCrawler $node) use ($entries, $file) {
-            $entries->push([
-               'name' => $node->parents()->first()->text(),
-               'type' => 'Section',
-               'path' => Str::after($file . '#' . Str::slug($node->parents()->first()->text()), $this->innerDirectory())
-            ]);
-        });
+        $crawler
+            ->filter('h2 > a:first-child, h3 > a:first-child')
+            ->each(function (HtmlPageCrawler $node) use ($entries, $file) {
+                $entries->push([
+                   'name' => $node->parents()->first()->text(),
+                   'type' => 'Section',
+                   'path' => Str::after(
+                       $file . '#' . Str::slug($node->parents()->first()->text()),
+                       $this->innerDirectory()
+                   )
+                ]);
+            });
 
         return $entries;
     }
@@ -275,13 +280,21 @@ class Webpack extends BaseDocset
         if (Str::contains($file, $this->url() . '/configuration')) {
             $crawler->filter('h2 > code, h3 > code')->each(function (HtmlPageCrawler $node) {
                 $node->prepend(
-                    '<a id="' . Str::slug($node->text()) . '" name="//apple_ref/cpp/Option/' . rawurlencode($node->text()) . '" class="dashAnchor"></a>'
+                    '<a id="' . Str::slug(
+                        $node->text()
+                    ) . '" name="//apple_ref/cpp/Option/' . rawurlencode(
+                        $node->text()
+                    ) . '" class="dashAnchor"></a>'
                 );
             });
 
             $crawler->filter('h2 > a:first-child, h3 > a:first-child')->each(function (HtmlPageCrawler $node) {
                 $node->prepend(
-                    '<a id="' . Str::slug($node->parents()->first()->text()) . '" name="//apple_ref/cpp/Section/' . rawurlencode($node->parents()->first()->text()) . '" class="dashAnchor"></a>'
+                    '<a id="' . Str::slug(
+                        $node->parents()->first()->text()
+                    ) . '" name="//apple_ref/cpp/Section/' . rawurlencode(
+                        $node->parents()->first()->text()
+                    ) . '" class="dashAnchor"></a>'
                 );
             });
 
@@ -291,13 +304,21 @@ class Webpack extends BaseDocset
         if (Str::contains($file, $this->url() . '/api')) {
             $crawler->filter('h2 > code, h3')->each(function (HtmlPageCrawler $node) {
                 $node->prepend(
-                    '<a id="' . Str::slug($node->text()) . '" name="//apple_ref/cpp/Interface/' . rawurlencode($node->text()) . '" class="dashAnchor"></a>'
+                    '<a id="' . Str::slug(
+                        $node->text()
+                    ) . '" name="//apple_ref/cpp/Interface/' . rawurlencode(
+                        $node->text()
+                    ) . '" class="dashAnchor"></a>'
                 );
             });
 
             $crawler->filter('h2 > a:first-child')->each(function (HtmlPageCrawler $node) {
                 $node->prepend(
-                    '<a id="' . Str::slug($node->parents()->first()->text()) . '" name="//apple_ref/cpp/Section/' . rawurlencode($node->parents()->first()->text()) . '" class="dashAnchor"></a>'
+                    '<a id="' . Str::slug(
+                        $node->parents()->first()->text()
+                    ) . '" name="//apple_ref/cpp/Section/' . rawurlencode(
+                        $node->parents()->first()->text()
+                    ) . '" class="dashAnchor"></a>'
                 );
             });
 
@@ -307,13 +328,21 @@ class Webpack extends BaseDocset
         if (Str::contains($file, $this->url() . '/migrate')) {
             $crawler->filter('h2 > code, h3 > code')->each(function (HtmlPageCrawler $node) {
                 $node->prepend(
-                    '<a id="' . Str::slug($node->text()) . '" name="//apple_ref/cpp/Option/' . rawurlencode($node->text()) . '" class="dashAnchor"></a>'
+                    '<a id="' . Str::slug(
+                        $node->text()
+                    ) . '" name="//apple_ref/cpp/Option/' . rawurlencode(
+                        $node->text()
+                    ) . '" class="dashAnchor"></a>'
                 );
             });
 
             $crawler->filter('h2 > a:first-child, h3 > a:first-child')->each(function (HtmlPageCrawler $node) {
                 $node->prepend(
-                    '<a id="' . Str::slug($node->parents()->first()->text()) . '" name="//apple_ref/cpp/Section/' . rawurlencode($node->parents()->first()->text()) . '" class="dashAnchor"></a>'
+                    '<a id="' . Str::slug(
+                        $node->parents()->first()->text()
+                    ) . '" name="//apple_ref/cpp/Section/' . rawurlencode(
+                        $node->parents()->first()->text()
+                    ) . '" class="dashAnchor"></a>'
                 );
             });
 
@@ -322,7 +351,11 @@ class Webpack extends BaseDocset
 
         $crawler->filter('h2, h3')->each(function (HtmlPageCrawler $node) {
             $node->prepend(
-                '<a id="' . Str::slug($node->text()) . '" name="//apple_ref/cpp/Section/' . rawurlencode($node->text()) . '" class="dashAnchor"></a>'
+                '<a id="' . Str::slug(
+                    $node->text()
+                ) . '" name="//apple_ref/cpp/Section/' . rawurlencode(
+                    $node->text()
+                ) . '" class="dashAnchor"></a>'
             );
         });
     }
