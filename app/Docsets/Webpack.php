@@ -244,7 +244,7 @@ class Webpack extends BaseDocset
     {
         $onlineUrl = Str::substr(Str::after($file, $this->innerDirectory()), 1, -10);
 
-        $crawler->filter('html')->prepend("<!-- Online page at $onlineUrl -->");
+        $crawler->filter('html')->prepend("<!-- Online page at https://$onlineUrl -->");
     }
 
     protected function insertDashTableOfContents(HtmlPageCrawler $crawler, $file)
