@@ -60,67 +60,42 @@ class Webpack extends BaseDocset
 
     protected function guideEntries(HtmlPageCrawler $crawler, string $file)
     {
-        $entries = collect();
-
         if (Str::contains($file, "{$this->url()}/guides/index.html")) {
-            $crawler->filter('a[class=sidebar-item__title]')->each(function (HtmlPageCrawler $node) use ($entries) {
-                $entries->push([
-                   'name' => $node->text(),
-                   'type' => 'Guide',
-                   'path' => $this->url() . '/guides/' . $node->attr('href')
-                ]);
-            });
-
-            return $entries;
+            return $this->guideEntriesFor('guides', $crawler);
         }
 
         if (Str::contains($file, "{$this->url()}/api/index.html")) {
-            $crawler->filter('a[class=sidebar-item__title]')->each(function (HtmlPageCrawler $node) use ($entries) {
-                $entries->push([
-                   'name' => $node->text(),
-                   'type' => 'Guide',
-                   'path' => $this->url() . '/api/' . $node->attr('href')
-                ]);
-            });
-
-            return $entries;
+            return $this->guideEntriesFor('api', $crawler);
         }
 
         if (Str::contains($file, "{$this->url()}/concepts/index.html")) {
-            $crawler->filter('a[class=sidebar-item__title]')->each(function (HtmlPageCrawler $node) use ($entries) {
-                $entries->push([
-                   'name' => $node->text(),
-                   'type' => 'Guide',
-                   'path' => $this->url() . '/concepts/' . $node->attr('href')
-                ]);
-            });
-
-            return $entries;
+            return $this->guideEntriesFor('concepts', $crawler);
         }
 
         if (Str::contains($file, "{$this->url()}/configuration/index.html")) {
-            $crawler->filter('a[class=sidebar-item__title]')->each(function (HtmlPageCrawler $node) use ($entries) {
-                $entries->push([
-                   'name' => $node->text(),
-                   'type' => 'Guide',
-                   'path' => $this->url() . '/configuration/' . $node->attr('href')
-                ]);
-            });
-
-            return $entries;
+            return $this->guideEntriesFor('configuration', $crawler);
         }
 
         if (Str::contains($file, "{$this->url()}/migrate/index.html")) {
-            $crawler->filter('a[class=sidebar-item__title]')->each(function (HtmlPageCrawler $node) use ($entries) {
+            return $this->guideEntriesFor('migrate', $crawler);
+        }
+    }
+
+    protected function guideEntriesFor($webpackSection, HtmlPageCrawler $crawler)
+    {
+        $entries = collect();
+
+        $crawler
+            ->filter('a[class=sidebar-item__title]')
+            ->each(function (HtmlPageCrawler $node) use ($entries, $webpackSection) {
                 $entries->push([
-                   'name' => $node->text(),
-                   'type' => 'Guide',
-                   'path' => $this->url() . '/migrate/' . $node->attr('href')
+                    'name' => $node->text(),
+                    'type' => 'Guide',
+                    'path' => $this->url() . "/{$webpackSection}/" . $node->attr('href')
                 ]);
             });
 
-            return $entries;
-        }
+        return $entries;
     }
 
     protected function optionEntries(HtmlPageCrawler $crawler, string $file)
