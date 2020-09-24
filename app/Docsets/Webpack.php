@@ -200,7 +200,7 @@ class Webpack extends BaseDocset
         $this->removeBreakingJavaScript($crawler);
 
         $this->insertOnlineRedirection($crawler, $file);
-        $this->insertDashTableOfContents($crawler, $file);
+        $this->insertDashTableOfContents($crawler);
 
         return $crawler->saveHTML();
     }
@@ -247,7 +247,7 @@ class Webpack extends BaseDocset
         $crawler->filter('html')->prepend("<!-- Online page at https://$onlineUrl -->");
     }
 
-    protected function insertDashTableOfContents(HtmlPageCrawler $crawler, $file)
+    protected function insertDashTableOfContents(HtmlPageCrawler $crawler)
     {
         $crawler->filter('body')
             ->before('<a name="//apple_ref/cpp/Section/Top" class="dashAnchor"></a>');
