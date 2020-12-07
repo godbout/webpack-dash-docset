@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-    <a href="https://webpack.com/">webpack</a> <a href="https://kapeli.com/dash">Dash</a> <a href="https://kapeli.com/docsets">Docsets</a> created with the lovely—not biased here—<a href="https://github.com/godbout/dash-docset-builder">Dash Docset Builder</a> in PHP.
+    <a href="https://webpack.js.org">webpack</a> <a href="https://kapeli.com/dash">Dash</a> <a href="https://kapeli.com/docsets">Docsets</a> created with the lovely—not biased here—<a href="https://github.com/godbout/dash-docset-builder">Dash Docset Builder</a> in PHP.
 </p>
 
 ___
